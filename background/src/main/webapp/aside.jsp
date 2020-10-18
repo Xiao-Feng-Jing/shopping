@@ -1,8 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <aside id="aside">
-    <ul class="aside-links">
-        <li class="">
-            <a href="javascript:void(0);">商品管理</a>
+    <ul class="aside-links aside-group">
+        <li>
+            <a href="javascript:void(0);" class="active aside-links">商品管理</a>
             <ul>
                 <li>
                     <a href="javascript:void(0);">
@@ -22,7 +22,7 @@
             </ul>
         </li>
         <li>
-            <a href="javascript:void(0);">销售管理</a>
+            <a href="javascript:void(0);" class="active aside-links">销售管理</a>
             <ul>
                 <li>
                     <a href="javascript:void(0);">进行订单</a>
@@ -33,7 +33,7 @@
             </ul>
         </li>
         <li>
-            <a href="javascript:void(0);">会员管理</a>
+            <a href="javascript:void(0);" class="active aside-links">会员管理</a>
             <ul>
                 <li>
                     <a href="javascript:void(0);">用户管理</a>
