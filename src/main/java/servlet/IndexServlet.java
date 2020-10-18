@@ -18,7 +18,6 @@ public class IndexServlet extends HttpServlet {
 
     private void doIndex(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.getRequestDispatcher("first.jsp").forward(request,response);
-        System.out.println("hello");
 
     }
 }
