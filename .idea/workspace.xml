@@ -7,12 +7,74 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8ad35d46-ff88-41cc-ae98-31bfb679001b" name="Default Changelist" comment="" />
+    <list default="true" id="8ad35d46-ff88-41cc-ae98-31bfb679001b" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/background/background.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/background/src/main/resource/jdbc.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/background/src/main/webapp/js/aside.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/background/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/src/main/webapp/aside.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/src/main/webapp/css/aside.css" beforeDir="false" afterPath="$PROJECT_DIR$/background/src/main/webapp/css/aside.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/src/main/webapp/css/footer.css" beforeDir="false" afterPath="$PROJECT_DIR$/background/src/main/webapp/css/footer.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/src/main/webapp/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/background/src/main/webapp/css/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/src/main/webapp/footer.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/src/main/webapp/header.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/src/main/webapp/main.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/background/src/main/webapp/main.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/target/background/aside.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/target/background/css/aside.css" beforeDir="false" afterPath="$PROJECT_DIR$/background/target/background/css/aside.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/target/background/css/footer.css" beforeDir="false" afterPath="$PROJECT_DIR$/background/target/background/css/footer.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/target/background/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/background/target/background/css/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/target/background/footer.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/target/background/header.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/target/background/main.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/background/target/background/main.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/servlet/IndexServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/servlet/IndexServlet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/shopping/WEB-INF/classes/servlet/IndexServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/shopping/WEB-INF/classes/servlet/IndexServlet.class" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="MySQL - shoppingmall@localhost" type="feb32156:DbDataSourceImpl" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="MySQL - shoppingmall@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="MySQL - shoppingmall@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="shoppingmall: schema" type="76f4a085:MysqlImplModel$Schema" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="MySQL - shoppingmall@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="shoppingmall: schema" type="76f4a085:MysqlImplModel$Schema" />
+        <item name="goods_category: table" type="285a2a93:MysqlImplModel$Table" />
+      </path>
+    </expand>
+    <select />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -24,6 +86,7 @@
         <option value="Jsp File" />
         <option value="CSS File" />
         <option value="HTML File" />
+        <option value="applicationContext" />
       </list>
     </option>
   </component>
@@ -38,13 +101,16 @@
     <option name="CUSTOM_FILTER" />
   </component>
   <component name="ProjectId" id="1h85RAmcoo3mSkevTPRYnXAvhAH" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <OptionsSetting value="false" id="Update" />
+  </component>
   <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="mysql" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/background/src/main/resource" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -52,7 +118,7 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="project.structure.last.edited" value="Global Libraries" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
@@ -64,10 +130,11 @@
       <recent name="F:\shopping\src\main\webapp\css" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\shopping\background\src\main\resource" />
+      <recent name="F:\shopping\background\src\main\webapp\css" />
+      <recent name="F:\shopping\background\src\main\webapp\js" />
       <recent name="F:\shopping\background\target\background" />
       <recent name="F:\shopping\background\src\main\webapp\img" />
-      <recent name="F:\shopping\background\src\main\webapp" />
-      <recent name="F:\shopping\src\main\webapp" />
     </key>
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.servlet" />
@@ -89,6 +156,7 @@
   <component name="RunManager">
     <configuration name="Shopping" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 8.5.38" ALTERNATIVE_JRE_ENABLED="false">
       <option name="OPEN_IN_BROWSER_URL" value="http://localhost:80/background" />
+      <option name="BROWSER_ID" value="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" />
       <option name="UPDATE_ON_FRAME_DEACTIVATION" value="true" />
       <option name="UPDATE_CLASSES_ON_FRAME_DEACTIVATION" value="true" />
       <deployment>
@@ -168,6 +236,21 @@
       </method>
     </configuration>
   </component>
+  <component name="ServiceViewManager">
+    <option name="allServicesViewState">
+      <serviceView>
+        <treeState>
+          <expand>
+            <path>
+              <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@9570eafc" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+            </path>
+          </expand>
+          <select />
+        </treeState>
+      </serviceView>
+    </option>
+  </component>
   <component name="SvnConfiguration">
     <configuration>C:\Users\Administrator\AppData\Roaming\Subversion</configuration>
   </component>
@@ -183,11 +266,27 @@
       <workItem from="1600174777369" duration="9000" />
       <workItem from="1600251998711" duration="8475000" />
       <workItem from="1603000951561" duration="3375000" />
+      <workItem from="1603018159343" duration="1244000" />
+      <workItem from="1603175236734" duration="2193000" />
+      <workItem from="1603179539349" duration="1967000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <option name="LAST_COMMIT_MESSAGE" value="" />

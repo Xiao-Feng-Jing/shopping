@@ -8,8 +8,6 @@
   <artifactId>shopping</artifactId>
   <version>1.0-SNAPSHOT</version>
     <modules>
-        <module>shop</module>
-        <module>backstage</module>
       <module>background</module>
     </modules>
     <packaging>pom</packaging>
@@ -46,7 +44,49 @@
       <version>05Nov2002</version>
     </dependency>
 
-    <!--使用jsp标准标签库需要的依赖-->
+
+
+    <!-- https://mvnrepository.com/artifact/org.springframework/spring-context -->
+    <!--spring核心包-->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-context</artifactId>
+      <version>5.2.6.RELEASE</version>
+    </dependency>
+    <!--spring框架中实现事务管理功能-->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-tx</artifactId>
+      <version>5.2.6.RELEASE</version>
+    </dependency>
+    <!--springMVC使用的依赖-->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-webmvc</artifactId>
+      <version>5.2.6.RELEASE</version>
+    </dependency>
+    <!-- JUnit单元测试工具 -->
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.12</version>
+      <scope>compile</scope>
+    </dependency>
+    <!-- aspectJ AOP 织入器 -->
+    <dependency>
+      <groupId>org.aspectj</groupId>
+      <artifactId>aspectjweaver</artifactId>
+      <version>1.9.4</version>
+    </dependency>
+    <!--servlet依赖-->
+
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>javax.servlet-api</artifactId>
+      <version>4.0.1</version>
+      <scope>compile</scope>
+    </dependency>
+    <!--jsp的jstl标签包-->
     <dependency>
       <groupId>javax.servlet.jsp.jstl</groupId>
       <artifactId>jstl-api</artifactId>
@@ -62,7 +102,6 @@
         </exclusion>
       </exclusions>
     </dependency>
-
     <dependency>
       <groupId>org.glassfish.web</groupId>
       <artifactId>jstl-impl</artifactId>
@@ -81,6 +120,32 @@
           <artifactId>jstl-api</artifactId>
         </exclusion>
       </exclusions>
+    </dependency>
+    <!--c3p0 连接池 -->
+    <!-- https://mvnrepository.com/artifact/com.mchange/c3p0 -->
+    <dependency>
+      <groupId>com.mchange</groupId>
+      <artifactId>c3p0</artifactId>
+      <version>0.9.5.2</version>
+    </dependency>
+    <!--log4j日志包 -->
+    <dependency>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-core</artifactId>
+      <version>2.6.1</version>
+    </dependency>
+    <!--Spring java数据库访问包，主要用于提供数据源 -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-jdbc</artifactId>
+      <version>5.2.6.RELEASE</version>
+    </dependency>
+
+    <!--mybatis-plus需要的依赖-->
+    <dependency>
+      <groupId>com.baomidou</groupId>
+      <artifactId>mybatis-plus</artifactId>
+      <version>3.4.0</version>
     </dependency>
     <dependency>
       <groupId>zk</groupId>

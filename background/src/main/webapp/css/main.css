@@ -1,10 +1,13 @@
-*{margin: 0;padding: 0;border: 0;font-size: 100%;font: inherit;vertical-align: baseline;}
-body{-webkit-font-smoothing: antialiased;font: 12px Consolas,"Microsoft YaHei",sans-serif;color: #666;-webkit-font-smoothing: antialiased;text-rendering: optimizeLegibility;}
+*{margin: 0;padding: 0;border: 0;font: inherit;font-size: 100%;vertical-align: baseline;}
+body{font: 12px Consolas,"Microsoft YaHei",sans-serif;color: #666;-webkit-font-smoothing: antialiased;text-rendering: optimizeLegibility;}
 h1,h2,h3,h4,h5,h6{font-size: 100%;font-variant: normal;}
 a,a:hover,a:visited,a:link,a:active{background: none;text-decoration: none;}
 ul,li{list-style: none;}
 footer,header{display: block;}
-#app,body,html{background-color: #f7f7f7;}
+#app,body,html{background-color: #FFFFFF;}
 #app{min-width: 1200px;}
 /*主要内容*/
-.main{min-height: 200px;margin-left: 202px;}
+.main{min-height: 400px;margin-left: 160px;border-left: 1px solid #e5e5e5;position: relative;font-size: 16px;}
+.main .main-top{height: 50px;line-height: 50px;text-align: left;padding-left: 16px;background-color: #f9f9fa;}
+.main .nav-inline{display: inline;}
+.main .top-one{color: #3EAF7C;}
