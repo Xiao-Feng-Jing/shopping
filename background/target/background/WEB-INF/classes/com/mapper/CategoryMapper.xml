@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.CategoryMapper">
+    <resultMap id="Category" type="com.pojo.GoodsCategory">
+        <id property="categoryId" column="category_id"/>
+        <result property="categoryName" column="category_name"/>
+        <result property="parentId" column="parent_id"/>
+        <result property="categoryLevel" column="category_level"/>
+    </resultMap>
+
+    <select id="maxID" resultType="int">
+        select max(category_id) from goods_category;
+    </select>
+</mapper>
