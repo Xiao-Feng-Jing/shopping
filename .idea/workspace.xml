@@ -8,30 +8,36 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8ad35d46-ff88-41cc-ae98-31bfb679001b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/background/background.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/background/src/main/resource/jdbc.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/background/src/main/webapp/js/aside.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/background/src/main/resource/com/mapper/CategoryMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/background/src/main/resource/springMVC-servlet.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/background/src/main/webapp/css/pop.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/background/src/main/webapp/jquery/jquery-3.4.1.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/background/src/main/webapp/js/pop.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/background/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/background/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/background/src/main/webapp/aside.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/src/main/java/com/servlet/MainServlet.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/src/main/resource/jdbc.properties" beforeDir="false" afterPath="$PROJECT_DIR$/background/src/main/resource/jdbc.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/background/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/background/src/main/webapp/css/aside.css" beforeDir="false" afterPath="$PROJECT_DIR$/background/src/main/webapp/css/aside.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/background/src/main/webapp/css/footer.css" beforeDir="false" afterPath="$PROJECT_DIR$/background/src/main/webapp/css/footer.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/src/main/webapp/css/footer.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/src/main/webapp/css/header.css" beforeDir="false" afterPath="$PROJECT_DIR$/background/src/main/webapp/css/header.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/background/src/main/webapp/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/background/src/main/webapp/css/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/background/src/main/webapp/footer.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/background/src/main/webapp/header.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/src/main/webapp/js/aside.js" beforeDir="false" afterPath="$PROJECT_DIR$/background/src/main/webapp/js/aside.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/background/src/main/webapp/main.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/background/src/main/webapp/main.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/background/target/background/aside.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/target/background/WEB-INF/classes/com/servlet/MainServlet.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/target/background/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/background/target/background/WEB-INF/web.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/background/target/background/css/aside.css" beforeDir="false" afterPath="$PROJECT_DIR$/background/target/background/css/aside.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/background/target/background/css/footer.css" beforeDir="false" afterPath="$PROJECT_DIR$/background/target/background/css/footer.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/target/background/css/footer.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/target/background/css/header.css" beforeDir="false" afterPath="$PROJECT_DIR$/background/target/background/css/header.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/background/target/background/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/background/target/background/css/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/background/target/background/footer.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/background/target/background/header.jsp" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/background/target/background/main.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/background/target/background/main.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/target/classes/com/servlet/MainServlet.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/first.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/first.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/servlet/IndexServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/servlet/IndexServlet.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/shopping/WEB-INF/classes/servlet/IndexServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/shopping/WEB-INF/classes/servlet/IndexServlet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/shopping/first.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/shopping/first.jsp" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -79,19 +85,28 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="AnnotationType" />
         <option value="jsf" />
-        <option value="Class" />
         <option value="Less File" />
         <option value="Jsp File" />
-        <option value="CSS File" />
         <option value="HTML File" />
+        <option value="mapper.xml" />
         <option value="applicationContext" />
+        <option value="CSS File" />
+        <option value="JavaScript File" />
+        <option value="Class" />
+        <option value="AnnotationType" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IgnoredFileRootStore">
+    <option name="generatedRoots">
+      <set>
+        <option value="F:\shopping\.idea" />
+      </set>
+    </option>
   </component>
   <component name="LogFilters">
     <option name="FILTER_ERRORS" value="false" />
@@ -110,7 +125,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/background/src/main/resource" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../java" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -124,21 +139,26 @@
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
   <component name="RecentsManager">
+    <key name="OPEN_URL_DIALOG">
+      <recent name="https://github.com/lyj8330328/leyou.git" />
+    </key>
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.test" />
+      <recent name="com.servlet" />
+      <recent name="servlet" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="F:\shopping\background\src\main\resource" />
       <recent name="F:\shopping\src\main\webapp" />
       <recent name="F:\shopping\src\main\webapp\WEB-INF" />
       <recent name="F:\shopping\src\main\webapp\css" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\shopping\background\src\main\webapp\jquery" />
       <recent name="F:\shopping\background\src\main\resource" />
       <recent name="F:\shopping\background\src\main\webapp\css" />
       <recent name="F:\shopping\background\src\main\webapp\js" />
       <recent name="F:\shopping\background\target\background" />
-      <recent name="F:\shopping\background\src\main\webapp\img" />
-    </key>
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="com.servlet" />
-      <recent name="servlet" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -153,7 +173,41 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Tomcat Server.Shopping">
+    <configuration name="TestCategory" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="background" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.test" />
+      <option name="MAIN_CLASS_NAME" value="com.test.TestCategory" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestCategory.insert" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="background" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.test" />
+      <option name="MAIN_CLASS_NAME" value="com.test.TestCategory" />
+      <option name="METHOD_NAME" value="insert" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="leyou.git" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="https://github.com/lyj8330328/leyou.git">
+      <method v="2" />
+    </configuration>
     <configuration name="Shopping" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 8.5.38" ALTERNATIVE_JRE_ENABLED="false">
       <option name="OPEN_IN_BROWSER_URL" value="http://localhost:80/background" />
       <option name="BROWSER_ID" value="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" />
@@ -235,17 +289,19 @@
         </option>
       </method>
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.TestCategory.insert" />
+        <item itemvalue="JUnit.TestCategory" />
+        <item itemvalue="JavaScript Debug.leyou.git" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="ServiceViewManager">
     <option name="allServicesViewState">
       <serviceView>
         <treeState>
-          <expand>
-            <path>
-              <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@9570eafc" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-            </path>
-          </expand>
+          <expand />
           <select />
         </treeState>
       </serviceView>
@@ -268,8 +324,20 @@
       <workItem from="1603000951561" duration="3375000" />
       <workItem from="1603018159343" duration="1244000" />
       <workItem from="1603175236734" duration="2193000" />
-      <workItem from="1603179539349" duration="1967000" />
+      <workItem from="1603179539349" duration="8834000" />
+      <workItem from="1603361695756" duration="11607000" />
+      <workItem from="1603603946515" duration="36350000" />
+      <workItem from="1603687009278" duration="31347000" />
+      <workItem from="1603755342156" duration="4645000" />
     </task>
+    <task id="LOCAL-00001" summary="更新0.1">
+      <created>1603181658554</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1603181658554</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -289,6 +357,7 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <option name="LAST_COMMIT_MESSAGE" value="" />
+    <MESSAGE value="更新0.1" />
+    <option name="LAST_COMMIT_MESSAGE" value="更新0.1" />
   </component>
 </project>

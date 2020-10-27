@@ -3,11 +3,25 @@ body{font: 12px Consolas,"Microsoft YaHei",sans-serif;color: #666;-webkit-font-s
 h1,h2,h3,h4,h5,h6{font-size: 100%;font-variant: normal;}
 a,a:hover,a:visited,a:link,a:active{background: none;text-decoration: none;}
 ul,li{list-style: none;}
-footer,header{display: block;}
-#app,body,html{background-color: #FFFFFF;}
-#app{min-width: 1200px;}
+header{display: block;}
+#ground,body,html{background-color: #FFFFFF;}
+body{min-width: 1200px;height: 100%;}
 /*主要内容*/
-.main{min-height: 400px;margin-left: 160px;border-left: 1px solid #e5e5e5;position: relative;font-size: 16px;}
+.main{min-height: 400px;margin-left: 200px;border-left: 1px solid #e5e5e5;position: relative;font-size: 16px;overflow-y: auto;}
 .main .main-top{height: 50px;line-height: 50px;text-align: left;padding-left: 16px;background-color: #f9f9fa;}
 .main .nav-inline{display: inline;}
-.main .top-one{color: #3EAF7C;}
+.main #top-one{color: #3EAF7C;}
+.main-content{padding: 25px;font-size: 16px;}
+.main-content ul{background-color: beige;}
+.main-content ul li{padding:5px;}
+.main-content .main-category-one{font-size: 20px;padding-left: 10px;}
+.main-content .main-category-two{font-size: 16px;padding-left: 25px;display: none}
+.main-content .main-category-three{font-size: 12px;padding-left: 25px;display: none}
+.main-content .main-content-group{position: relative;cursor: pointer;}
+.main-content .main-content-group p{border-bottom: 1px solid #e5e5e5;}
+.main-content .main-content-group .category-editor{position: absolute;right: 100px;transition: all .3s ease-in-out;}
+.main-content .main-content-group .category-editor:hover{color: aqua;}
+.main-content .main-content-group .category-add{position: absolute;right: 30px;transition: all .3s ease-in-out;}
+.main-content .main-content-group .category-add:hover{color: aqua;}
+
+

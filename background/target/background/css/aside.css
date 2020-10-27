@@ -1,5 +1,5 @@
 ol,p,ul{line-height: 1.7;}
-#aside{min-height:200px;width: 160px;float: left;background: #FFFFFF;font-size: 16px;}
+#aside{min-height:200px;width: 200px;float: left;background: #FFFFFF;font-size: 16px;position: relative;}
 #aside ul{padding: 0;margin: 0;list-style-type: none;}
 #aside>.aside-links{padding: 1.5rem 0;}
 .aside-group{transition: height .1s ease-out;overflow: hidden;}

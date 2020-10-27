@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <title>vivo官方商城</title>
-    <link rel="stylesheet" href="https://at.alicdn.com/t/font_2053327_moonu3tbg59.css">
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_2053327_3gcz0w6ni24.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/header.css" />
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/footer.css" />
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/first.css" />
