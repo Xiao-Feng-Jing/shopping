@@ -7,38 +7,7 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8ad35d46-ff88-41cc-ae98-31bfb679001b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/background/src/main/resource/com/mapper/CategoryMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/background/src/main/resource/springMVC-servlet.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/background/src/main/webapp/css/pop.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/background/src/main/webapp/jquery/jquery-3.4.1.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/background/src/main/webapp/js/pop.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/background/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/background/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/background/src/main/java/com/servlet/MainServlet.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/background/src/main/resource/jdbc.properties" beforeDir="false" afterPath="$PROJECT_DIR$/background/src/main/resource/jdbc.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/background/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/background/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/background/src/main/webapp/css/aside.css" beforeDir="false" afterPath="$PROJECT_DIR$/background/src/main/webapp/css/aside.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/background/src/main/webapp/css/footer.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/background/src/main/webapp/css/header.css" beforeDir="false" afterPath="$PROJECT_DIR$/background/src/main/webapp/css/header.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/background/src/main/webapp/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/background/src/main/webapp/css/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/background/src/main/webapp/js/aside.js" beforeDir="false" afterPath="$PROJECT_DIR$/background/src/main/webapp/js/aside.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/background/src/main/webapp/main.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/background/src/main/webapp/main.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/background/target/background/WEB-INF/classes/com/servlet/MainServlet.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/background/target/background/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/background/target/background/WEB-INF/web.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/background/target/background/css/aside.css" beforeDir="false" afterPath="$PROJECT_DIR$/background/target/background/css/aside.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/background/target/background/css/footer.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/background/target/background/css/header.css" beforeDir="false" afterPath="$PROJECT_DIR$/background/target/background/css/header.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/background/target/background/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/background/target/background/css/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/background/target/background/main.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/background/target/background/main.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/background/target/classes/com/servlet/MainServlet.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/first.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/first.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/servlet/IndexServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/servlet/IndexServlet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/shopping/WEB-INF/classes/servlet/IndexServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/shopping/WEB-INF/classes/servlet/IndexServlet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/shopping/first.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/shopping/first.jsp" afterDir="false" />
-    </list>
+    <list default="true" id="8ad35d46-ff88-41cc-ae98-31bfb679001b" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -328,7 +297,7 @@
       <workItem from="1603361695756" duration="11607000" />
       <workItem from="1603603946515" duration="36350000" />
       <workItem from="1603687009278" duration="31347000" />
-      <workItem from="1603755342156" duration="4645000" />
+      <workItem from="1603755342156" duration="5064000" />
     </task>
     <task id="LOCAL-00001" summary="更新0.1">
       <created>1603181658554</created>
@@ -337,7 +306,14 @@
       <option name="project" value="LOCAL" />
       <updated>1603181658554</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="更新0.2">
+      <created>1603775599524</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1603775599525</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -358,6 +334,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="更新0.1" />
-    <option name="LAST_COMMIT_MESSAGE" value="更新0.1" />
+    <MESSAGE value="更新0.2" />
+    <option name="LAST_COMMIT_MESSAGE" value="更新0.2" />
   </component>
 </project>
