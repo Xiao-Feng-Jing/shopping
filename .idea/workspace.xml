@@ -6,50 +6,64 @@
       <artifact name="shopping:war exploded" />
     </artifacts-to-build>
   </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="8ad35d46-ff88-41cc-ae98-31bfb679001b" name="Default Changelist" comment="" />
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <list default="true" id="8ad35d46-ff88-41cc-ae98-31bfb679001b" name="Default Changelist" comment="更新0.4">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/background/src/main/java/com/action/SpecAction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/background/src/main/java/com/mapper/SpecGroupMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/background/src/main/java/com/mapper/SpecParamMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/background/src/main/java/com/service/SpecGroupService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/background/src/main/java/com/service/SpecParamService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/background/src/main/resource/com/mapper/SpecGroupMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/background/src/main/webapp/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/background/src/main/webapp/js/pop_spec.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/background.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/src/main/java/com/action/MainAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/background/src/main/java/com/action/MainAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/src/main/java/com/mapper/CategoryMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/background/src/main/java/com/mapper/CategoryMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/src/main/java/com/service/CategoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/background/src/main/java/com/service/CategoryService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/src/main/resource/com/mapper/CategoryMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/background/src/main/resource/com/mapper/CategoryMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/src/main/test/com/test/TestCategory.java" beforeDir="false" afterPath="$PROJECT_DIR$/background/src/main/test/com/test/TestCategory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/src/main/webapp/css/aside.css" beforeDir="false" afterPath="$PROJECT_DIR$/background/src/main/webapp/css/aside.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/src/main/webapp/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/background/src/main/webapp/css/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/src/main/webapp/css/pop.css" beforeDir="false" afterPath="$PROJECT_DIR$/background/src/main/webapp/css/pop.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/src/main/webapp/index.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/src/main/webapp/js/aside.js" beforeDir="false" afterPath="$PROJECT_DIR$/background/src/main/webapp/js/aside.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/src/main/webapp/js/pop.js" beforeDir="false" afterPath="$PROJECT_DIR$/background/src/main/webapp/js/pop.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/src/main/webapp/main.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/target/background/WEB-INF/classes/META-INF/background.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/target/background/WEB-INF/classes/com/action/MainAction.class" beforeDir="false" afterPath="$PROJECT_DIR$/background/target/background/WEB-INF/classes/com/action/MainAction.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/target/background/WEB-INF/classes/com/mapper/CategoryMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/background/target/background/WEB-INF/classes/com/mapper/CategoryMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/target/background/WEB-INF/classes/com/mapper/CategoryMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/background/target/background/WEB-INF/classes/com/mapper/CategoryMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/target/background/WEB-INF/classes/com/service/CategoryService.class" beforeDir="false" afterPath="$PROJECT_DIR$/background/target/background/WEB-INF/classes/com/service/CategoryService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/target/background/css/aside.css" beforeDir="false" afterPath="$PROJECT_DIR$/background/target/background/css/aside.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/target/background/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/background/target/background/css/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/target/background/css/pop.css" beforeDir="false" afterPath="$PROJECT_DIR$/background/target/background/css/pop.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/target/background/index.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/target/background/js/aside.js" beforeDir="false" afterPath="$PROJECT_DIR$/background/target/background/js/aside.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/target/background/js/pop.js" beforeDir="false" afterPath="$PROJECT_DIR$/background/target/background/js/pop.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/target/background/main.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/target/classes/META-INF/background.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/target/classes/com/action/MainAction.class" beforeDir="false" afterPath="$PROJECT_DIR$/background/target/classes/com/action/MainAction.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/target/classes/com/mapper/CategoryMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/background/target/classes/com/mapper/CategoryMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/target/classes/com/mapper/CategoryMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/background/target/classes/com/mapper/CategoryMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/target/classes/com/service/CategoryService.class" beforeDir="false" afterPath="$PROJECT_DIR$/background/target/classes/com/service/CategoryService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/target/test-classes/com/test/TestCategory.class" beforeDir="false" afterPath="$PROJECT_DIR$/background/target/test-classes/com/test/TestCategory.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shopping.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/shopping.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/shopping/WEB-INF/classes/META-INF/shopping.kotlin_module" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="DatabaseView">
-    <option name="SHOW_INTERMEDIATE" value="true" />
-    <option name="GROUP_DATA_SOURCES" value="true" />
-    <option name="GROUP_SCHEMA" value="true" />
-    <option name="GROUP_CONTENTS" value="false" />
-    <option name="SORT_POSITIONED" value="false" />
-    <option name="SHOW_EMPTY_GROUPS" value="false" />
-    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
-    <option name="HIDDEN_KINDS">
-      <set />
-    </option>
-    <expand>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="MySQL - shoppingmall@localhost" type="feb32156:DbDataSourceImpl" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="MySQL - shoppingmall@localhost" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="MySQL - shoppingmall@localhost" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="shoppingmall: schema" type="76f4a085:MysqlImplModel$Schema" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="MySQL - shoppingmall@localhost" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="shoppingmall: schema" type="76f4a085:MysqlImplModel$Schema" />
-        <item name="goods_category: table" type="285a2a93:MysqlImplModel$Table" />
-      </path>
-    </expand>
-    <select />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -57,25 +71,20 @@
         <option value="jsf" />
         <option value="Less File" />
         <option value="Jsp File" />
-        <option value="HTML File" />
-        <option value="mapper.xml" />
         <option value="applicationContext" />
         <option value="CSS File" />
+        <option value="AnnotationType" />
+        <option value="mybatis-config.xml" />
+        <option value="mapper.xml" />
+        <option value="Interface" />
+        <option value="HTML File" />
         <option value="JavaScript File" />
         <option value="Class" />
-        <option value="AnnotationType" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="IgnoredFileRootStore">
-    <option name="generatedRoots">
-      <set>
-        <option value="F:\shopping\.idea" />
-      </set>
-    </option>
   </component>
   <component name="LogFilters">
     <option name="FILTER_ERRORS" value="false" />
@@ -84,9 +93,20 @@
     <option name="FILTER_DEBUG" value="true" />
     <option name="CUSTOM_FILTER" />
   </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="$APPLICATION_HOME_DIR$/plugins/maven/lib/maven3" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
   <component name="ProjectId" id="1h85RAmcoo3mSkevTPRYnXAvhAH" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="false" id="Update" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
     <property name="DatabaseDriversLRU" value="mysql" />
@@ -94,7 +114,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../java" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../java2" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -105,7 +125,7 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="vcs.Git" />
+    <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.github.ui.GithubSettingsConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="OPEN_URL_DIALOG">
@@ -117,10 +137,11 @@
       <recent name="servlet" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="F:\shopping\background\src\main\resource\com\mapper" />
       <recent name="F:\shopping\background\src\main\resource" />
+      <recent name="F:\shopping\background\src\main\webapp" />
       <recent name="F:\shopping\src\main\webapp" />
       <recent name="F:\shopping\src\main\webapp\WEB-INF" />
-      <recent name="F:\shopping\src\main\webapp\css" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="F:\shopping\background\src\main\webapp\jquery" />
@@ -130,20 +151,34 @@
       <recent name="F:\shopping\background\target\background" />
     </key>
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
-  </component>
   <component name="RunManager" selected="Tomcat Server.Shopping">
-    <configuration name="TestCategory" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.test.Main" />
+      <module name="background" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.test.Test" />
+      <module name="background" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestCategory.delete" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="background" />
       <extension name="coverage">
         <pattern>
@@ -153,7 +188,8 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.test" />
       <option name="MAIN_CLASS_NAME" value="com.test.TestCategory" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="METHOD_NAME" value="delete" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -174,8 +210,21 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="leyou.git" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="https://github.com/lyj8330328/leyou.git">
-      <method v="2" />
+    <configuration name="TestCategory.select" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="background" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.test" />
+      <option name="MAIN_CLASS_NAME" value="com.test.TestCategory" />
+      <option name="METHOD_NAME" value="select" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <configuration name="Shopping" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 8.5.38" ALTERNATIVE_JRE_ENABLED="false">
       <option name="OPEN_IN_BROWSER_URL" value="http://localhost:80/background" />
@@ -183,14 +232,14 @@
       <option name="UPDATE_ON_FRAME_DEACTIVATION" value="true" />
       <option name="UPDATE_CLASSES_ON_FRAME_DEACTIVATION" value="true" />
       <deployment>
-        <artifact name="shopping:war exploded">
-          <settings>
-            <option name="CONTEXT_PATH" value="/shopping" />
-          </settings>
-        </artifact>
         <artifact name="background:war exploded">
           <settings>
             <option name="CONTEXT_PATH" value="/background" />
+          </settings>
+        </artifact>
+        <artifact name="shopping:war exploded">
+          <settings>
+            <option name="CONTEXT_PATH" value="/shopping" />
           </settings>
         </artifact>
       </deployment>
@@ -258,24 +307,25 @@
         </option>
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Application.Main" />
+      <item itemvalue="Application.Test" />
+      <item itemvalue="JUnit.TestCategory.delete" />
+      <item itemvalue="JUnit.TestCategory.insert" />
+      <item itemvalue="JUnit.TestCategory.select" />
+      <item itemvalue="Tomcat Server.Shopping" />
+    </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Test" />
+        <item itemvalue="Application.Main" />
+        <item itemvalue="JUnit.TestCategory.select" />
+        <item itemvalue="JUnit.TestCategory.delete" />
         <item itemvalue="JUnit.TestCategory.insert" />
-        <item itemvalue="JUnit.TestCategory" />
-        <item itemvalue="JavaScript Debug.leyou.git" />
       </list>
     </recent_temporary>
   </component>
-  <component name="ServiceViewManager">
-    <option name="allServicesViewState">
-      <serviceView>
-        <treeState>
-          <expand />
-          <select />
-        </treeState>
-      </serviceView>
-    </option>
-  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration>C:\Users\Administrator\AppData\Roaming\Subversion</configuration>
   </component>
@@ -297,7 +347,20 @@
       <workItem from="1603361695756" duration="11607000" />
       <workItem from="1603603946515" duration="36350000" />
       <workItem from="1603687009278" duration="31347000" />
-      <workItem from="1603755342156" duration="5064000" />
+      <workItem from="1603755342156" duration="5174000" />
+      <workItem from="1603777771317" duration="19326000" />
+      <workItem from="1603893695250" duration="1020000" />
+      <workItem from="1604040605115" duration="9407000" />
+      <workItem from="1604052860929" duration="6121000" />
+      <workItem from="1604210004128" duration="12433000" />
+      <workItem from="1604226348358" duration="10220000" />
+      <workItem from="1604382909456" duration="13652000" />
+      <workItem from="1604814359847" duration="13987000" />
+      <workItem from="1605020006354" duration="1020000" />
+      <workItem from="1605022210659" duration="1644000" />
+      <workItem from="1605071859993" duration="1877000" />
+      <workItem from="1605176925868" duration="624000" />
+      <workItem from="1605245844835" duration="1889000" />
     </task>
     <task id="LOCAL-00001" summary="更新0.1">
       <created>1603181658554</created>
@@ -313,28 +376,125 @@
       <option name="project" value="LOCAL" />
       <updated>1603775599525</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="更新0.3">
+      <created>1603775899082</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1603775899082</updated>
+    </task>
+    <task id="LOCAL-00004" summary="更新0.3">
+      <created>1603775907306</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1603775907306</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
+            <State />
           </value>
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="更新0.1" />
     <MESSAGE value="更新0.2" />
-    <option name="LAST_COMMIT_MESSAGE" value="更新0.2" />
+    <MESSAGE value="更新0.3" />
+    <MESSAGE value="更新0.4" />
+    <option name="LAST_COMMIT_MESSAGE" value="更新0.4" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="694" y="347" key="#Notifications" timestamp="1605254974084">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="694" y="347" key="#Notifications/0.0.1920.1050@0.0.1920.1050" timestamp="1605254974084" />
+    <state x="414" y="179" width="1092" height="739" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1605254646224">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="414" y="179" width="1092" height="739" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1605254646224" />
+    <state x="558" y="86" key="CommitChangelistDialog2" timestamp="1605254888777">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="558" y="86" key="CommitChangelistDialog2/0.0.1920.1050@0.0.1920.1050" timestamp="1605254888777" />
+    <state x="740" y="279" key="FileChooserDialogImpl" timestamp="1605255205390">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="740" y="279" key="FileChooserDialogImpl/0.0.1920.1050@0.0.1920.1050" timestamp="1605255205390" />
+    <state width="1293" height="285" key="GridCell.Tab.0.bottom" timestamp="1605254501092">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1293" height="285" key="GridCell.Tab.0.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1605254501092" />
+    <state width="1293" height="285" key="GridCell.Tab.0.center" timestamp="1605254501092">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1293" height="285" key="GridCell.Tab.0.center/0.0.1920.1050@0.0.1920.1050" timestamp="1605254501092" />
+    <state width="1293" height="285" key="GridCell.Tab.0.left" timestamp="1605254501091">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1293" height="285" key="GridCell.Tab.0.left/0.0.1920.1050@0.0.1920.1050" timestamp="1605254501091" />
+    <state width="1293" height="285" key="GridCell.Tab.0.right" timestamp="1605254501092">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1293" height="285" key="GridCell.Tab.0.right/0.0.1920.1050@0.0.1920.1050" timestamp="1605254501092" />
+    <state width="1293" height="285" key="GridCell.Tab.1.bottom" timestamp="1605254501093">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1293" height="285" key="GridCell.Tab.1.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1605254501093" />
+    <state width="1293" height="285" key="GridCell.Tab.1.center" timestamp="1605254501092">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1293" height="285" key="GridCell.Tab.1.center/0.0.1920.1050@0.0.1920.1050" timestamp="1605254501092" />
+    <state width="1293" height="285" key="GridCell.Tab.1.left" timestamp="1605254501092">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1293" height="285" key="GridCell.Tab.1.left/0.0.1920.1050@0.0.1920.1050" timestamp="1605254501092" />
+    <state width="1293" height="285" key="GridCell.Tab.1.right" timestamp="1605254501093">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1293" height="285" key="GridCell.Tab.1.right/0.0.1920.1050@0.0.1920.1050" timestamp="1605254501093" />
+    <state width="1293" height="285" key="GridCell.Tab.2.bottom" timestamp="1605254501094">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1293" height="285" key="GridCell.Tab.2.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1605254501094" />
+    <state width="1293" height="285" key="GridCell.Tab.2.center" timestamp="1605254501093">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1293" height="285" key="GridCell.Tab.2.center/0.0.1920.1050@0.0.1920.1050" timestamp="1605254501093" />
+    <state width="1293" height="285" key="GridCell.Tab.2.left" timestamp="1605254501093">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1293" height="285" key="GridCell.Tab.2.left/0.0.1920.1050@0.0.1920.1050" timestamp="1605254501093" />
+    <state width="1293" height="285" key="GridCell.Tab.2.right" timestamp="1605254501093">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1293" height="285" key="GridCell.Tab.2.right/0.0.1920.1050@0.0.1920.1050" timestamp="1605254501093" />
+    <state x="461" y="169" key="SettingsEditor" timestamp="1605255327495">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="461" y="169" key="SettingsEditor/0.0.1920.1050@0.0.1920.1050" timestamp="1605255327495" />
+    <state x="92" y="92" width="1736" height="866" key="VCS.FileHistoryDialog" timestamp="1605255328146">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="92" y="92" width="1736" height="866" key="VCS.FileHistoryDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1605255328146" />
+    <state x="92" y="92" width="1736" height="866" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1605255328146">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="92" y="92" width="1736" height="866" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1605255328146" />
+    <state x="593" y="185" key="new project wizard" timestamp="1605246224461">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="593" y="185" key="new project wizard/0.0.1920.1050@0.0.1920.1050" timestamp="1605246224461" />
   </component>
 </project>

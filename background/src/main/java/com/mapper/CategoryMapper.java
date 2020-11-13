@@ -4,5 +4,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.pojo.GoodsCategory;
 
 public interface CategoryMapper extends BaseMapper<GoodsCategory>{
-    public int maxID();
+    int maxID();
+    int delete(int id);
+    int deleteParent(int id);
 }

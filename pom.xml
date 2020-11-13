@@ -10,7 +10,7 @@
     <modules>
       <module>background</module>
     </modules>
-    <packaging>pom</packaging>
+  <packaging>pom</packaging>
 
   <name>shopping Maven Webapp</name>
   <!-- FIXME change it to the project's website -->

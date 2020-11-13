@@ -13,4 +13,11 @@
     <select id="maxID" resultType="int">
         select max(category_id) from goods_category;
     </select>
+
+    <update id="delete" parameterType="int">
+        update goods_category set category_status = 0 where category_id = #{id}
+    </update>
+    <update id="deleteParent" parameterType="int">
+        update goods_category set category_status = 0 where parent_id = #{id}
+    </update>
 </mapper>

@@ -1,15 +1,14 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="utf-8" />
     <title>vivo商城后台管理系统</title>
     <link rel="stylesheet" type="text/css" href="http://at.alicdn.com/t/font_2053327_3gcz0w6ni24.css"/>
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/header.css"/>
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/aside.css"/>
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/main.css"/>
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/pop.css"/>
+    <link rel="stylesheet" type="text/css" href="css/header.css"/>
+    <link rel="stylesheet" type="text/css" href="css/aside.css"/>
+    <link rel="stylesheet" type="text/css" href="css/main.css"/>
+    <link rel="stylesheet" type="text/css" href="css/pop.css"/>
+    <script type="text/javascript" src="jquery/jquery-3.4.1.min.js"></script>
 </head>
 <body>
 <div id="ground">
@@ -40,10 +39,13 @@
                 <a href="javascript:void(0);" class="aside-links">销售管理</a>
                 <ul class="aside-sub-headers">
                     <li class="aside-sub-header">
-                        <a href="javascript:void(0);" class="aside-links">进行中的订单</a>
+                        <a href="javascript:void(0);" class="aside-links">交易统计</a>
                     </li>
                     <li class="aside-sub-header">
-                        <a href="javascript:void(0);" class="aside-links">已完成的订单</a>
+                        <a href="javascript:void(0);" class="aside-links">订单管理</a>
+                    </li>
+                    <li class="aside-sub-header">
+                        <a href="javascript:void(0);" class="aside-links">物理管理</a>
                     </li>
                 </ul>
             </li>
@@ -59,19 +61,14 @@
     </aside>
     <section class="main">
         <div class="main-top">
-            <a href="javascript:void(0);" id="top-one">商品管理</a>
+            <i id="top-one">商品管理</i>
             <div class="nav-inline">
                 <i class="iconfont icon-arrow-right-bold"></i>
                 <span id="top-two">分类管理</span>
             </div>
         </div>
         <div class="main-content">
-            <div class="">
-                <button class="add-button"></button>
-            </div>
-            <ul>
 
-            </ul>
         </div>
     </section>
 </div>
@@ -83,8 +80,8 @@
         </div>
         <div class="pop-main">
             <div class="input-box">
-                <label for="categoryName">分类名称</label>
-                <input type="text" id="categoryName" class="form-text" ><br/>
+                <label for="categoryName">分类名称*</label>
+                <input type="text" id="categoryName" class="form-text" ><span></span><br/>
                 <label for="categoryParent">父分类名称</label>
                 <select id="categoryParent" class="form-text">
                 </select><br/>
@@ -96,10 +93,26 @@
         </div>
     </div>
 </div>
+<div id="pop-sku">
+    <div class="pop-box">
+        <div class="pop-top">
+            <span class="top-text">新增规格组</span>
+            <i class="iconfont icon-guanbi" id="pop-sku-close"></i>
+        </div>
+        <div class="pop-main">
+            <div class="input-box" id="input-add">
 
+            </div>
+        </div>
+        <div class="pop-bottom">
+            <button id="empty">清空</button>
+            <button id="submit">提交</button>
+        </div>
+    </div>
+</div>
 </body>
-<script src="${pageContext.request.contextPath}/jquery/jquery-3.4.1.min.js" type="text/javascript"></script>
-<script src="${pageContext.request.contextPath}/js/aside.js" type="text/javascript" ></script>
-<script src="${pageContext.request.contextPath}/js/pop.js" type="text/javascript" ></script>
 
+<script type="text/javascript" src="js/pop.js"></script>
+<script type="text/javascript" src="js/pop_spec.js"></script>
+<script type="text/javascript" src="js/aside.js"></script>
 </html>

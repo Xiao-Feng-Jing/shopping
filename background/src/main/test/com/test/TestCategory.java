@@ -2,7 +2,9 @@ package com.test;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.pojo.GoodsCategory;
+import com.pojo.SpecGroup;
 import com.service.CategoryService;
+import com.service.SpecGroupService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +21,8 @@ public class TestCategory {
 
     @Resource
     private CategoryService categoryService;
+    @Resource
+    private SpecGroupService specGroupService;
     @Test
     public void insert(){
 
@@ -42,5 +46,21 @@ public class TestCategory {
         GoodsCategory goodsCategory = categoryService.select(queryWrapper);
         int level = goodsCategory.getCategoryLevel()+1;
         return level;
+    }
+
+    @Test
+    public void delete(){
+        int id = 50;
+        int n =categoryService.delete(id);
+        System.out.println(n);
+    }
+
+    @Test
+    public void select(){
+        SpecGroup specGroup = specGroupService.findID(1);
+        System.out.println(specGroup);
+        specGroup.setStatus(0);
+        int n = specGroupService.deleteId(specGroup);
+        System.out.println(n);
     }
 }

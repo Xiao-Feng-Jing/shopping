@@ -25,15 +25,12 @@ public class MainAction {
     @Autowired
     private CategoryService categoryService;
 
-    @RequestMapping
-    public String main(){
-        return "main.jsp";
-    }
-
     @ResponseBody
     @RequestMapping(params = "p=category")
     public String category(){
-        List<GoodsCategory> list = categoryList(categoryService.findAll());
+        QueryWrapper<GoodsCategory> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("category_status",1);
+        List<GoodsCategory> list = categoryList(categoryService.findAll(queryWrapper));
         String string = JSON.toJSONString(list);
         return string;
     }
@@ -41,7 +38,9 @@ public class MainAction {
     @ResponseBody
     @RequestMapping(params = "p=categoryParent")
     public String parent(){
-        List<GoodsCategory> list = categoryService.findAll();
+        QueryWrapper<GoodsCategory> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("category_status",1);
+        List<GoodsCategory> list = categoryService.findAll(queryWrapper);
         String string = JSON.toJSONString(list);
         return string;
     }
@@ -61,8 +60,15 @@ public class MainAction {
     public String categoryUpdate(){
         int id = Integer.parseInt(request.getParameter("id"));
         String name = request.getParameter("name");
-        int parent = Integer.parseInt(request.getParameter("parent"));
-        int level = level(parent);
+        int parent;
+        int level;
+        if (request.getParameter("parent")==""||"".equals(request.getParameter("parent"))){
+            parent = 0;
+            level = 1;
+        }else {
+            parent = Integer.parseInt(request.getParameter("parent"));
+            level = level(parent);
+        }
         QueryWrapper<GoodsCategory> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("category_id",id);
         GoodsCategory goodsCategory = new GoodsCategory();
@@ -81,8 +87,15 @@ public class MainAction {
         if (name == null||"".equals(name.trim())){
             return 3+"";
         }
-        int parent = Integer.parseInt(request.getParameter("parent"));
-        int level = level(parent);
+        int parent;
+        int level;
+        if (request.getParameter("parent")==""||"".equals(request.getParameter("parent"))){
+            parent = 0;
+            level = 1;
+        }else {
+            parent = Integer.parseInt(request.getParameter("parent"));
+            level = level(parent);
+        }
         int id = categoryService.maxId()+1;
         System.out.println(parent);
         System.out.println(name);
@@ -94,6 +107,31 @@ public class MainAction {
         int n = categoryService.insert(goodsCategory);
         String ss = n+"";
         return ss;
+    }
+
+    @ResponseBody
+    @RequestMapping(params = "p=categoryDelete")
+    public String categoryDelete(){
+        int id = Integer.parseInt(request.getParameter("id"));
+        int n = categoryService.delete(id);
+        return n+"";
+    }
+
+    @ResponseBody
+    @RequestMapping(params = "p=selectName")
+    public String selectName(){
+        String name = request.getParameter("name");
+        String id = request.getParameter("id");
+        QueryWrapper<GoodsCategory> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("category_name",name);
+        int n=0;
+
+        if (id!=null){
+            int cid = Integer.parseInt(id);
+            queryWrapper.ne("category_id",cid);
+        }
+        n = categoryService.selectName(queryWrapper);
+        return n+"";
     }
 
     public int level(int parent){

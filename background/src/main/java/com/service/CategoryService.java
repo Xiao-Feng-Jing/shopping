@@ -14,8 +14,8 @@ public class CategoryService {
     @Autowired
     private CategoryMapper categoryMapper;
 
-    public List<GoodsCategory> findAll(){
-        return categoryMapper.selectList(null);
+    public List<GoodsCategory> findAll(QueryWrapper<GoodsCategory> queryWrapper){
+        return categoryMapper.selectList(queryWrapper);
     }
 
     public GoodsCategory select(QueryWrapper queryWrapper){
@@ -32,5 +32,18 @@ public class CategoryService {
 
     public int maxId(){
         return categoryMapper.maxID();
+    }
+
+    public int delete(int id) {
+        int n =categoryMapper.delete(id);
+        int s =categoryMapper.deleteParent(id);
+        if (n!=0&&s>=0){
+            return 1;
+        }else {
+            return 0;
+        }
+    }
+    public int selectName(QueryWrapper queryWrapper){
+        return categoryMapper.selectCount(queryWrapper);
     }
 }
