@@ -13,7 +13,4 @@
             <property name="page:dbType" value="h2"/>
         </plugin>
     </plugins>
-    <mappers>
-        <mapper resource="com/mapper/CategoryMapper.xml"/>
-    </mappers>
 </configuration>

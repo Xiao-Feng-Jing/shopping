@@ -3,6 +3,7 @@ body{font: 12px Consolas,"Microsoft YaHei",sans-serif;color: #666;-webkit-font-s
 h1,h2,h3,h4,h5,h6{font-size: 100%;font-variant: normal;}
 a,a:hover,a:visited,a:link,a:active{background: none;text-decoration: none;}
 ul,li{list-style: none;}
+input:focus{ outline: none; }
 header{display: block;}
 #ground,body,html{background-color: #FFFFFF;}
 body{min-width: 1200px;height: 100%;}

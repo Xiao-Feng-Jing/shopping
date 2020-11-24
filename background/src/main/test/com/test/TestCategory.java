@@ -3,17 +3,16 @@ package com.test;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.pojo.GoodsCategory;
 import com.pojo.SpecGroup;
+import com.pojo.SpecParam;
 import com.service.CategoryService;
 import com.service.SpecGroupService;
+import com.service.SpecParamService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import javax.annotation.Resource;
-import javax.annotation.Resources;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath*:spring.xml")
@@ -23,6 +22,8 @@ public class TestCategory {
     private CategoryService categoryService;
     @Resource
     private SpecGroupService specGroupService;
+    @Resource
+    private SpecParamService specParamService;
     @Test
     public void insert(){
 
@@ -57,10 +58,15 @@ public class TestCategory {
 
     @Test
     public void select(){
-        SpecGroup specGroup = specGroupService.findID(1);
+        SpecGroup specGroup = specGroupService.findId(1);
         System.out.println(specGroup);
         specGroup.setStatus(0);
         int n = specGroupService.deleteId(specGroup);
         System.out.println(n);
+    }
+    @Test
+    public void selectID(){
+        int id = specParamService.maxID();
+        System.out.println(id);
     }
 }

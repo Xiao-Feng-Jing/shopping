@@ -1,11 +1,23 @@
 package com.pojo;
 
 
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
+
+/**
+ * @author zengkan
+ */
+@TableName(value = "spec_group")
 public class SpecGroup {
 
+  @TableId(value = "id")
   private long id;
+  @TableField(value = "cid")
   private long cid;
+  @TableField(value = "name")
   private String name;
+  @TableField(value = "status")
   private long status;
 
 

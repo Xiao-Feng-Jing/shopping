@@ -8,6 +8,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ * @author zengkan
+ */
 @Service
 public class CategoryService {
 
@@ -45,5 +48,9 @@ public class CategoryService {
     }
     public int selectName(QueryWrapper queryWrapper){
         return categoryMapper.selectCount(queryWrapper);
+    }
+
+    public int updateName(String name, int parent, int level) {
+        return categoryMapper.updateName(name, parent, level);
     }
 }

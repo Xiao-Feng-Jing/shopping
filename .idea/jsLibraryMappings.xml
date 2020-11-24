@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="JavaScriptLibraryMappings">
+    <file url="file://$PROJECT_DIR$" libraries="{font_2053327_4knfwpdusg8}" />
+    <file url="file://$PROJECT_DIR$/background" libraries="{font_2053327_3gcz0w6ni24, font_2053327_4knfwpdusg8}" />
+  </component>
+</project>

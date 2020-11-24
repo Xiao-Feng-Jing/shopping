@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.SpecParamMapper">
+    <select id="maxID" resultType="int">
+        select max(id) from spec_param;
+    </select>
+    <update id="updateGroup">
+        update spec_param set status = 0 where group_id = #{id};
+    </update>
+    <update id="updateName">
+        update spec_param set status = 1 where `name` = #{name}
+        and cid = #{cid} and group_id = #{gid};
+    </update>
+</mapper>

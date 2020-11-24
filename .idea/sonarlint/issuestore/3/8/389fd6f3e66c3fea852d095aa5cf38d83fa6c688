@@ -1,0 +1,11 @@
+
+f
+java:S1192{"IDefine a constant instead of duplicating this literal "group_id" 3 times.(¥úı¯8Å¬Ğİ.
+v
+java:S2293B"YReplace the type specification in this constructor call with the diamond operator ("<>").(…Ò®Ô8û®•Ğİ.
+k	java:S100»"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ßæ’®8ŠìñÛÜ.
+j	java:S100b"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‚û¾8ŠìñÛÜ.
+d
+java:S1192)"GDefine a constant instead of duplicating this literal "status" 4 times.(º·åª8ÇŠîÏİ.
+U
+java:S1128"3Remove this unused import 'com.pojo.GoodsCategory'.(ÇË‰÷ÿÿÿÿÿ8ŠìñÛÜ.

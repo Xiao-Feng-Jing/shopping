@@ -6,4 +6,7 @@
     <select id="maxID" resultType="int">
         select max(id) from spec_group;
     </select>
+    <update id="updateName">
+        update spec_group set status = 1 where `name` = #{name} and cid = #{cid};
+    </update>
 </mapper>

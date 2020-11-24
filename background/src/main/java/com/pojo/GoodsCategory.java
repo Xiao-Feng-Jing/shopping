@@ -10,7 +10,10 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-@TableName(value = "goods_category",resultMap = "Category")
+/**
+ * @author zengkan
+ */
+@TableName(value = "goods_category")
 public class GoodsCategory {
 
   @TableId( value = "category_id")

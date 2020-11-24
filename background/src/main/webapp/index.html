@@ -3,12 +3,14 @@
 <head>
     <meta charset="utf-8" />
     <title>vivo商城后台管理系统</title>
-    <link rel="stylesheet" type="text/css" href="http://at.alicdn.com/t/font_2053327_3gcz0w6ni24.css"/>
+    <link rel="stylesheet" type="text/css" href="css/__at.alicdn.com_t_font_2053327_4knfwpdusg8.css"/>
     <link rel="stylesheet" type="text/css" href="css/header.css"/>
     <link rel="stylesheet" type="text/css" href="css/aside.css"/>
     <link rel="stylesheet" type="text/css" href="css/main.css"/>
     <link rel="stylesheet" type="text/css" href="css/pop.css"/>
+    <link rel="stylesheet" type="text/css" href="css/goods.css"/>
     <script type="text/javascript" src="jquery/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="jquery/jquery-ui.min.js"></script>
 </head>
 <body>
 <div id="ground">
@@ -45,7 +47,7 @@
                         <a href="javascript:void(0);" class="aside-links">订单管理</a>
                     </li>
                     <li class="aside-sub-header">
-                        <a href="javascript:void(0);" class="aside-links">物理管理</a>
+                        <a href="javascript:void(0);" class="aside-links">物流管理</a>
                     </li>
                 </ul>
             </li>
@@ -68,7 +70,6 @@
             </div>
         </div>
         <div class="main-content">
-
         </div>
     </section>
 </div>
@@ -81,38 +82,36 @@
         <div class="pop-main">
             <div class="input-box">
                 <label for="categoryName">分类名称*</label>
-                <input type="text" id="categoryName" class="form-text" ><span></span><br/>
+                <input type="text" id="categoryName" class="form-text" ><div class="prompt"><span></span></div><br/>
                 <label for="categoryParent">父分类名称</label>
                 <select id="categoryParent" class="form-text">
-                </select><br/>
+                </select><div class="prompt"><span></span></div><br/>
             </div>
         </div>
         <div class="pop-bottom">
-            <button id="empty-button">清空</button>
-            <button id="submit-button">提交</button>
+            <button id="empty-button" class="button">清空</button>
+            <button id="submit-button" class="button">提交</button>
         </div>
     </div>
 </div>
-<div id="pop-sku">
+<div id="pop-2">
     <div class="pop-box">
         <div class="pop-top">
-            <span class="top-text">新增规格组</span>
+            <span class="top-text"></span>
             <i class="iconfont icon-guanbi" id="pop-sku-close"></i>
         </div>
         <div class="pop-main">
-            <div class="input-box" id="input-add">
 
-            </div>
         </div>
-        <div class="pop-bottom">
-            <button id="empty">清空</button>
-            <button id="submit">提交</button>
+        <div class="pop-bottom" id="add-bottom">
+
         </div>
     </div>
 </div>
 </body>
 
-<script type="text/javascript" src="js/pop.js"></script>
-<script type="text/javascript" src="js/pop_spec.js"></script>
+<script type="text/javascript" src="js/category.js"></script>
+<script type="text/javascript" src="js/spec.js"></script>
 <script type="text/javascript" src="js/aside.js"></script>
+<script type="text/javascript" src="js/goods.js"></script>
 </html>

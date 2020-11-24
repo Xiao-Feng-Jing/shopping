@@ -2,6 +2,7 @@ package com.service;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.mapper.SpecGroupMapper;
+import com.pojo.GoodsCategory;
 import com.pojo.SpecGroup;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,7 +15,7 @@ public class SpecGroupService {
     @Autowired
     private SpecGroupMapper specGroupMapper;
 
-    public SpecGroup findID(int id){
+    public SpecGroup findId(int id){
 
         return specGroupMapper.selectById(id);
     }
@@ -39,4 +40,11 @@ public class SpecGroupService {
         return specGroupMapper.insert(specGroup);
     }
 
+    public Integer selectName(QueryWrapper<SpecGroup> queryWrapper) {
+        return specGroupMapper.selectCount(queryWrapper);
+    }
+
+    public int updateName(String name, int cid) {
+        return specGroupMapper.updateName(name,cid);
+    }
 }
