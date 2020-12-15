@@ -15,7 +15,7 @@ public class SpecParam {
   private long id;
   @TableField(value = "cid")
   private long cid;
-  @TableField(value = "groupId")
+  @TableField(value = "group_id")
   private long groupId;
   @TableField(value = "name")
   private String name;

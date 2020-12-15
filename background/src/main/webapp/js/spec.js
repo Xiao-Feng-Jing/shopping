@@ -40,15 +40,15 @@ function right(one,two,three){
 $.ajax_spec = function (category_id) {
     const ul = $(".sku-right").eq(0).children().eq(1);
     ul.empty();
-    $.post(
-        "spec.do",
-        {p:"findSpec",cid:category_id},
-        function (result) {
+    $.ajax({
+        url:"spec/findSpec",data :{"cid":category_id},
+        type :"get",
+        success:function (result) {
             for (let i = 0; i < result.length; i++) {
                 ul.append($.add_spec("spec-group",result[i].name,result[i].id));
             }
         }
-    );
+    });
 }
 
 //打开规格的添加界面
@@ -93,22 +93,25 @@ $.add_bottom = function(empty_text) {
                     return;
                 }
                 if ($(".top-text").eq(1).text()==="新增规格组"){
-                    $.post("spec.do",{p:"addSpecGroup",name:$("#specName").val(),cid:cid},function (result) {
-                        if (result == 1){
+                    $.ajax({url:"spec/addSpecGroup",
+                    data:{"name":$("#specName").val(),"cid":cid},
+                        success:function (result) {
+                        if (result === 1){
                             $.ajax_spec(cid);
                         }else {
                             alert("添加出错");
                         }
-                    });
+                    }});
                 }else {
                     let id = $("#specName").prev().data("id");
-                    $.post("spec.do",{p:"updateSpecGroup",id:id,name:$("#specName").val()}
-                        ,function (result) {
+                    $.ajax({url :"spec/updateSpecGroup",
+                    data :{id:id,name:$("#specName").val()}
+                        ,success:function (result) {
                             if (result == 1){
                                 $.ajax_spec(cid);
                             }else {
                                 alert("修改出错");}
-                        })
+                        }})
                 }
             }
             if ($(".top-text").eq(1).text()==="编辑规格"||$(".top-text").eq(1).text()==="新增规格"){
@@ -119,23 +122,24 @@ $.add_bottom = function(empty_text) {
                 const gid = $(".sku-right>.main-top").eq(0).find("span:last-child").data("index");
                 const generic = $('input[name="generic"]:checked').val();
                 if ($(".top-text").eq(1).text()==="新增规格"){
-                    $.post("spec.do",{p:"addSpecParam",name:$("#specParamName").val(),cid:cid
-                        ,groupId:gid,generic:generic},function (result) {
+                    $.ajax({url :"spec/addSpecParam",data :{name:$("#specParamName").val(),cid:cid
+                        ,groupId:gid,generic:generic},
+                        success:function (result) {
                         if (result == 1){
                             $.ajax_param(gid,cid);
                         }else {
                             alert("添加出错");
                         }
-                    });
+                    }});
                 }else {
                     let id = $("#specParamName").prev().data("id");
-                    $.post("spec.do",{p:"updateSpecParam",id:id,name:$("#specParamName").val()
-                        ,generic:generic},function (result) {
+                    $.ajax({url :"spec/updateSpecParam",data :{id:id,name:$("#specParamName").val()
+                        ,generic:generic},success:function (result) {
                         if (result == 1){
                             $.ajax_param(gid,cid);
                         }else {
                             alert("修改出错");}
-                    })
+                    }})
                 }
             }
             $("#pop-2").css("display","none");
@@ -220,14 +224,14 @@ $(".main-content").on("dblclick","p.spec-group",function () {
 $.ajax_param = function (gid,cid){
     const ul = $(".sku-right").eq(0).children().eq(1);
     ul.empty();
-    $.post("spec.do",{p:"specParam",
-        gid:gid,
-        cid:cid},function (result) {
+    $.ajax({url:"spec/specParam",
+    data :{gid:gid,cid:cid},
+        success:function (result) {
         for (let i = 0; i < result.length; i++) {
             ul.append($.add_spec("spec-param",result[i].name,result[i].id,
                 result[i].generic))
         }
-    });
+    }});
 }
 
 //添加规格的显示标签
@@ -245,27 +249,28 @@ $.add_spec = function (css,name,id,generic){
 $(".main-content").on("click","span.spec-group.spec-delete",function (e) {
     e.stopPropagation();//防止事件冒泡到DOM树上，也就是不触发的任何前辈元素上的事件处理函数。
     const cid = $("p.group-p.color").eq(0).children().eq(0).data("index");
-    $.post("spec.do",{p:"specGroupDelete",id:$(this).prev().prev().data("id")},
-        function (result) {
+    $.ajax({url:"spec/specGroupDelete",
+    data:{id:$(this).prev().prev().data("id")},
+        success:function (result) {
         if (result == 1){
             $.ajax_spec(cid);
         }else {
             alert("删除出错");
         }
-    })
+    }})
 });
 //规格的删除事件
 $(".main-content").on("click","span.spec-param.spec-delete",function() {
     const cid = $("p.group-p.color").eq(0).children().eq(0).data("index");
     const gid = $(".sku-right>.main-top").eq(0).find("span:last-child").data("index");
-    $.post("spec.do",{p:"specParamDelete",id:$(this).prev().prev().data("id")},
-        function (result) {
+    $.ajax({url:"spec/specParamDelete",data:{id:$(this).prev().prev().data("id")},
+        success:function (result) {
         if (result == 1){
             $.ajax_param(gid,cid);
         }else {
             alert("删除出错");
         }
-    })
+    }})
 });
 //关闭规格弹窗
 $("#pop-sku-close").click(function () {
@@ -329,12 +334,13 @@ $.add_input = function (type,id,className,name,val,checked){
                 $(this).next().children().eq(0).text("名称不能为空");
                 return;
             }
-            $.post("spec.do",{p:"GroupName",name:$(this).val(),id:$(this).prev().data("id"),cid:cid},
-                function (result) {
+            $.ajax({url:"spec/GroupName",
+            data:{name:$(this).val(),id:$(this).prev().data("id"),cid:cid},
+                success:function (result) {
                     if (result != 0){
                         $("#specName").next().children().eq(0).text("规格组名已存在");
                     }
-                })
+                }})
         });
     }
 
@@ -348,12 +354,13 @@ $.add_input = function (type,id,className,name,val,checked){
                 $(this).next().children().eq(0).text("规格名不能为空");
                 return;
             }
-            $.post("spec.do",{p:"ParamName",name:$(this).val(),id:$(this).prev().data("id"),cid:cid,gid:gid},
-                function (result) {
+            $.ajax({url:"spec/ParamName",
+            data:{name:$(this).val(),id:$(this).prev().data("id"),cid:cid,gid:gid},
+                success:function (result) {
                     if (result != 0){
                         $("#specParamName").next().children().eq(0).text("规格名已存在");
                     }
-                })
+                }})
         });
     }
     if (name!==null||typeof name !== "undefined"){

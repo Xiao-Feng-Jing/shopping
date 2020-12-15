@@ -1,11 +1,15 @@
 
-i
-java:S1192F"LDefine a constant instead of duplicating this literal "category_id" 3 times.(©œ½Õ8Êš‹ÛÝ.
-i
-java:S1192<"GDefine a constant instead of duplicating this literal "parent" 8 times.(†êë­ùÿÿÿÿ8Êš‹ÛÝ.
-w
-java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(‰±„»8Êš‹ÛÝ.
 r
-java:S1192%"PDefine a constant instead of duplicating this literal "category_status" 3 times.(÷‚þ¯þÿÿÿÿ8Êš‹ÛÝ.
+java:S1192("PDefine a constant instead of duplicating this literal "category_status" 4 times.(÷‚þ¯þÿÿÿÿ8Êš‹ÛÝ.
+`
+java:S1128
+"CRemove this unused import 'org.springframework.stereotype.Service'.(¼º¡Ú8†­š”á.
 w
-java:S2293œ"YReplace the type specification in this constructor call with the diamond operator ("<>").(œ…Ó»8ÑÖ™øÞ.
+java:S2293¯"YReplace the type specification in this constructor call with the diamond operator ("<>").(œ…Ó»8Êš‹ÛÝ.
+i
+java:S1192J"LDefine a constant instead of duplicating this literal "category_id" 3 times.(©œ½Õ8Êš‹ÛÝ.
+w
+java:S2293°"YReplace the type specification in this constructor call with the diamond operator ("<>").(‰±„»8¡þÆËâ.
+o
+java:S1128"RRemove this unused import 'com.baomidou.mybatisplus.extension.activerecord.Model'.(â­‘°8™¬ÿ’ä.
+V	java:S106ˆ"9Replace this use of System.out or System.err by a logger.(«‹Îõ8™¬ÿ’ä.

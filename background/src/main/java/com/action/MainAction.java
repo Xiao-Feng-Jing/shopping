@@ -2,11 +2,14 @@ package com.action;
 
 import com.alibaba.fastjson.JSON;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.activerecord.Model;
 import com.pojo.GoodsCategory;
 import com.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
@@ -20,18 +23,18 @@ import java.util.Map;
  *
  *
  */
-@Service
-@RequestMapping(value = "/main.do",produces = "application/json; charset=utf-8")
+@Controller
+@RequestMapping(value = "main")
 public class MainAction {
 
     @Autowired
-    private HttpServletRequest request;
-    @Autowired
     private CategoryService categoryService;
 
-    /*查询所有分类*/
+    /**
+     * 查询所有分类
+     * */
     @ResponseBody
-    @RequestMapping(params = "p=category")
+    @RequestMapping("category")
     public String category(){
         QueryWrapper<GoodsCategory> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("category_status",1);
@@ -39,9 +42,12 @@ public class MainAction {
         return JSON.toJSONString(list);
     }
 
-    //根据父分类查询；
+    /**根据父分类查询；
+     *
+     * @return
+     */
     @ResponseBody
-    @RequestMapping(params = "p=categoryParent")
+    @RequestMapping("categoryParent")
     public String parent(){
         QueryWrapper<GoodsCategory> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("category_status",1);
@@ -49,21 +55,19 @@ public class MainAction {
         return JSON.toJSONString(list);
     }
 
-    //修改分类信息；
+    /**
+     * 修改分类信息；
+     */
     @ResponseBody
-    @RequestMapping(params = "p=categoryUpdate")
-    public String categoryUpdate(){
-        int id = Integer.parseInt(request.getParameter("id"));
-        String name = request.getParameter("name");
-        int parent;
+    @RequestMapping("categoryUpdate")
+    public String categoryUpdate(@RequestParam("id") Integer id,
+                                 @RequestParam("parent") Integer parent,
+                                 @RequestParam("name") String name){
         int level;
-        if (request.getParameter("parent")==null
-                ||"".equals(request.getParameter("parent").trim())
-            ||"0".equals(request.getParameter("parent"))){
+        if (parent == null){
             parent = 0;
             level = 1;
         }else {
-            parent = Integer.parseInt(request.getParameter("parent"));
             level = level(parent);
         }
         QueryWrapper<GoodsCategory> queryWrapper = new QueryWrapper<>();
@@ -76,23 +80,20 @@ public class MainAction {
         return n+"";
     }
 
-    //添加分类；
+    /**
+     * 添加分类
+     * */
     @ResponseBody
-    @RequestMapping(params = "p=categoryInsert")
-    public String categoryInsert(){
-        String name = request.getParameter("name");
+    @RequestMapping("categoryInsert")
+    public String categoryInsert(@RequestParam("name") String name, @RequestParam("parent") Integer parent){
         if (name == null||"".equals(name.trim())){
             return 3+"";
         }
-        int parent;
         int level;
-        if (request.getParameter("parent")==null
-                ||"".equals(request.getParameter("parent").trim())
-                ||"0".equals(request.getParameter("parent"))){
+        if (parent==null){
             parent = 0;
             level = 1;
         }else {
-            parent = Integer.parseInt(request.getParameter("parent"));
             level = level(parent);
         }
         QueryWrapper<GoodsCategory> queryWrapper = new QueryWrapper<>();
@@ -116,34 +117,54 @@ public class MainAction {
         return n+"";
     }
 
-    //修改分类状态；
+    /**
+     * 修改分类状态
+     * */
     @ResponseBody
-    @RequestMapping(params = "p=categoryDelete")
-    public String categoryDelete(){
-        int id = Integer.parseInt(request.getParameter("id"));
-        int n = categoryService.delete(id);
-        return n+"";
+    @RequestMapping("/categoryDelete")
+    public String categoryDelete(@RequestParam Integer id){
+        return categoryService.delete(id)+"";
     }
 
-    //查询分类名是否存在；
+    /**
+     * 查询分类名是否存在；
+     * */
     @ResponseBody
-    @RequestMapping(params = "p=selectName")
-    public String selectName(){
+    @RequestMapping("/selectName")
+    public String selectName(HttpServletRequest request){
         String name = request.getParameter("name");
         String id = request.getParameter("id");
         QueryWrapper<GoodsCategory> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("category_name",name)
                 .eq("category_status",1);
-        int n;
+
         if (id!=null){
             int cid = Integer.parseInt(id);
             queryWrapper.ne("category_id",cid);
         }
-        n = categoryService.selectName(queryWrapper);
-        return n+"";
+        return categoryService.selectName(queryWrapper)+"";
     }
+    /**
+     * 查询第一层的分类
+     *
+     * */
+    @ResponseBody
+    @RequestMapping("/categoryLevel")
+    public String findNameLevel(@RequestParam("level") Integer level,HttpServletRequest request){
+        String parentId = request.getParameter("parent");
+        QueryWrapper<GoodsCategory> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("category_level",level)
+                .eq("category_status",1);
+        if (parentId != null) {
+            queryWrapper.eq("parent_id",parentId);
+        }
 
-    //查看分类层级；
+        List<GoodsCategory> list = categoryService.findlevel(queryWrapper);
+        return JSON.toJSONString(list);
+    }
+    /**
+     * 查看分类层级
+     * */
     public int level(int parent){
         QueryWrapper<GoodsCategory> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("category_id",parent);
@@ -151,7 +172,9 @@ public class MainAction {
         return goodsCategory.getCategoryLevel()+1;
     }
 
-    //对于分类进行父类与子类分开；
+    /**
+     * 对于分类进行父类与子类分开；
+     * */
     private List<GoodsCategory> categoryList(List<GoodsCategory> all){
         List<GoodsCategory> list = new ArrayList<GoodsCategory>();
         Map<Integer,GoodsCategory> map = new HashMap<Integer, GoodsCategory>();

@@ -7,9 +7,12 @@ import com.pojo.SpecGroup;
 import com.pojo.SpecParam;
 import com.service.SpecGroupService;
 import com.service.SpecParamService;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
@@ -19,11 +22,8 @@ import java.util.List;
  * @author zengkan
  */
 @Service
-@RequestMapping(value = "/spec.do")
+@RequestMapping("/spec")
 public class SpecAction {
-
-    @Autowired
-    private HttpServletRequest request;
 
     @Autowired
     private SpecGroupService specGroupService;
@@ -33,21 +33,20 @@ public class SpecAction {
 
     //查询分类名下的所有规格组；
     @ResponseBody
-    @RequestMapping(params = "p=findSpec")
-    public String findID(){
-        int cid = Integer.parseInt(request.getParameter("cid"));
+    @RequestMapping("/findSpec")
+    public String findID(@RequestParam("cid") Integer cid){
+        System.out.println(cid);
         QueryWrapper<SpecGroup> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("cid",cid)
-                .eq("status",1);
+               .eq("status",1);
         List<SpecGroup> list = specGroupService.findCID(queryWrapper);
         return JSON.toJSONString(list);
     }
 
     //改变规格组状态并改变子规格状态；
     @ResponseBody
-    @RequestMapping(params = "p=specGroupDelete")
-    public String deleteId(){
-        int id = Integer.parseInt(request.getParameter("id"));
+    @RequestMapping("specGroupDelete")
+    public String deleteId(@RequestParam("id") Integer id){
         SpecGroup specGroup = specGroupService.findId(id);
         specGroup.setStatus(0);
         int n = specGroupService.deleteId(specGroup);
@@ -57,11 +56,10 @@ public class SpecAction {
 
     //增加某个分类下的规格组；
     @ResponseBody
-    @RequestMapping(params = "p=addSpecGroup")
-    public String addSpec(){
-        String name = request.getParameter("name");
+    @RequestMapping("addSpecGroup")
+    public String addSpec(@RequestParam("name") String name, @RequestParam("cid") Integer cid){
+
         int id = specGroupService.maxID()+1;
-        int cid = Integer.parseInt(request.getParameter("cid"));
         int n = 0;
         QueryWrapper<SpecGroup> queryWrapper = new QueryWrapper<SpecGroup>();
         queryWrapper.eq("name",name).eq("cid",cid);
@@ -82,42 +80,34 @@ public class SpecAction {
 
     //修改规格组信息；
     @ResponseBody
-    @RequestMapping(params = "p=updateSpecGroup")
-    public String updateSpec(){
-        String name = request.getParameter("name");
-        int id = Integer.parseInt(request.getParameter("id"));
+    @RequestMapping("/updateSpecGroup")
+    public String updateSpec(@RequestParam("name") String name, @RequestParam("id") Integer id){
         SpecGroup specGroup = specGroupService.findId(id);
         specGroup.setName(name);
-        int n = specGroupService.updateId(specGroup);
-        return n+"";
+        return specGroupService.updateId(specGroup)+"";
     }
 
     //查询规格组名称是否存在；
     @ResponseBody
-    @RequestMapping(params = "p=GroupName")
-    public String GroupName(){
-        String name = request.getParameter("name");
-        String id = request.getParameter("id");
-        int cid = Integer.parseInt(request.getParameter("cid"));
+    @RequestMapping("/GroupName")
+    public String GroupName(@RequestParam("name") String name,
+                            @RequestParam("id") Integer id,
+                            @RequestParam("cid") Integer cid){
         QueryWrapper<SpecGroup> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("name",name)
                 .eq("cid",cid)
                 .eq("status",1);
-        int n=0;
         if (id!=null){
-            int gid = Integer.parseInt(id);
-            queryWrapper.ne("id",gid);
+            queryWrapper.ne("id",id);
         }
-        n = specGroupService.selectName(queryWrapper);
-        return n+"";
+        return specGroupService.selectName(queryWrapper)+"";
     }
 
     //查询分类和规格组下的规格；
     @ResponseBody
-    @RequestMapping(params = "p=specParam")
-    public String findSpecParam(){
-        int cid = Integer.parseInt(request.getParameter("cid"));
-        int gid = Integer.parseInt(request.getParameter("gid"));
+    @RequestMapping("specParam")
+    public String findSpecParam(@RequestParam("cid") Integer cid,
+                                @RequestParam("gid") Integer gid){
         QueryWrapper<SpecParam> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("cid",cid)
                 .eq("group_id",gid)
@@ -128,12 +118,11 @@ public class SpecAction {
 
     //添加相应分类和规格组下的规格；
     @ResponseBody
-    @RequestMapping(params = "p=addSpecParam")
-    public String insertSpecParam(){
-        int cid = Integer.parseInt(request.getParameter("cid"));
-        int gid = Integer.parseInt(request.getParameter("groupId"));
-        String name = request.getParameter("name");
-        int generic = Integer.parseInt(request.getParameter("generic"));
+    @RequestMapping("addSpecParam")
+    public String insertSpecParam(@RequestParam("cid") Integer cid,
+                                  @RequestParam("groupId") Integer gid,
+                                  @RequestParam("name") String name,
+                                  @RequestParam("generic") Integer generic){
         QueryWrapper<SpecParam> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("name",name)
                 .eq("cid",cid)
@@ -158,47 +147,42 @@ public class SpecAction {
 
     //修改规格信息；
     @ResponseBody
-    @RequestMapping(params = "p=updateSpecParam")
-    public String updateSpecParam(){
-        String name = request.getParameter("name");
-        int generic = Integer.parseInt(request.getParameter("generic"));
-        int id = Integer.parseInt(request.getParameter("id"));
+    @RequestMapping("updateSpecParam")
+    public String updateSpecParam(@RequestParam("name") String name,
+                                  @RequestParam("generic") Integer generic,
+                                  @RequestParam("id") Integer id){
         SpecParam specParam= specParamService.findId(id);
         specParam.setName(name);
         specParam.setGeneric(generic);
-        int n = specParamService.updateId(specParam);
-        return n+"";
+        return specParamService.updateId(specParam)+"";
     }
 
     //修改规格的状态；
     @ResponseBody
-    @RequestMapping(params = "p=specParamDelete")
-    public String paramDeleteId(){
-        int id = Integer.parseInt(request.getParameter("id"));
+    @RequestMapping("specParamDelete")
+    public String paramDeleteId(@RequestParam("id") Integer id){
         SpecParam specParam = specParamService.findId(id);
         specParam.setStatus(0);
-        int n = specParamService.deleteId(specParam);
-        return n+"";
+        return specParamService.deleteId(specParam)+"";
     }
 
     //查询规格名是否存在；
     @ResponseBody
-    @RequestMapping(params = "p=ParamName")
-    public String ParamName(){
-        int gid = Integer.parseInt(request.getParameter("gid"));
-        String name = request.getParameter("name");
-        String id = request.getParameter("id");
-        int cid = Integer.parseInt(request.getParameter("cid"));
+    @RequestMapping("ParamName")
+    public String ParamName(@RequestParam Integer gid,
+                            @RequestParam String name,
+                            @RequestParam Integer id,
+                            @RequestParam Integer cid){
         QueryWrapper<SpecParam> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("name",name)
                 .eq("cid",cid)
                 .eq("group_id",gid)
                 .eq("status",1);
-        int n=0;
+
         if (id!=null){
-            queryWrapper.ne("id",Integer.parseInt(id));
+            queryWrapper.ne("id",id);
         }
-        n = specParamService.selectName(queryWrapper);
-        return n+"";
+
+        return specParamService.selectName(queryWrapper)+"";
     }
 }

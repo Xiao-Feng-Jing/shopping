@@ -1,4 +1,8 @@
 !function (e,t) {
+	$.ajaxSetup({
+		contentType:'application/json',
+		dataType : "json",
+	})
 	const id_one = $("#top-one");
 	const id_two = $("#top-two");
 	const parent = $(".main-content").eq(0);

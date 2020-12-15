@@ -18,8 +18,9 @@ public class CategoryService {
     private CategoryMapper categoryMapper;
 
     public List<GoodsCategory> findAll(QueryWrapper<GoodsCategory> queryWrapper){
+        System.out.println(categoryMapper.selectList(queryWrapper));
         return categoryMapper.selectList(queryWrapper);
-    }
+    } 
 
     public GoodsCategory select(QueryWrapper queryWrapper){
         return categoryMapper.selectOne(queryWrapper);
@@ -52,5 +53,9 @@ public class CategoryService {
 
     public int updateName(String name, int parent, int level) {
         return categoryMapper.updateName(name, parent, level);
+    }
+
+    public List<GoodsCategory> findlevel(QueryWrapper<GoodsCategory> queryWrapper) {
+        return categoryMapper.selectList(queryWrapper);
     }
 }

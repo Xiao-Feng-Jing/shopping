@@ -1,4 +1,4 @@
-*{margin: 0;padding: 0;border: 0;font: inherit;font-size: 100%;vertical-align: baseline;}
+*{margin: 0;padding: 0;border: none;font: inherit;font-size: 100%;vertical-align: baseline;}
 body{font: 12px Consolas,"Microsoft YaHei",sans-serif;color: #666;-webkit-font-smoothing: antialiased;text-rendering: optimizeLegibility;}
 h1,h2,h3,h4,h5,h6{font-size: 100%;font-variant: normal;}
 a,a:hover,a:visited,a:link,a:active{background: none;text-decoration: none;}

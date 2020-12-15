@@ -26,46 +26,45 @@ content.on("click","p.group-p",function () {
 function ajax_category(p) {
     const ul = $("<ul>");
     ul.addClass("main-category-one");
-    $.post(
-        "main.do",
-        {p:"category"},
-        function (result) {
-            for (let i = 0; i<result.length; i++){
+    $.ajax({
+        url :"main/category",
+        success:function(result) {
+            for (let i = 0; i < result.length; i++) {
                 const li_1 = creat_li();
                 li_1.addClass("one");
                 let p_1;
-                if (p.hasClass("main-content")){
+                if (p.hasClass("main-content")) {
                     p_1 = creat_p_span(result[i]);
                 }
-                if (p.hasClass("sku-left")){
+                if (p.hasClass("sku-left")) {
                     p_1 = creat_p(result[i]);
                 }
                 li_1.append(p_1);
-                if (result[i].categorySet.length!==0){
+                if (result[i].categorySet.length !== 0) {
                     const ul_2 = $("<ul>");
                     ul_2.addClass("main-category-two");
-                    for (let j = 0; j<result[i].categorySet.length; j++){
+                    for (let j = 0; j < result[i].categorySet.length; j++) {
                         const li_2 = creat_li();
                         li_2.addClass("two");
                         let p_2;
-                        if (p.hasClass("main-content")){
+                        if (p.hasClass("main-content")) {
                             p_2 = creat_p_span(result[i].categorySet[j]);
                         }
-                        if (p.hasClass("sku-left")){
+                        if (p.hasClass("sku-left")) {
                             p_2 = creat_p(result[i].categorySet[j]);
                         }
                         li_2.append(p_2);
-                        if (result[i].categorySet[j].categorySet.length!==0){
+                        if (result[i].categorySet[j].categorySet.length !== 0) {
                             const ul_3 = $("<ul>");
                             ul_3.addClass("main-category-three");
-                            for (let k = 0; k<result[i].categorySet[j].categorySet.length; k++){
+                            for (let k = 0; k < result[i].categorySet[j].categorySet.length; k++) {
                                 const li_3 = creat_li();
                                 li_3.addClass("three");
                                 let p_3;
-                                if (p.hasClass("main-content")){
+                                if (p.hasClass("main-content")) {
                                     p_3 = creat_p_span(result[i].categorySet[j].categorySet[k]);
                                 }
-                                if (p.hasClass("sku-left")){
+                                if (p.hasClass("sku-left")) {
                                     p_3 = creat_p(result[i].categorySet[j].categorySet[k]);
                                 }
                                 li_3.append(p_3);
@@ -80,7 +79,7 @@ function ajax_category(p) {
                 ul.append(li_1);
             }
         }
-    );
+    });
     return ul;
 }
 //添加li标签
@@ -124,16 +123,18 @@ function creat_p_span(e) {
 //删除分类
 content.on("click",".category-delete",function (e) {
     e.stopPropagation();//防止事件冒泡到DOM树上，也就是不触发的任何前辈元素上的事件处理函数。
-    $.post("main.do",
-        {p:"categoryDelete",id:$(this).prev().prev().prev().data("index")},function (result) {
-            if (result === '1'){
+    $.ajax({
+        url:"main/categoryDelete",
+        data :{"id":$(this).prev().prev().prev().data("index")},
+        success:function (result) {
+            if (result === 1){
                 content.eq(0).children().eq(0).remove();
                 content.eq(0).append(ajax_category(content.eq(0)));
             }else {
                 alert("删除出错");
             }
         }
-    );
+    });
 });
 let ss;
 let categoryName = $("#categoryName");
@@ -173,9 +174,9 @@ $("#submit-button").click(function () {
         return;
     }
     if ($(this).text()==="提交"){
-        $.post('main.do',
-            {p:'categoryInsert',name:categoryName.val(),parent:categoryParent.val()},
-            function (data) {
+        $.ajax({url:'main/categoryInsert',
+            data:{"name":categoryName.val(),"parent":categoryParent.val()},
+            success:function (data) {
                 if (data === 1){
                    content.eq(0).children().eq(0).remove();
                     content.eq(0).append(ajax_category(content.eq(0)));
@@ -183,13 +184,13 @@ $("#submit-button").click(function () {
                     alert("添加出错");
                 }
             }
-        );
+        });
         $("#pop").css("display","none");
     }
     if ($(this).text()==="修改"){
-        $.post('main.do',
-            {p:'categoryUpdate',id:categoryName.data("index"),name:categoryName.val(),parent:$("#categoryParent").val()},
-            function (result) {
+        $.ajax({url:'main/categoryUpdate',
+            data:{"id":categoryName.data("index"),"name":categoryName.val(),"parent":$("#categoryParent").val()},
+            success:function (result) {
                 if (Object.is(result,1)){
                     content.eq(0).children().eq(0).remove();
                     content.eq(0).append(ajax_category(content.eq(0)));
@@ -197,7 +198,7 @@ $("#submit-button").click(function () {
                     alert("修改出错");
                 }
             }
-        );
+        });
         $("#pop").css("display","none");
     }
 });
@@ -239,20 +240,22 @@ categoryName.blur(function () {
         $(this).next().children().eq(0).text("分类名不能为空");
         return;
     }
-    $.post("main.do",{p:"selectName",name:$(this).val(),id:$(this).data("index")},function (result) {
+    $.ajax({url:"main/selectName",
+        data :{"name":$(this).val(),"id":$(this).data("index")},
+        type :"post",
+        success:function (result) {
         if (result !== '0'){
             $(this).next().children().eq(0).text("分类名已存在");
         }
-    })
+    }})
 });
 //select查询父分类
 
 categoryParent.focus(function (){
    $.ajax({
        type:'POST',
-       url:'main.do',
+       url:'main/categoryParent',
        async:true,
-       data:{p:"categoryParent"},
        success:function (result) {
            categoryParent.empty();
            categoryParent.prepend("<option value='0'>请选择</option>");
