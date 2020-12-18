@@ -1,0 +1,2458 @@
+Index: background/target/background/WEB-INF/web.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- background/target/background/WEB-INF/web.xml	(revision 237bfc367a17a7d31427a5231de098139c10d74b)
++++ background/target/background/WEB-INF/web.xml	(date 1606911138221)
+@@ -49,7 +49,7 @@
+   </servlet>
+   <servlet-mapping>
+     <servlet-name>springMVC</servlet-name>
+-    <url-pattern>*.do</url-pattern>
++    <url-pattern>/</url-pattern>
+   </servlet-mapping>
+ 
+ 
+Index: background/src/main/webapp/js/category.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- background/src/main/webapp/js/category.js	(revision 237bfc367a17a7d31427a5231de098139c10d74b)
++++ background/src/main/webapp/js/category.js	(date 1607245450011)
+@@ -26,46 +26,45 @@
+ function ajax_category(p) {
+     const ul = $("<ul>");
+     ul.addClass("main-category-one");
+-    $.post(
+-        "main.do",
+-        {p:"category"},
+-        function (result) {
+-            for (let i = 0; i<result.length; i++){
++    $.ajax({
++        url :"main/category",
++        success:function(result) {
++            for (let i = 0; i < result.length; i++) {
+                 const li_1 = creat_li();
+                 li_1.addClass("one");
+                 let p_1;
+-                if (p.hasClass("main-content")){
++                if (p.hasClass("main-content")) {
+                     p_1 = creat_p_span(result[i]);
+                 }
+-                if (p.hasClass("sku-left")){
++                if (p.hasClass("sku-left")) {
+                     p_1 = creat_p(result[i]);
+                 }
+                 li_1.append(p_1);
+-                if (result[i].categorySet.length!==0){
++                if (result[i].categorySet.length !== 0) {
+                     const ul_2 = $("<ul>");
+                     ul_2.addClass("main-category-two");
+-                    for (let j = 0; j<result[i].categorySet.length; j++){
++                    for (let j = 0; j < result[i].categorySet.length; j++) {
+                         const li_2 = creat_li();
+                         li_2.addClass("two");
+                         let p_2;
+-                        if (p.hasClass("main-content")){
++                        if (p.hasClass("main-content")) {
+                             p_2 = creat_p_span(result[i].categorySet[j]);
+                         }
+-                        if (p.hasClass("sku-left")){
++                        if (p.hasClass("sku-left")) {
+                             p_2 = creat_p(result[i].categorySet[j]);
+                         }
+                         li_2.append(p_2);
+-                        if (result[i].categorySet[j].categorySet.length!==0){
++                        if (result[i].categorySet[j].categorySet.length !== 0) {
+                             const ul_3 = $("<ul>");
+                             ul_3.addClass("main-category-three");
+-                            for (let k = 0; k<result[i].categorySet[j].categorySet.length; k++){
++                            for (let k = 0; k < result[i].categorySet[j].categorySet.length; k++) {
+                                 const li_3 = creat_li();
+                                 li_3.addClass("three");
+                                 let p_3;
+-                                if (p.hasClass("main-content")){
++                                if (p.hasClass("main-content")) {
+                                     p_3 = creat_p_span(result[i].categorySet[j].categorySet[k]);
+                                 }
+-                                if (p.hasClass("sku-left")){
++                                if (p.hasClass("sku-left")) {
+                                     p_3 = creat_p(result[i].categorySet[j].categorySet[k]);
+                                 }
+                                 li_3.append(p_3);
+@@ -80,7 +79,7 @@
+                 ul.append(li_1);
+             }
+         }
+-    );
++    });
+     return ul;
+ }
+ //添加li标签
+@@ -124,16 +123,18 @@
+ //删除分类
+ content.on("click",".category-delete",function (e) {
+     e.stopPropagation();//防止事件冒泡到DOM树上，也就是不触发的任何前辈元素上的事件处理函数。
+-    $.post("main.do",
+-        {p:"categoryDelete",id:$(this).prev().prev().prev().data("index")},function (result) {
+-            if (result === '1'){
++    $.ajax({
++        url:"main/categoryDelete",
++        data :{"id":$(this).prev().prev().prev().data("index")},
++        success:function (result) {
++            if (result === 1){
+                 content.eq(0).children().eq(0).remove();
+                 content.eq(0).append(ajax_category(content.eq(0)));
+             }else {
+                 alert("删除出错");
+             }
+         }
+-    );
++    });
+ });
+ let ss;
+ let categoryName = $("#categoryName");
+@@ -173,9 +174,9 @@
+         return;
+     }
+     if ($(this).text()==="提交"){
+-        $.post('main.do',
+-            {p:'categoryInsert',name:categoryName.val(),parent:categoryParent.val()},
+-            function (data) {
++        $.ajax({url:'main/categoryInsert',
++            data:{"name":categoryName.val(),"parent":categoryParent.val()},
++            success:function (data) {
+                 if (data === 1){
+                    content.eq(0).children().eq(0).remove();
+                     content.eq(0).append(ajax_category(content.eq(0)));
+@@ -183,13 +184,13 @@
+                     alert("添加出错");
+                 }
+             }
+-        );
++        });
+         $("#pop").css("display","none");
+     }
+     if ($(this).text()==="修改"){
+-        $.post('main.do',
+-            {p:'categoryUpdate',id:categoryName.data("index"),name:categoryName.val(),parent:$("#categoryParent").val()},
+-            function (result) {
++        $.ajax({url:'main/categoryUpdate',
++            data:{"id":categoryName.data("index"),"name":categoryName.val(),"parent":$("#categoryParent").val()},
++            success:function (result) {
+                 if (Object.is(result,1)){
+                     content.eq(0).children().eq(0).remove();
+                     content.eq(0).append(ajax_category(content.eq(0)));
+@@ -197,7 +198,7 @@
+                     alert("修改出错");
+                 }
+             }
+-        );
++        });
+         $("#pop").css("display","none");
+     }
+ });
+@@ -239,20 +240,22 @@
+         $(this).next().children().eq(0).text("分类名不能为空");
+         return;
+     }
+-    $.post("main.do",{p:"selectName",name:$(this).val(),id:$(this).data("index")},function (result) {
++    $.ajax({url:"main/selectName",
++        data :{"name":$(this).val(),"id":$(this).data("index")},
++        type :"post",
++        success:function (result) {
+         if (result !== '0'){
+             $(this).next().children().eq(0).text("分类名已存在");
+         }
+-    })
++    }})
+ });
+ //select查询父分类
+ 
+ categoryParent.focus(function (){
+    $.ajax({
+        type:'POST',
+-       url:'main.do',
++       url:'main/categoryParent',
+        async:true,
+-       data:{p:"categoryParent"},
+        success:function (result) {
+            categoryParent.empty();
+            categoryParent.prepend("<option value='0'>请选择</option>");
+Index: background/src/main/webapp/js/aside.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- background/src/main/webapp/js/aside.js	(revision 237bfc367a17a7d31427a5231de098139c10d74b)
++++ background/src/main/webapp/js/aside.js	(date 1607239945320)
+@@ -1,4 +1,8 @@
+ !function (e,t) {
++	$.ajaxSetup({
++		contentType:'application/json',
++		dataType : "json",
++	})
+ 	const id_one = $("#top-one");
+ 	const id_two = $("#top-two");
+ 	const parent = $(".main-content").eq(0);
+Index: background/src/main/webapp/js/spec.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- background/src/main/webapp/js/spec.js	(revision 237bfc367a17a7d31427a5231de098139c10d74b)
++++ background/src/main/webapp/js/spec.js	(date 1607242667751)
+@@ -40,15 +40,15 @@
+ $.ajax_spec = function (category_id) {
+     const ul = $(".sku-right").eq(0).children().eq(1);
+     ul.empty();
+-    $.post(
+-        "spec.do",
+-        {p:"findSpec",cid:category_id},
+-        function (result) {
++    $.ajax({
++        url:"spec/findSpec",data :{"cid":category_id},
++        type :"get",
++        success:function (result) {
+             for (let i = 0; i < result.length; i++) {
+                 ul.append($.add_spec("spec-group",result[i].name,result[i].id));
+             }
+         }
+-    );
++    });
+ }
+ 
+ //打开规格的添加界面
+@@ -93,22 +93,25 @@
+                     return;
+                 }
+                 if ($(".top-text").eq(1).text()==="新增规格组"){
+-                    $.post("spec.do",{p:"addSpecGroup",name:$("#specName").val(),cid:cid},function (result) {
+-                        if (result == 1){
++                    $.ajax({url:"spec/addSpecGroup",
++                    data:{"name":$("#specName").val(),"cid":cid},
++                        success:function (result) {
++                        if (result === 1){
+                             $.ajax_spec(cid);
+                         }else {
+                             alert("添加出错");
+                         }
+-                    });
++                    }});
+                 }else {
+                     let id = $("#specName").prev().data("id");
+-                    $.post("spec.do",{p:"updateSpecGroup",id:id,name:$("#specName").val()}
+-                        ,function (result) {
++                    $.ajax({url :"spec/updateSpecGroup",
++                    data :{id:id,name:$("#specName").val()}
++                        ,success:function (result) {
+                             if (result == 1){
+                                 $.ajax_spec(cid);
+                             }else {
+                                 alert("修改出错");}
+-                        })
++                        }})
+                 }
+             }
+             if ($(".top-text").eq(1).text()==="编辑规格"||$(".top-text").eq(1).text()==="新增规格"){
+@@ -119,23 +122,24 @@
+                 const gid = $(".sku-right>.main-top").eq(0).find("span:last-child").data("index");
+                 const generic = $('input[name="generic"]:checked').val();
+                 if ($(".top-text").eq(1).text()==="新增规格"){
+-                    $.post("spec.do",{p:"addSpecParam",name:$("#specParamName").val(),cid:cid
+-                        ,groupId:gid,generic:generic},function (result) {
++                    $.ajax({url :"spec/addSpecParam",data :{name:$("#specParamName").val(),cid:cid
++                        ,groupId:gid,generic:generic},
++                        success:function (result) {
+                         if (result == 1){
+                             $.ajax_param(gid,cid);
+                         }else {
+                             alert("添加出错");
+                         }
+-                    });
++                    }});
+                 }else {
+                     let id = $("#specParamName").prev().data("id");
+-                    $.post("spec.do",{p:"updateSpecParam",id:id,name:$("#specParamName").val()
+-                        ,generic:generic},function (result) {
++                    $.ajax({url :"spec/updateSpecParam",data :{id:id,name:$("#specParamName").val()
++                        ,generic:generic},success:function (result) {
+                         if (result == 1){
+                             $.ajax_param(gid,cid);
+                         }else {
+                             alert("修改出错");}
+-                    })
++                    }})
+                 }
+             }
+             $("#pop-2").css("display","none");
+@@ -220,14 +224,14 @@
+ $.ajax_param = function (gid,cid){
+     const ul = $(".sku-right").eq(0).children().eq(1);
+     ul.empty();
+-    $.post("spec.do",{p:"specParam",
+-        gid:gid,
+-        cid:cid},function (result) {
++    $.ajax({url:"spec/specParam",
++    data :{gid:gid,cid:cid},
++        success:function (result) {
+         for (let i = 0; i < result.length; i++) {
+             ul.append($.add_spec("spec-param",result[i].name,result[i].id,
+                 result[i].generic))
+         }
+-    });
++    }});
+ }
+ 
+ //添加规格的显示标签
+@@ -245,27 +249,28 @@
+ $(".main-content").on("click","span.spec-group.spec-delete",function (e) {
+     e.stopPropagation();//防止事件冒泡到DOM树上，也就是不触发的任何前辈元素上的事件处理函数。
+     const cid = $("p.group-p.color").eq(0).children().eq(0).data("index");
+-    $.post("spec.do",{p:"specGroupDelete",id:$(this).prev().prev().data("id")},
+-        function (result) {
++    $.ajax({url:"spec/specGroupDelete",
++    data:{id:$(this).prev().prev().data("id")},
++        success:function (result) {
+         if (result == 1){
+             $.ajax_spec(cid);
+         }else {
+             alert("删除出错");
+         }
+-    })
++    }})
+ });
+ //规格的删除事件
+ $(".main-content").on("click","span.spec-param.spec-delete",function() {
+     const cid = $("p.group-p.color").eq(0).children().eq(0).data("index");
+     const gid = $(".sku-right>.main-top").eq(0).find("span:last-child").data("index");
+-    $.post("spec.do",{p:"specParamDelete",id:$(this).prev().prev().data("id")},
+-        function (result) {
++    $.ajax({url:"spec/specParamDelete",data:{id:$(this).prev().prev().data("id")},
++        success:function (result) {
+         if (result == 1){
+             $.ajax_param(gid,cid);
+         }else {
+             alert("删除出错");
+         }
+-    })
++    }})
+ });
+ //关闭规格弹窗
+ $("#pop-sku-close").click(function () {
+@@ -329,12 +334,13 @@
+                 $(this).next().children().eq(0).text("名称不能为空");
+                 return;
+             }
+-            $.post("spec.do",{p:"GroupName",name:$(this).val(),id:$(this).prev().data("id"),cid:cid},
+-                function (result) {
++            $.ajax({url:"spec/GroupName",
++            data:{name:$(this).val(),id:$(this).prev().data("id"),cid:cid},
++                success:function (result) {
+                     if (result != 0){
+                         $("#specName").next().children().eq(0).text("规格组名已存在");
+                     }
+-                })
++                }})
+         });
+     }
+ 
+@@ -348,12 +354,13 @@
+                 $(this).next().children().eq(0).text("规格名不能为空");
+                 return;
+             }
+-            $.post("spec.do",{p:"ParamName",name:$(this).val(),id:$(this).prev().data("id"),cid:cid,gid:gid},
+-                function (result) {
++            $.ajax({url:"spec/ParamName",
++            data:{name:$(this).val(),id:$(this).prev().data("id"),cid:cid,gid:gid},
++                success:function (result) {
+                     if (result != 0){
+                         $("#specParamName").next().children().eq(0).text("规格名已存在");
+                     }
+-                })
++                }})
+         });
+     }
+     if (name!==null||typeof name !== "undefined"){
+Index: background/src/main/webapp/css/pop.css
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- background/src/main/webapp/css/pop.css	(revision 237bfc367a17a7d31427a5231de098139c10d74b)
++++ background/src/main/webapp/css/pop.css	(date 1607842194446)
+@@ -5,12 +5,11 @@
+ #pop .pop-box .pop-top,#pop-2 .pop-box .pop-top{height: 40px;background: cornflowerblue;box-shadow: 0 2px 5px 2px; }
+ #pop .pop-top .top-text,#pop-2 .pop-top .top-text{font-size: 16px;line-height: 40px;padding-left: 20px;color: #FFFFFF;}
+ #pop .pop-box .icon-guanbi,#pop-2 .pop-box .icon-guanbi{cursor: pointer;position: absolute;right: 10px;top: 10px;color: #FFFFFF;}
+-#pop .pop-box .pop-main,#pop-2 .pop-box .pop-main{margin: 10px;width: 880px;height: 580px;border: 1px solid #e5e5e5;position: absolute;top: 40px;display: table-cell;vertical-align: middle;overflow-y: auto;}
++#pop .pop-box .pop-main,#pop-2 .pop-box .pop-main{margin: 10px;width: 880px;height: 580px;border: 1px solid #e5e5e5;position: absolute;top: 40px;display: flex;flex-direction: column;vertical-align: middle;}
+ #pop .pop-main .input-box,#pop-2 .pop-main .input-box{padding: 50px;vertical-align: middle;text-align: center;font-size: 16px;}
+ #pop .input-box label,#pop-2 .input-box label{font-size: 16px;vertical-align: middle;height: 24px;}
+ #pop .input-box .form-text,#pop-2 .input-box .form-text{width: 200px;border-bottom: 1px solid silver; margin: 20px;font-size: 20px; vertical-align: middle;}
+ #pop .input-box .form-radio,#pop-2 .input-box .form-radio{font-size: 20px;vertical-align: middle;height: 24px;}
+-.input_div label{margin-right: 40px;}
+ #pop .input-box span,#pop-2 .input-box span{font-size: 12px;color: red;}
+ #pop .pop-box .pop-bottom,#pop-2 .pop-box .pop-bottom,#pop-goods .pop-box .pop-bottom{height: 60px;width:100%;position: absolute;bottom: 0;background-color: #FFFFFF;box-shadow: 0 -1px 5px;}
+ #pop .button,#pop-2 .button{height: 40px;width:100px;position:absolute;top:10px;color:#FFFFFF;border-radius: 10px;box-shadow:0 2px 3px 1px #666666;background-color: #2c3c50;cursor: pointer;transition: all .3s ease-in-out;}
+@@ -18,14 +17,47 @@
+ #pop .pop-bottom #empty-button:hover{background-color: deepskyblue;}
+ #pop .pop-bottom #submit-button,#pop-2 .pop-bottom #button-two{right: 38%;}
+ #pop .pop-bottom #submit-button:hover{background-color: deepskyblue;}
+-#pop-2 .pop-bottom .button,#pop-2 .pop-bottom .button{background-color: dodgerblue;}
+-#pop-2 .pop-bottom .button:hover,#pop-2 .pop-bottom .button:hover{background-color: deepskyblue;}
++#pop-2 .pop-bottom .button{background-color: dodgerblue;}
++#pop-2 .pop-bottom .button:hover{background-color: deepskyblue;}
+ #pop-2 .main-header{width: 100%;height: 60px;text-align: center;display: flex;justify-content: center;border-bottom: 1px solid #e5e5e5;box-shadow: 1px 0 2px}
+ #pop-2 .main-header .header-li{position: relative;display: inline-block;width: 200px;margin-left: 40px;}
+ #pop-2 .header-li .header-line{border-top: 1px solid #e5e5e5;border-bottom: 1px solid #e5e5e5;width: 116px;display: inline-block;position: absolute;top: 30px;left: 116px;}
+ #pop-2 .header-li .header-li-box{display: table-cell;width: 130px;font-size: 14px;height: 60px;vertical-align: middle;line-height: 60px;position: relative;transition: all .3s ease-in-out;color: #a2a2a4;}
+ #pop-2 .header-li .header-li-box .header-radius{position: absolute;display:inline-block;height: 22px;width: 22px;border-radius: 50%;font-size: 16px;background-color: #a2a2a4;top: 20px;color: #FFFFFF;line-height: 22px;}
+ #pop-2 .header-li .header-li-box .header-text{margin-left: 30px;}
++#pop-2 .pop-main .pop-main-content{width: 100%;overflow-y: auto;}
++/*文本输入*/
++#pop-2 .pop-main .div-text{position: relative;width: 340px;margin-left: 60px;margin-top: 20px;background-color: #FFFFFF;font-size: 14px;border-bottom: 2px solid #e5e5e5;}
++#pop-2 .pop-main .div-text:hover{border-bottom:2px solid cornflowerblue;}
++#pop-2 .pop-main .div-text.text-area{width: 680px;height: 80px;}
++#pop-2 .pop-main .div-text.text-area-2{width: 680px;height: 102px;}
++#pop-2 .pop-main .div-text .text-title{margin-left: 10px;}
++.item_tip {background-color: #fff;color: #999;font-size: 16px;left: 12px;padding: 0 3px;position: relative;top: 25px;transition: all .2s ease-in-out;width: 4%;}
++.form_input {font-size:16px;padding:9px 10px;width:278px;outline:none;}
++.Error-prompt{position: absolute;display: inline-block;font-size: 16px;text-align: center;width: 100px;right: -100px;color:red;line-height: 28px;height: 28px;}
++.item_tip_focus {font-size:16px;top:8px;}
++.item_tip_val{color: #999999;}
++.item_tip_color{color:cornflowerblue;}
++.Rich-text{margin: 20px;font-size: 20px;color: #000000;}
++/*弹窗中的下拉弹窗*/
++.div-text>.category-select{
++    position: absolute;
++    display: flex;
++    align-items: flex-start;
++    z-index: 20;
++    top: 70px;
++    left: 20px;
++    min-height: 80px;
++    overflow-y: auto;
++    background-color: #FFFFFF;
++    border: 1px solid silver;
++    box-shadow: 0 1px 3px rgba(18,18,18,.1);
++}
++.category-select>.category-select-item{
++    padding-left: 20px;
++    border: 1px solid deepskyblue;
++    overflow-y: auto;
++}
+ /*正在编辑*/
+ #pop-2 .header-li .header-li-box.editing-now{color: #000000;}
+ #pop-2 .header-li .header-li-box .header-radius.editing-now{background-color: dodgerblue;color: #FFFFFF;}
+Index: background/src/main/webapp/css/main.css
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- background/src/main/webapp/css/main.css	(revision 237bfc367a17a7d31427a5231de098139c10d74b)
++++ background/src/main/webapp/css/main.css	(date 1606307627255)
+@@ -1,4 +1,4 @@
+-*{margin: 0;padding: 0;border: 0;font: inherit;font-size: 100%;vertical-align: baseline;}
++*{margin: 0;padding: 0;border: none;font: inherit;font-size: 100%;vertical-align: baseline;}
+ body{font: 12px Consolas,"Microsoft YaHei",sans-serif;color: #666;-webkit-font-smoothing: antialiased;text-rendering: optimizeLegibility;}
+ h1,h2,h3,h4,h5,h6{font-size: 100%;font-variant: normal;}
+ a,a:hover,a:visited,a:link,a:active{background: none;text-decoration: none;}
+Index: background/src/main/webapp/WEB-INF/web.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- background/src/main/webapp/WEB-INF/web.xml	(revision 237bfc367a17a7d31427a5231de098139c10d74b)
++++ background/src/main/webapp/WEB-INF/web.xml	(date 1606911138221)
+@@ -49,7 +49,7 @@
+   </servlet>
+   <servlet-mapping>
+     <servlet-name>springMVC</servlet-name>
+-    <url-pattern>*.do</url-pattern>
++    <url-pattern>/</url-pattern>
+   </servlet-mapping>
+ 
+ 
+Index: background/src/main/resource/springMVC-servlet.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- background/src/main/resource/springMVC-servlet.xml	(revision 237bfc367a17a7d31427a5231de098139c10d74b)
++++ background/src/main/resource/springMVC-servlet.xml	(date 1606913226877)
+@@ -27,5 +27,11 @@
+             </bean>
+         </mvc:message-converters>
+     </mvc:annotation-driven>
++    <mvc:resources location="/" mapping="/**.html" ></mvc:resources>
++    <mvc:resources mapping="/css/**" location="/css/"/>
+ 
++    <mvc:resources mapping="/js/**" location="/js/" />
++
++    <mvc:resources mapping="/jquery/**" location="/jquery/" />
++    <mvc:resources mapping="/img/**" location="/img/" />
+ </beans>
+\ No newline at end of file
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/workspace.xml	(revision 237bfc367a17a7d31427a5231de098139c10d74b)
++++ .idea/workspace.xml	(date 1608018265398)
+@@ -28,85 +28,43 @@
+     <select />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="8ad35d46-ff88-41cc-ae98-31bfb679001b" name="Default Changelist" comment="更新0.4">
+-      <change afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/1/01313d4c2f2fbe74564875ed049154a10b84d50c" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/a/1a81f3043d3ebc4b2d682733a4a88c27fd9430a2" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/8/389fd6f3e66c3fea852d095aa5cf38d83fa6c688" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/1/41a5753d2ed535bb19458f2cb78da49bc2594dcd" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/3/834aa2f0b8e30c0d118981b99ca54e9f642a37e4" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/9/8993b1c00b4257961a72d26fda4a91c9e571858e" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/8/b8199031c68752176109915c55bb00b6829854d8" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/9/b9b11fdc82c79ccaa80d4dca6539f3461c11f243" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/1/d1986c843c522db353daed306834c201b66353ec" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/.idea/webContexts.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/background/src/main/resource/com/mapper/SpecParamMapper.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/background/src/main/webapp/css/__at.alicdn.com_t_font_2053327_4knfwpdusg8.css" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/background/src/main/webapp/css/goods.css" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/background/src/main/webapp/jquery/jquery-ui.min.js" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/background/src/main/webapp/js/goods.js" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/background/src/main/webapp/js/草稿.js" afterDir="false" />
++    <list default="true" id="8ad35d46-ff88-41cc-ae98-31bfb679001b" name="Default Changelist" comment="更新0.5">
++      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/a/1a81f3043d3ebc4b2d682733a4a88c27fd9430a2" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/a/1a81f3043d3ebc4b2d682733a4a88c27fd9430a2" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/8/389fd6f3e66c3fea852d095aa5cf38d83fa6c688" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/8/389fd6f3e66c3fea852d095aa5cf38d83fa6c688" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/1/41a5753d2ed535bb19458f2cb78da49bc2594dcd" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/1/41a5753d2ed535bb19458f2cb78da49bc2594dcd" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/9/8993b1c00b4257961a72d26fda4a91c9e571858e" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/9/8993b1c00b4257961a72d26fda4a91c9e571858e" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/background/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/background/pom.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/background/src/main/java/com/action/MainAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/background/src/main/java/com/action/MainAction.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/background/src/main/java/com/action/SpecAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/background/src/main/java/com/action/SpecAction.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/background/src/main/java/com/mapper/CategoryMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/background/src/main/java/com/mapper/CategoryMapper.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/background/src/main/java/com/mapper/SpecGroupMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/background/src/main/java/com/mapper/SpecGroupMapper.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/background/src/main/java/com/mapper/SpecParamMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/background/src/main/java/com/mapper/SpecParamMapper.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/background/src/main/java/com/pojo/GoodsCategory.java" beforeDir="false" afterPath="$PROJECT_DIR$/background/src/main/java/com/pojo/GoodsCategory.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/background/src/main/java/com/pojo/SpecGroup.java" beforeDir="false" afterPath="$PROJECT_DIR$/background/src/main/java/com/pojo/SpecGroup.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/background/src/main/java/com/pojo/SpecParam.java" beforeDir="false" afterPath="$PROJECT_DIR$/background/src/main/java/com/pojo/SpecParam.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/background/src/main/java/com/service/CategoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/background/src/main/java/com/service/CategoryService.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/background/src/main/java/com/service/SpecGroupService.java" beforeDir="false" afterPath="$PROJECT_DIR$/background/src/main/java/com/service/SpecGroupService.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/background/src/main/java/com/service/SpecParamService.java" beforeDir="false" afterPath="$PROJECT_DIR$/background/src/main/java/com/service/SpecParamService.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/background/src/main/resource/com/mapper/CategoryMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/background/src/main/resource/com/mapper/CategoryMapper.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/background/src/main/resource/com/mapper/SpecGroupMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/background/src/main/resource/com/mapper/SpecGroupMapper.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/background/src/main/resource/mybatis-config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/background/src/main/resource/mybatis-config.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/background/src/main/resource/springMVC-servlet.xml" beforeDir="false" afterPath="$PROJECT_DIR$/background/src/main/resource/springMVC-servlet.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/background/src/main/test/com/test/TestCategory.java" beforeDir="false" afterPath="$PROJECT_DIR$/background/src/main/test/com/test/TestCategory.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/background/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/background/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/background/src/main/webapp/css/goods.css" beforeDir="false" afterPath="$PROJECT_DIR$/background/src/main/webapp/css/goods.css" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/background/src/main/webapp/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/background/src/main/webapp/css/main.css" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/background/src/main/webapp/css/pop.css" beforeDir="false" afterPath="$PROJECT_DIR$/background/src/main/webapp/css/pop.css" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/background/src/main/webapp/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/background/src/main/webapp/index.html" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/background/src/main/webapp/js/aside.js" beforeDir="false" afterPath="$PROJECT_DIR$/background/src/main/webapp/js/aside.js" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/background/src/main/webapp/js/pop.js" beforeDir="false" afterPath="$PROJECT_DIR$/background/src/main/webapp/js/category.js" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/background/src/main/webapp/js/pop_spec.js" beforeDir="false" afterPath="$PROJECT_DIR$/background/src/main/webapp/js/spec.js" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/background/src/main/webapp/js/category.js" beforeDir="false" afterPath="$PROJECT_DIR$/background/src/main/webapp/js/category.js" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/background/src/main/webapp/js/goods.js" beforeDir="false" afterPath="$PROJECT_DIR$/background/src/main/webapp/js/goods.js" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/background/src/main/webapp/js/spec.js" beforeDir="false" afterPath="$PROJECT_DIR$/background/src/main/webapp/js/spec.js" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/background/target/background/WEB-INF/classes/com/action/MainAction.class" beforeDir="false" afterPath="$PROJECT_DIR$/background/target/background/WEB-INF/classes/com/action/MainAction.class" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/background/target/background/WEB-INF/classes/com/action/SpecAction.class" beforeDir="false" afterPath="$PROJECT_DIR$/background/target/background/WEB-INF/classes/com/action/SpecAction.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/background/target/background/WEB-INF/classes/com/mapper/CategoryMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/background/target/background/WEB-INF/classes/com/mapper/CategoryMapper.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/background/target/background/WEB-INF/classes/com/mapper/CategoryMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/background/target/background/WEB-INF/classes/com/mapper/CategoryMapper.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/background/target/background/WEB-INF/classes/com/mapper/SpecGroupMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/background/target/background/WEB-INF/classes/com/mapper/SpecGroupMapper.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/background/target/background/WEB-INF/classes/com/mapper/SpecGroupMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/background/target/background/WEB-INF/classes/com/mapper/SpecGroupMapper.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/background/target/background/WEB-INF/classes/com/mapper/SpecParamMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/background/target/background/WEB-INF/classes/com/mapper/SpecParamMapper.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/background/target/background/WEB-INF/classes/com/pojo/GoodsCategory.class" beforeDir="false" afterPath="$PROJECT_DIR$/background/target/background/WEB-INF/classes/com/pojo/GoodsCategory.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/background/target/background/WEB-INF/classes/com/pojo/SpecGroup.class" beforeDir="false" afterPath="$PROJECT_DIR$/background/target/background/WEB-INF/classes/com/pojo/SpecGroup.class" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/background/target/background/WEB-INF/classes/com/pojo/SpecParam.class" beforeDir="false" afterPath="$PROJECT_DIR$/background/target/background/WEB-INF/classes/com/pojo/SpecParam.class" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/background/target/background/WEB-INF/classes/com/service/CategoryService.class" beforeDir="false" afterPath="$PROJECT_DIR$/background/target/background/WEB-INF/classes/com/service/CategoryService.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/background/target/background/WEB-INF/classes/com/service/SpecGroupService.class" beforeDir="false" afterPath="$PROJECT_DIR$/background/target/background/WEB-INF/classes/com/service/SpecGroupService.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/background/target/background/WEB-INF/classes/com/service/SpecParamService.class" beforeDir="false" afterPath="$PROJECT_DIR$/background/target/background/WEB-INF/classes/com/service/SpecParamService.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/background/target/background/WEB-INF/classes/mybatis-config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/background/target/background/WEB-INF/classes/mybatis-config.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/background/target/background/WEB-INF/classes/springMVC-servlet.xml" beforeDir="false" afterPath="$PROJECT_DIR$/background/target/background/WEB-INF/classes/springMVC-servlet.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/background/target/background/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/background/target/background/WEB-INF/web.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/background/target/background/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/background/target/background/css/main.css" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/background/target/background/css/pop.css" beforeDir="false" afterPath="$PROJECT_DIR$/background/target/background/css/pop.css" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/background/target/background/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/background/target/background/index.html" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/background/target/background/js/aside.js" beforeDir="false" afterPath="$PROJECT_DIR$/background/target/background/js/aside.js" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/background/target/background/js/pop.js" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/background/target/background/js/pop_spec.js" beforeDir="false" />
+       <change beforePath="$PROJECT_DIR$/background/target/classes/com/action/MainAction.class" beforeDir="false" afterPath="$PROJECT_DIR$/background/target/classes/com/action/MainAction.class" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/background/target/classes/com/action/SpecAction.class" beforeDir="false" afterPath="$PROJECT_DIR$/background/target/classes/com/action/SpecAction.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/background/target/classes/com/mapper/CategoryMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/background/target/classes/com/mapper/CategoryMapper.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/background/target/classes/com/mapper/CategoryMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/background/target/classes/com/mapper/CategoryMapper.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/background/target/classes/com/mapper/SpecGroupMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/background/target/classes/com/mapper/SpecGroupMapper.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/background/target/classes/com/mapper/SpecGroupMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/background/target/classes/com/mapper/SpecGroupMapper.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/background/target/classes/com/mapper/SpecParamMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/background/target/classes/com/mapper/SpecParamMapper.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/background/target/classes/com/pojo/GoodsCategory.class" beforeDir="false" afterPath="$PROJECT_DIR$/background/target/classes/com/pojo/GoodsCategory.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/background/target/classes/com/pojo/SpecGroup.class" beforeDir="false" afterPath="$PROJECT_DIR$/background/target/classes/com/pojo/SpecGroup.class" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/background/target/classes/com/pojo/SpecParam.class" beforeDir="false" afterPath="$PROJECT_DIR$/background/target/classes/com/pojo/SpecParam.class" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/background/target/classes/com/service/CategoryService.class" beforeDir="false" afterPath="$PROJECT_DIR$/background/target/classes/com/service/CategoryService.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/background/target/classes/com/service/SpecGroupService.class" beforeDir="false" afterPath="$PROJECT_DIR$/background/target/classes/com/service/SpecGroupService.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/background/target/classes/com/service/SpecParamService.class" beforeDir="false" afterPath="$PROJECT_DIR$/background/target/classes/com/service/SpecParamService.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/background/target/classes/mybatis-config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/background/target/classes/mybatis-config.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/background/target/classes/springMVC-servlet.xml" beforeDir="false" afterPath="$PROJECT_DIR$/background/target/classes/springMVC-servlet.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/background/target/test-classes/com/test/TestCategory.class" beforeDir="false" afterPath="$PROJECT_DIR$/background/target/test-classes/com/test/TestCategory.class" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -170,10 +128,11 @@
+     <property name="DatabaseDriversLRU" value="mysql" />
+     <property name="DefaultHtmlFileTemplate" value="HTML File" />
+     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
++    <property name="SONARLINT_PRECOMMIT_ANALYSIS" value="true" />
+     <property name="WebServerToolWindowFactoryState" value="false" />
+     <property name="aspect.path.notification.shown" value="true" />
+-    <property name="com.obroom.plugin.mybatislog.indexNum" value="1457" />
+-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../java11" />
++    <property name="com.obroom.plugin.mybatislog.indexNum" value="2236" />
++    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+     <property name="list.type.of.created.stylesheet" value="CSS" />
+     <property name="node.js.detected.package.eslint" value="true" />
+     <property name="node.js.detected.package.tslint" value="true" />
+@@ -209,23 +168,17 @@
+       <recent name="F:\shopping\background\src\main\webapp\js" />
+       <recent name="F:\shopping\background\target\background" />
+     </key>
++  </component>
++  <component name="RunDashboard">
++    <option name="excludedTypes">
++      <set>
++        <option value="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" />
++      </set>
++    </option>
+   </component>
+   <component name="RunManager" selected="Tomcat Server.Shopping">
+-    <configuration name="TestCategory.insert" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+-      <module name="background" />
+-      <extension name="coverage">
+-        <pattern>
+-          <option name="PATTERN" value="com.test.*" />
+-          <option name="ENABLED" value="true" />
+-        </pattern>
+-      </extension>
+-      <option name="PACKAGE_NAME" value="com.test" />
+-      <option name="MAIN_CLASS_NAME" value="com.test.TestCategory" />
+-      <option name="METHOD_NAME" value="insert" />
+-      <option name="TEST_OBJECT" value="method" />
+-      <method v="2">
+-        <option name="Make" enabled="true" />
+-      </method>
++    <configuration name="generated-requests#1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" runType="Run single request">
++      <method v="2" />
+     </configuration>
+     <configuration name="TestCategory.select" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+       <module name="background" />
+@@ -271,14 +224,14 @@
+       <option name="UPDATE_ON_FRAME_DEACTIVATION" value="true" />
+       <option name="UPDATE_CLASSES_ON_FRAME_DEACTIVATION" value="true" />
+       <deployment>
+-        <artifact name="background:war exploded">
++        <artifact name="shopping:war exploded">
+           <settings>
+-            <option name="CONTEXT_PATH" value="/background" />
++            <option name="CONTEXT_PATH" value="/shopping" />
+           </settings>
+         </artifact>
+-        <artifact name="shopping:war exploded">
++        <artifact name="background:war exploded">
+           <settings>
+-            <option name="CONTEXT_PATH" value="/shopping" />
++            <option name="CONTEXT_PATH" value="/background" />
+           </settings>
+         </artifact>
+       </deployment>
+@@ -347,20 +300,20 @@
+       </method>
+     </configuration>
+     <list>
++      <item itemvalue="HTTP Request.generated-requests#1" />
+       <item itemvalue="JavaScript Debug.index.html" />
+       <item itemvalue="JavaScript Debug.index.do" />
+-      <item itemvalue="JUnit.TestCategory.insert" />
+       <item itemvalue="JUnit.TestCategory.select" />
+       <item itemvalue="JUnit.TestCategory.selectID" />
+       <item itemvalue="Tomcat Server.Shopping" />
+     </list>
+     <recent_temporary>
+       <list>
++        <item itemvalue="HTTP Request.generated-requests#1" />
+         <item itemvalue="JavaScript Debug.index.do" />
+         <item itemvalue="JavaScript Debug.index.html" />
+         <item itemvalue="JUnit.TestCategory.selectID" />
+         <item itemvalue="JUnit.TestCategory.select" />
+-        <item itemvalue="JUnit.TestCategory.insert" />
+       </list>
+     </recent_temporary>
+   </component>
+@@ -415,6 +368,17 @@
+       <workItem from="1606023883897" duration="15192000" />
+       <workItem from="1606046321156" duration="11033000" />
+       <workItem from="1606113703210" duration="4324000" />
++      <workItem from="1606216199245" duration="1830000" />
++      <workItem from="1606299946178" duration="11084000" />
++      <workItem from="1606473771785" duration="1247000" />
++      <workItem from="1606628549239" duration="3888000" />
++      <workItem from="1606909128513" duration="4903000" />
++      <workItem from="1606914492663" duration="1389000" />
++      <workItem from="1607013037643" duration="628000" />
++      <workItem from="1607233800522" duration="11265000" />
++      <workItem from="1607431268201" duration="119000" />
++      <workItem from="1607767051678" duration="2156000" />
++      <workItem from="1607838263308" duration="4223000" />
+     </task>
+     <task id="LOCAL-00001" summary="更新0.1">
+       <created>1603181658554</created>
+@@ -458,7 +422,14 @@
+       <option name="project" value="LOCAL" />
+       <updated>1605256709638</updated>
+     </task>
+-    <option name="localTasksCounter" value="7" />
++    <task id="LOCAL-00007" summary="更新0.5">
++      <created>1606216282839</created>
++      <option name="number" value="00007" />
++      <option name="presentableId" value="LOCAL-00007" />
++      <option name="project" value="LOCAL" />
++      <updated>1606216282839</updated>
++    </task>
++    <option name="localTasksCounter" value="8" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+@@ -493,7 +464,8 @@
+     <MESSAGE value="更新0.2" />
+     <MESSAGE value="更新0.3" />
+     <MESSAGE value="更新0.4" />
+-    <option name="LAST_COMMIT_MESSAGE" value="更新0.4" />
++    <MESSAGE value="更新0.5" />
++    <option name="LAST_COMMIT_MESSAGE" value="更新0.5" />
+   </component>
+   <component name="WindowStateProjectService">
+     <state x="586" y="203" key="#Inspections" timestamp="1606024784841">
+@@ -512,10 +484,10 @@
+       <screen x="0" y="0" width="1920" height="1050" />
+     </state>
+     <state x="748" y="310" key="#Web_Browsers/0.0.1920.1050@0.0.1920.1050" timestamp="1605702056571" />
+-    <state x="414" y="179" width="1092" height="739" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1605254646224">
++    <state x="414" y="179" width="1092" height="801" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1607244601950">
+       <screen x="0" y="0" width="1920" height="1050" />
+     </state>
+-    <state x="414" y="179" width="1092" height="739" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1605254646224" />
++    <state x="414" y="179" width="1092" height="801" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1607244601950" />
+     <state x="588" y="204" key="#com.intellij.ide.fileTemplates.ui.ConfigureTemplatesDialog" timestamp="1605425893551">
+       <screen x="0" y="0" width="1920" height="1050" />
+     </state>
+@@ -524,10 +496,10 @@
+       <screen x="0" y="0" width="1920" height="1050" />
+     </state>
+     <state x="765" y="208" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1050@0.0.1920.1050" timestamp="1605281972221" />
+-    <state x="690" y="271" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1606025957645">
++    <state x="690" y="271" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1606628649246">
+       <screen x="0" y="0" width="1920" height="1050" />
+     </state>
+-    <state x="690" y="271" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1606025957645" />
++    <state x="690" y="271" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1606628649246" />
+     <state x="558" y="86" key="CommitChangelistDialog2" timestamp="1605254888777">
+       <screen x="0" y="0" width="1920" height="1050" />
+     </state>
+@@ -540,78 +512,110 @@
+       <screen x="0" y="0" width="1920" height="1050" />
+     </state>
+     <state x="184" y="86" key="DiffContextDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1605255587039" />
+-    <state x="740" y="279" key="FileChooserDialogImpl" timestamp="1606118377456">
++    <state x="740" y="279" key="FileChooserDialogImpl" timestamp="1607236206673">
+       <screen x="0" y="0" width="1920" height="1050" />
+     </state>
+-    <state x="740" y="279" key="FileChooserDialogImpl/0.0.1920.1050@0.0.1920.1050" timestamp="1606118377456" />
++    <state x="740" y="279" key="FileChooserDialogImpl/0.0.1920.1050@0.0.1920.1050" timestamp="1607236206673" />
+     <state width="254" height="198" key="GotoFile_FileTypePopup" timestamp="1605282136223">
+       <screen x="0" y="0" width="1920" height="1050" />
+     </state>
+     <state width="254" height="198" key="GotoFile_FileTypePopup/0.0.1920.1050@0.0.1920.1050" timestamp="1605282136223" />
+-    <state width="1595" height="285" key="GridCell.Tab.0.bottom" timestamp="1606119088628">
++    <state width="1877" height="352" key="GridCell.Tab.0.bottom" timestamp="1607841912267">
++      <screen x="0" y="0" width="1920" height="1050" />
++    </state>
++    <state width="1877" height="352" key="GridCell.Tab.0.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1607841912267" />
++    <state width="1877" height="352" key="GridCell.Tab.0.center" timestamp="1607841912267">
++      <screen x="0" y="0" width="1920" height="1050" />
++    </state>
++    <state width="1877" height="352" key="GridCell.Tab.0.center/0.0.1920.1050@0.0.1920.1050" timestamp="1607841912267" />
++    <state width="1877" height="352" key="GridCell.Tab.0.left" timestamp="1607841912267">
++      <screen x="0" y="0" width="1920" height="1050" />
++    </state>
++    <state width="1877" height="352" key="GridCell.Tab.0.left/0.0.1920.1050@0.0.1920.1050" timestamp="1607841912267" />
++    <state width="1877" height="352" key="GridCell.Tab.0.right" timestamp="1607841912267">
++      <screen x="0" y="0" width="1920" height="1050" />
++    </state>
++    <state width="1877" height="352" key="GridCell.Tab.0.right/0.0.1920.1050@0.0.1920.1050" timestamp="1607841912267" />
++    <state width="1877" height="352" key="GridCell.Tab.1.bottom" timestamp="1607841912267">
++      <screen x="0" y="0" width="1920" height="1050" />
++    </state>
++    <state width="1877" height="352" key="GridCell.Tab.1.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1607841912267" />
++    <state width="1877" height="352" key="GridCell.Tab.1.center" timestamp="1607841912267">
++      <screen x="0" y="0" width="1920" height="1050" />
++    </state>
++    <state width="1877" height="352" key="GridCell.Tab.1.center/0.0.1920.1050@0.0.1920.1050" timestamp="1607841912267" />
++    <state width="1877" height="352" key="GridCell.Tab.1.left" timestamp="1607841912267">
+       <screen x="0" y="0" width="1920" height="1050" />
+     </state>
+-    <state width="1595" height="285" key="GridCell.Tab.0.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1606119088628" />
+-    <state width="1595" height="285" key="GridCell.Tab.0.center" timestamp="1606119088627">
++    <state width="1877" height="352" key="GridCell.Tab.1.left/0.0.1920.1050@0.0.1920.1050" timestamp="1607841912267" />
++    <state width="1877" height="352" key="GridCell.Tab.1.right" timestamp="1607841912267">
+       <screen x="0" y="0" width="1920" height="1050" />
+     </state>
+-    <state width="1595" height="285" key="GridCell.Tab.0.center/0.0.1920.1050@0.0.1920.1050" timestamp="1606119088627" />
+-    <state width="1595" height="285" key="GridCell.Tab.0.left" timestamp="1606119088626">
++    <state width="1877" height="352" key="GridCell.Tab.1.right/0.0.1920.1050@0.0.1920.1050" timestamp="1607841912267" />
++    <state width="1877" height="352" key="GridCell.Tab.2.bottom" timestamp="1607841912267">
+       <screen x="0" y="0" width="1920" height="1050" />
+     </state>
+-    <state width="1595" height="285" key="GridCell.Tab.0.left/0.0.1920.1050@0.0.1920.1050" timestamp="1606119088626" />
+-    <state width="1595" height="285" key="GridCell.Tab.0.right" timestamp="1606119088628">
++    <state width="1877" height="352" key="GridCell.Tab.2.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1607841912267" />
++    <state width="1877" height="352" key="GridCell.Tab.2.center" timestamp="1607841912267">
+       <screen x="0" y="0" width="1920" height="1050" />
+     </state>
+-    <state width="1595" height="285" key="GridCell.Tab.0.right/0.0.1920.1050@0.0.1920.1050" timestamp="1606119088628" />
+-    <state width="1595" height="285" key="GridCell.Tab.1.bottom" timestamp="1606119088629">
++    <state width="1877" height="352" key="GridCell.Tab.2.center/0.0.1920.1050@0.0.1920.1050" timestamp="1607841912267" />
++    <state width="1877" height="352" key="GridCell.Tab.2.left" timestamp="1607841912267">
+       <screen x="0" y="0" width="1920" height="1050" />
+     </state>
+-    <state width="1595" height="285" key="GridCell.Tab.1.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1606119088629" />
+-    <state width="1595" height="285" key="GridCell.Tab.1.center" timestamp="1606119088629">
++    <state width="1877" height="352" key="GridCell.Tab.2.left/0.0.1920.1050@0.0.1920.1050" timestamp="1607841912267" />
++    <state width="1877" height="352" key="GridCell.Tab.2.right" timestamp="1607841912267">
+       <screen x="0" y="0" width="1920" height="1050" />
+     </state>
+-    <state width="1595" height="285" key="GridCell.Tab.1.center/0.0.1920.1050@0.0.1920.1050" timestamp="1606119088629" />
+-    <state width="1595" height="285" key="GridCell.Tab.1.left" timestamp="1606119088628">
++    <state width="1877" height="352" key="GridCell.Tab.2.right/0.0.1920.1050@0.0.1920.1050" timestamp="1607841912267" />
++    <state width="1877" height="352" key="GridCell.Tab.3.bottom" timestamp="1607841912267">
+       <screen x="0" y="0" width="1920" height="1050" />
+     </state>
+-    <state width="1595" height="285" key="GridCell.Tab.1.left/0.0.1920.1050@0.0.1920.1050" timestamp="1606119088628" />
+-    <state width="1595" height="285" key="GridCell.Tab.1.right" timestamp="1606119088629">
++    <state width="1877" height="352" key="GridCell.Tab.3.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1607841912267" />
++    <state width="1877" height="352" key="GridCell.Tab.3.center" timestamp="1607841912267">
+       <screen x="0" y="0" width="1920" height="1050" />
+     </state>
+-    <state width="1595" height="285" key="GridCell.Tab.1.right/0.0.1920.1050@0.0.1920.1050" timestamp="1606119088629" />
+-    <state width="1595" height="285" key="GridCell.Tab.2.bottom" timestamp="1606119088630">
++    <state width="1877" height="352" key="GridCell.Tab.3.center/0.0.1920.1050@0.0.1920.1050" timestamp="1607841912267" />
++    <state width="1877" height="352" key="GridCell.Tab.3.left" timestamp="1607841912267">
+       <screen x="0" y="0" width="1920" height="1050" />
+     </state>
+-    <state width="1595" height="285" key="GridCell.Tab.2.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1606119088630" />
+-    <state width="1595" height="285" key="GridCell.Tab.2.center" timestamp="1606119088630">
++    <state width="1877" height="352" key="GridCell.Tab.3.left/0.0.1920.1050@0.0.1920.1050" timestamp="1607841912267" />
++    <state width="1877" height="352" key="GridCell.Tab.3.right" timestamp="1607841912267">
+       <screen x="0" y="0" width="1920" height="1050" />
+     </state>
+-    <state width="1595" height="285" key="GridCell.Tab.2.center/0.0.1920.1050@0.0.1920.1050" timestamp="1606119088630" />
+-    <state width="1595" height="285" key="GridCell.Tab.2.left" timestamp="1606119088630">
++    <state width="1877" height="352" key="GridCell.Tab.3.right/0.0.1920.1050@0.0.1920.1050" timestamp="1607841912267" />
++    <state width="1877" height="284" key="GridCell.Tab.4.bottom" timestamp="1607235464021">
+       <screen x="0" y="0" width="1920" height="1050" />
+     </state>
+-    <state width="1595" height="285" key="GridCell.Tab.2.left/0.0.1920.1050@0.0.1920.1050" timestamp="1606119088630" />
+-    <state width="1595" height="285" key="GridCell.Tab.2.right" timestamp="1606119088630">
++    <state width="1877" height="284" key="GridCell.Tab.4.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1607235464021" />
++    <state width="1877" height="284" key="GridCell.Tab.4.center" timestamp="1607235464021">
+       <screen x="0" y="0" width="1920" height="1050" />
+     </state>
+-    <state width="1595" height="285" key="GridCell.Tab.2.right/0.0.1920.1050@0.0.1920.1050" timestamp="1606119088630" />
+-    <state width="1595" height="285" key="GridCell.Tab.3.bottom" timestamp="1606119088631">
++    <state width="1877" height="284" key="GridCell.Tab.4.center/0.0.1920.1050@0.0.1920.1050" timestamp="1607235464021" />
++    <state width="1877" height="284" key="GridCell.Tab.4.left" timestamp="1607235464021">
+       <screen x="0" y="0" width="1920" height="1050" />
+     </state>
+-    <state width="1595" height="285" key="GridCell.Tab.3.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1606119088631" />
+-    <state width="1595" height="285" key="GridCell.Tab.3.center" timestamp="1606119088631">
++    <state width="1877" height="284" key="GridCell.Tab.4.left/0.0.1920.1050@0.0.1920.1050" timestamp="1607235464021" />
++    <state width="1877" height="284" key="GridCell.Tab.4.right" timestamp="1607235464021">
+       <screen x="0" y="0" width="1920" height="1050" />
+     </state>
+-    <state width="1595" height="285" key="GridCell.Tab.3.center/0.0.1920.1050@0.0.1920.1050" timestamp="1606119088631" />
+-    <state width="1595" height="285" key="GridCell.Tab.3.left" timestamp="1606119088631">
++    <state width="1877" height="284" key="GridCell.Tab.4.right/0.0.1920.1050@0.0.1920.1050" timestamp="1607235464021" />
++    <state width="1877" height="352" key="GridCell.Tab.5.bottom" timestamp="1607233912706">
+       <screen x="0" y="0" width="1920" height="1050" />
+     </state>
+-    <state width="1595" height="285" key="GridCell.Tab.3.left/0.0.1920.1050@0.0.1920.1050" timestamp="1606119088631" />
+-    <state width="1595" height="285" key="GridCell.Tab.3.right" timestamp="1606119088631">
++    <state width="1877" height="352" key="GridCell.Tab.5.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1607233912706" />
++    <state width="1877" height="352" key="GridCell.Tab.5.center" timestamp="1607233912706">
+       <screen x="0" y="0" width="1920" height="1050" />
+     </state>
+-    <state width="1595" height="285" key="GridCell.Tab.3.right/0.0.1920.1050@0.0.1920.1050" timestamp="1606119088631" />
++    <state width="1877" height="352" key="GridCell.Tab.5.center/0.0.1920.1050@0.0.1920.1050" timestamp="1607233912706" />
++    <state width="1877" height="352" key="GridCell.Tab.5.left" timestamp="1607233912706">
++      <screen x="0" y="0" width="1920" height="1050" />
++    </state>
++    <state width="1877" height="352" key="GridCell.Tab.5.left/0.0.1920.1050@0.0.1920.1050" timestamp="1607233912706" />
++    <state width="1877" height="352" key="GridCell.Tab.5.right" timestamp="1607233912706">
++      <screen x="0" y="0" width="1920" height="1050" />
++    </state>
++    <state width="1877" height="352" key="GridCell.Tab.5.right/0.0.1920.1050@0.0.1920.1050" timestamp="1607233912706" />
+     <state width="232" height="477" key="HiddenNamespacesPopup" timestamp="1605256078616">
+       <screen x="0" y="0" width="1920" height="1050" />
+     </state>
+@@ -648,6 +652,10 @@
+       <screen x="0" y="0" width="1920" height="1050" />
+     </state>
+     <state x="593" y="185" key="new project wizard/0.0.1920.1050@0.0.1920.1050" timestamp="1605246224461" />
++    <state x="616" y="243" key="run.anything.popup" timestamp="1607246087586">
++      <screen x="0" y="0" width="1920" height="1050" />
++    </state>
++    <state x="616" y="243" key="run.anything.popup/0.0.1920.1050@0.0.1920.1050" timestamp="1607246087586" />
+   </component>
+   <component name="XSLT-Support.FileAssociations.UIState">
+     <expand />
+Index: background/target/classes/springMVC-servlet.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- background/target/classes/springMVC-servlet.xml	(revision 237bfc367a17a7d31427a5231de098139c10d74b)
++++ background/target/classes/springMVC-servlet.xml	(date 1606913226877)
+@@ -27,5 +27,11 @@
+             </bean>
+         </mvc:message-converters>
+     </mvc:annotation-driven>
++    <mvc:resources location="/" mapping="/**.html" ></mvc:resources>
++    <mvc:resources mapping="/css/**" location="/css/"/>
+ 
++    <mvc:resources mapping="/js/**" location="/js/" />
++
++    <mvc:resources mapping="/jquery/**" location="/jquery/" />
++    <mvc:resources mapping="/img/**" location="/img/" />
+ </beans>
+\ No newline at end of file
+Index: background/target/background/WEB-INF/classes/springMVC-servlet.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- background/target/background/WEB-INF/classes/springMVC-servlet.xml	(revision 237bfc367a17a7d31427a5231de098139c10d74b)
++++ background/target/background/WEB-INF/classes/springMVC-servlet.xml	(date 1606913226877)
+@@ -27,5 +27,11 @@
+             </bean>
+         </mvc:message-converters>
+     </mvc:annotation-driven>
++    <mvc:resources location="/" mapping="/**.html" ></mvc:resources>
++    <mvc:resources mapping="/css/**" location="/css/"/>
+ 
++    <mvc:resources mapping="/js/**" location="/js/" />
++
++    <mvc:resources mapping="/jquery/**" location="/jquery/" />
++    <mvc:resources mapping="/img/**" location="/img/" />
+ </beans>
+\ No newline at end of file
+Index: background/pom.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- background/pom.xml	(revision 237bfc367a17a7d31427a5231de098139c10d74b)
++++ background/pom.xml	(date 1606300601673)
+@@ -68,41 +68,7 @@
+       <version>4.0.1</version>
+       <scope>compile</scope>
+     </dependency>
+-    <!--jsp的jstl标签包-->
+-    <dependency>
+-      <groupId>javax.servlet.jsp.jstl</groupId>
+-      <artifactId>jstl-api</artifactId>
+-      <version>1.2</version>
+-      <exclusions>
+-        <exclusion>
+-          <groupId>javax.servlet</groupId>
+-          <artifactId>servlet-api</artifactId>
+-        </exclusion>
+-        <exclusion>
+-          <groupId>javax.servlet.jsp</groupId>
+-          <artifactId>jsp-api</artifactId>
+-        </exclusion>
+-      </exclusions>
+-    </dependency>
+-    <dependency>
+-      <groupId>org.glassfish.web</groupId>
+-      <artifactId>jstl-impl</artifactId>
+-      <version>1.2</version>
+-      <exclusions>
+-        <exclusion>
+-          <groupId>javax.servlet</groupId>
+-          <artifactId>servlet-api</artifactId>
+-        </exclusion>
+-        <exclusion>
+-          <groupId>javax.servlet.jsp</groupId>
+-          <artifactId>jsp-api</artifactId>
+-        </exclusion>
+-        <exclusion>
+-          <groupId>javax.servlet.jsp.jstl</groupId>
+-          <artifactId>jstl-api</artifactId>
+-        </exclusion>
+-      </exclusions>
+-    </dependency>
++
+     <!--c3p0 连接池 -->
+     <!-- https://mvnrepository.com/artifact/com.mchange/c3p0 -->
+     <dependency>
+Index: background/src/main/webapp/js/goods.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- background/src/main/webapp/js/goods.js	(revision 237bfc367a17a7d31427a5231de098139c10d74b)
++++ background/src/main/webapp/js/goods.js	(date 1607842543287)
+@@ -1,97 +1,305 @@
++//商品信息
++
++
+ //商品添加按钮
+ $.add_goods = function () {
+ 
+-    $.step = function (text) {
+-        let div = $("div.header-li-box.editing-now");
+-        let p =$("p.header-radius.editing-now");
+-        div.removeClass("editing-now");
+-        p.removeClass("editing-now");
+-        let div_1;
+-        if (text === '下一步' ){
+-            div.addClass("finish");
+-            p.addClass("finish iconfont icon-seleted",300)
+-            p.children().eq(0).hide(300);
+-            let n = 1;
+-            if (p.text()==='3'){
+-                n = 0;
+-            }
+-            div_1 = div.parent().next().children().eq(n);
+-        }else {
+-            div.removeClass("finish");
+-            p.removeClass("finish iconfont icon-seleted",300);
+-            p.children().eq(0).show(300);
+-            div_1 = div.parent().prev().children().eq(1);
+-            div_1.children().eq(0).children().eq(0).show(300);
+-        }
+-        div_1.removeClass("finish");
+-        div_1.addClass("editing-now");
+-        div_1.children().eq(0).removeClass("finish iconfont icon-seleted");
+-        div_1.children().eq(0).addClass("editing-now");
+-        let one =$("#button-one")
+-        one.removeAttr("disabled").removeClass("disabled");
+-        let two = $("#button-two");
+-        two.removeAttr("disabled").removeClass("disabled");
+-        if (p.text()==='3'&&div_1.children().eq(0).text()==='4'){
++
++    return $("<button id='add-goods' type='button'>新增商品</button>").click(function() {
++        $("#pop-2").css("display",'block');
++        $(".top-text").eq(1).text("新增商品");
++        let pop_main = $(".pop-main").eq(1);
++        let pop_bottom = $("#add-bottom");
++        pop_main.empty();
++        //pop_main.append();
++		let div_content = $("<div class='pop-main-content'>");
++		let content_form = $("<form id='goods-info' class='goods-form'>");
++		div_content.append(content_form)
++        pop_bottom.append($.goods_bottom("上一步",content_form),$.goods_bottom("下一步",content_form));
++        $("#button-one").attr("disabled","disabled").addClass("disabled");
++		pop_main.append($.ul_main(),div_content);
++		$.goods(content_form);
++		$.goods_add(content_form);
++    });
++}
++//下一步和上一步
++$.step = function (text,content_form) {
++	
++    let div = $("div.header-li-box.editing-now");
++    let p =$("p.header-radius.editing-now");
++    div.removeClass("editing-now");
++    p.removeClass("editing-now");
++    let div_1;
++    if (text === '下一步' ){
++        div.addClass("finish");
++        p.addClass("finish iconfont icon-seleted",300)
++        p.children().eq(0).hide(300);
++        let n = 1;
++        if (p.text()==='3'){
++            n = 0;
++        }
++        div_1 = div.parent().next().children().eq(n);
++    }else {
++        div.removeClass("finish");
++        p.removeClass("finish iconfont icon-seleted",300);
++        p.children().eq(0).show(300);
++        div_1 = div.parent().prev().children().eq(1);
++        div_1.children().eq(0).children().eq(0).show(300);
++    }
++    div_1.removeClass("finish");
++    div_1.addClass("editing-now");
++    div_1.children().eq(0).removeClass("finish iconfont icon-seleted");
++    div_1.children().eq(0).addClass("editing-now");
++    let one =$("#button-one")
++    one.removeAttr("disabled").removeClass("disabled");
++    let two = $("#button-two");
++    two.removeAttr("disabled").removeClass("disabled");
++    if (p.text()==='3'&&div_1.children().eq(0).text()==='4'){
+ 
+-            two.attr("disabled","disabled").addClass("disabled");
+-        }
+-        if (p.text() === '2'&&div_1.children().eq(0).text()==='1'){
+-            one.attr("disabled","disabled").addClass("disabled");
+-        }
+-    }
+-    //商品弹窗底部内容添加
+-    $.goods_bottom = function (text) {
+-        if (text ==="上一步") {
+-            return $("<button id='button-one' class='button'>"+text+"</button>").click(function() {
++        two.attr("disabled","disabled").addClass("disabled");
++    }
++    if (p.text() === '2'&&div_1.children().eq(0).text()==='1'){
++        one.attr("disabled","disabled").addClass("disabled");
++    }
++	
++	$.goods_add(content_form);
++	
++}
++//商品弹窗底部内容添加
++$.goods_bottom = function (text,content_form) {
++    if (text ==="上一步") {
++        return $("<button id='button-one' class='button'>"+text+"</button>").click(function() {
+ 
+-                $.step(text);
+-            });
+-        }
+-        if (text ==="下一步") {
+-            return $("<button id='button-two' class='button'>"+text+"</button>").click(function() {
+-                $.step(text);
+-            });
+-        }
+-    }
+-    $.li_main = function (text,id) {
+-        let li = $("<li class='header-li'>").attr("data-id",id);
+-        let em;
+-        if (id!==4){
+-            em= $("<em class='header-line'>");
+-        }
++            $.step(text,content_form);
++        });
++    }
++    if (text ==="下一步") {
++        return $("<button id='button-two' class='button'>"+text+"</button>").click(function() {
++            $.step(text,content_form);
++        });
++    }
++}
++//弹窗顶部具体进度栏
++$.li_main = function (text,id) {
++    let li = $("<li class='header-li'>").attr("data-id",id);
++    let em;
++    if (id!==4){
++        em= $("<em class='header-line'>");
++    }
+ 
+-        let div = $("<div class='header-li-box'>");
+-        let span = $("<p class='header-radius'>");
+-        let strong = $("<strong>").text(id);
+-        if (id===1){
+-            div.addClass("editing-now");
+-            span.addClass("editing-now");
+-        }
+-        span.append(strong);
+-        let p = $("<strong class='header-text'>"+text+"</strong>");
+-        div.append(span,p)
+-        li.append(em,div);
+-        return li;
+-    }
+-    $.ul_main = function () {
+-        return $("<ul class='main-header'>").append($.li_main("基本信息",1),$.li_main("商品描述",2),
+-            $.li_main("规格参数",3),$.li_main("sku属性",4));
++    let div = $("<div class='header-li-box'>");
++    let span = $("<p class='header-radius'>");
++    let strong = $("<strong>").text(id);
++    if (id===1){
++        div.addClass("editing-now");
++        span.addClass("editing-now");
++    }
++    span.append(strong);
++    let p = $("<strong class='header-text'>"+text+"</strong>");
++    div.append(span,p)
++    li.append(em,div);
++    return li;
++}
++//弹窗顶部具体进度栏
++$.ul_main = function () {
++    return $("<ul class='main-header'>").append($.li_main("基本信息",1),$.li_main("商品描述",2),
++        $.li_main("规格参数",3),$.li_main("sku属性",4));
++}
++function focusInputLoginBox(obj) {
++	obj.prev(".item_tip").removeClass("item_tip_val");
++    obj.prev(".item_tip").addClass("item_tip_focus item_tip_color");
++}
++
++function blurInputLoginBox(obj) {
++    const v = obj.val();
++	obj.prev(".item_tip").removeClass("item_tip_color")
++    if (v ==="") {
++        obj.prev(".item_tip").removeClass("item_tip_focus item_tip_val");
++    } else {
++		console.log(1);
++        obj.prev(".item_tip").addClass("item_tip_focus item_tip_val");
+     }
+-    $.div_main = function () {
+-        return undefined;
+-    }
+-    return $("<button id='add-goods'>新增商品</button>").click(function() {
+-        $("#pop-2").css("display",'block');
+-        $(".top-text").eq(1).text("新增商品");
+-        let pop_main = $(".pop-main").eq(1);
+-        let pop_bottom = $("#add-bottom");
+-        pop_main.empty();
+-        pop_main.append($.ul_main(),$.div_main());
+-        pop_bottom.append($.goods_bottom("上一步"),$.goods_bottom("下一步"));
+-        $("#button-one").attr("disabled","disabled").addClass("disabled");
+-    });
++
++}
++/* 添加商品基本信息栏 */
++$.add_divs= function(name,input_class,text,divs_class,maxLength) {
++	let divs,input;
++	if(typeof divs_class != "undefined"){
++		if(divs_class ==="text-area-2"){
++			divs = $('<div class="div-text '+divs_class+'"></div>');
++			input = $("<textarea class='"+input_class+"' id="+name+" style='resize:none;width:660px;height:63px;' name='"+name+"' maxLength="+maxLength+">");
++		}else{
++			divs = $('<div class="div-text '+divs_class+'"></div>');
++			input = $("<textarea class='"+input_class+"' id="+name+" style='resize:none;width:660px;height:42px;' name='"+name+"' maxLength="+maxLength+">");
++		}
++		
++	}else{
++		divs = $('<div class="div-text"></div>');
++		input = $(`<input type="text" name=`+name+" class='"+input_class+"'id="+name+">");
++	}
++	let prompt = $("<p class='Error-prompt'>");
++	let p = $("<p><span id='"+name+"_num'>0</span><span>/"+maxLength+"</span></p>")
++    let div_category =  $(`<em class="item_tip">`+text+`</em>`);
++    divs.append(div_category,input);
++	if(divs_class!=="text-area-2"){
++		divs.append(prompt);
++	}
++	if (typeof maxLength !="undefined") {
++    	divs.append(p);
++    }
++    return divs;
++}
++/*$.goods_spec = function () {
++    $.ajax({
++        url :"spec/findSpec",
++        data:{"cid":1},
++        type: "post",
++        success:function(data) {
++
++        }
++    })
++    return undefined;
++}*/
++$.goods_sku = function () {
++    return undefined;
++}
++/*查询商品分类*/
++$.ajax_cate=function(l,parent) {
++    let d=Object();
++    l=Number(l);
++    d.level=l;
++    if (typeof parent !="undefined"){
++        d.parent = parent;
++    }
++    let div_ul;
++    $.ajax({
++        url :"main/categoryLevel",
++        data:d,
++        dataType : 'json',
++        type :"get",
++        async:false,
++        contentType :"application/json",
++        success : function(data) {
++            console.log(data);
++            if (data.length!==0){
++                div_ul=$("<ul class='category-select-item' >");
++                for (let i = 0; i < data.length; i++) {
++                    let div_li = $("<li class='item-li'>");
++                    let a = $("<a href='javascript:void(0);' class='item-li-a'>");
++                    a.attr("data-categoryId", data[i].categoryId);
++                    a.text(data[i].categoryName);
++                    div_li.append(a);
++                    div_ul.append(div_li);
++                    div_li.click(function () {
++                        div_ul.children().removeClass("active");
++                        div_ul.next("ul").remove();
++                        $(this).addClass("active");
++                        div_ul.after($.ajax_cate(l + 1, data[i].categoryId));
++                    })
++                }
++            }
++
++
++        },
++        error : function(data) {
++
++        }
++    });
++    return div_ul;
++}
++//商品基本信息栏
++$.goods = function (form) {
++	let div_1 = $("<div id='class_1'>")
++    div_1.append($.add_divs("goods_category","form_input","商品分类*"),
++        $.add_divs("goods_title","form_input","商品标题*","text-area","100"),
++		$.add_divs("packing_list","form_input","包装清单","text-area-2","1000"),
++		$.add_divs("after_service","form_input","售后服务","text-area-2","1000"));
++	let div_2 = $("<div id='class_2' class='Rich-text'></div>");
++	let div_3 = $("<div id='class_3' class='goods-spec'></div>");
++	//div_3.append($.goods_spec());
++	let div_4 = $("<div id='class_4' class='goods-sku'></div>");
++    div_4.append($.goods_sku());
++	form.append(div_1,div_2,div_3,div_4);
++	/*分类下拉选择器*/
++
++
++	form.ready(function(){
++
++		let names = $("[name]");
++		for (let i=0;i<names.length;i++) {
++
++			if (names.eq(i).length>0) {
++				if (names.eq(i).val().length===0) {
++					names.eq(i).prev(".item_tip").removeClass("item_tip_focus item_tip_val");
++				}else {
++					names.eq(i).prev(".item_tip").addClass("item_tip_focus item_tip_val");
++				}
++			}
++		}
++
++		$("#goods_category").click(function() {
++		    let t=$(this).parent();
++		    if (t.find("ul").length !== 0){
++		        t.find("ul").remove();
++            }else {
++		        let div=$("<div class='category-select'>")
++               div.append($.ajax_cate(1));
++		        t.append(div);
++            }
++
++		})
++
++		/* 添加富文本编辑器 */
++		const E = window.wangEditor;
++		const editor = new E('#goods-info #class_2')
++		editor.config.uploadImgShowBase64 = true;
++		editor.create();
++		//console.log($("#goods-info #class_2"))
++		$(".form_input").blur(function() {
++	        blurInputLoginBox($(this))
++	    })
++	    $(".form_input").focus(function(){
++	        focusInputLoginBox($(this))
++	    })
++		/*文本域字数限制*/
++		$("textarea").on("input",function(){
++			limit($(this));
++		}) 
++		$("textarea").ready(function(){
++			let t = $("textarea");
++			for(let i=0;i<t.length;i++){
++				limit(t.eq(i))
++			}
++		});
++	
++	})
+ }
+-
++//商品内容栏
++$.goods_add = function (div) {
++	
++    let strong =$("p.header-radius.editing-now").children().eq(0).text();
++	if (strong==='1'){
++        div.children().hide();
++		div.children("#class_1").show();
++    }
++    if (strong==='2'){
++		div.children().hide();
++		div.children("#class_2").show();
++    }
++    if (strong==='3'){
++		div.children().hide();
++		div.children("#class_3").show();
++    }
++    if (strong==='4'){
++		div.children().hide();
++		div.children("#class_4").show();
++    }
++}
++//字数限制和显示
++function limit(t){
++	let a = t.val().length;
++	t.nextAll().children().eq(0).text(a);
++}
+ 
+ //状态子栏
+ $.add_li = function (text) {
+@@ -118,12 +326,11 @@
+ }
+ //添加商品搜索框
+ $.add_search = function () {
+-    let input_search = $("<input type='text' class='search-input'>")
++    let input_search = $("<input type='search' class='search-input'>")
+     let em_search = $("<em class='iconfont icon-search'>").click(function() {
+         alert("2");
+     });
+     let search = $("<div class='goods-search'>");
+-
+     search.append(input_search,em_search);
+     return search;
+ }
+Index: background/src/main/webapp/css/goods.css
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- background/src/main/webapp/css/goods.css	(revision 237bfc367a17a7d31427a5231de098139c10d74b)
++++ background/src/main/webapp/css/goods.css	(date 1607840280288)
+@@ -12,4 +12,4 @@
+ .goods-top .goods-search:hover .icon-search{color: cornflowerblue;}
+ .goods-search .search-input{width: 260px;height: 28px;border: none;line-height:28px \9;margin-left: 10px;}
+ .goods-search .search-input:hover{border: none;}
+-.goods-info{height: 400px;background-color: #3eaf7c;}
+\ No newline at end of file
++.goods-info{height: 400px;background-color: #3eaf7c;overflow-y: auto;}
+\ No newline at end of file
+Index: .idea/sonarlint/issuestore/index.pb
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/sonarlint/issuestore/index.pb	(revision 237bfc367a17a7d31427a5231de098139c10d74b)
++++ .idea/sonarlint/issuestore/index.pb	(date 1608018282588)
+@@ -50,4 +50,42 @@
+ X
+ (background/src/main/webapp/css/goods.css,7\5\75f482912c9dfd555850084f638e23450e30287b
+ V
+-&background/src/main/webapp/js/goods.js,f\3\f325186b33a595ce7006b1bcd5f64063391a58ae
+\ No newline at end of file
++&background/src/main/webapp/js/goods.js,f\3\f325186b33a595ce7006b1bcd5f64063391a58ae
++}
++Mbackground/src/main/webapp/css/__at.alicdn.com_t_font_2053327_4knfwpdusg8.css,8\2\82320f032cf92ae5604545cbb559b93fc9991861
++X
++(background/target/background/js/aside.js,7\a\7af6c2b15cb27c486273d02b89fce31f01698330
++z
++Jbackground/target/background/WEB-INF/classes/com/mapper/CategoryMapper.xml,2\4\24c2fb36467f032cb2d84f98dc0471a4f35df7a0
++g
++7background/target/classes/com/mapper/CategoryMapper.xml,9\6\9694943bec4e43d2424fc903ac028474981d7614
++W
++'background/target/background/index.html,a\8\a83d19038b557a57131ffa9ac879adbab2256b1b
++S
++#.idea/sonarlint/issuestore/index.pb,9\f\9fe84ebb15faf917b7def6236dba604453cc61e0
++b
++2background/src/main/webapp/jquery/jquery-ui.min.js,1\0\10b6bb46421ec6cb7d624d44e7f2265f8f19c04b
++Y
++)background/target/background/css/main.css,c\f\cfa7cbbc0e180403fc353e98edcc7090cffcb5e4
++o
++?background/target/background/WEB-INF/classes/mybatis-config.xml,7\b\7bca41d108502edcc66476461e51e3efb89c5185
++\
++,background/target/classes/mybatis-config.xml,e\6\e66e6e137ae3e905a28b9f82d996f51bad63ecd7
++X
++(background/target/background/css/pop.css,d\4\d42834dd5a00812dbfe6a1bafd1ee9aa6239223f
++k
++;background/src/main/resource/com/mapper/SpecGroupMapper.xml,5\8\58dd25d660ce99dac1acd0b45cb6380e340be72e
++{
++Kbackground/target/background/WEB-INF/classes/com/mapper/SpecGroupMapper.xml,4\4\445b9aecb551838002d276bed51108635486ee4e
++h
++8background/target/classes/com/mapper/SpecGroupMapper.xml,a\7\a7cfe8266712f4a7948933b2a6fa143f3db7edb9
++k
++;background/src/main/resource/com/mapper/SpecParamMapper.xml,2\3\23ce2b513fe26367108845a38f8bf95bd4f7f77b
++r
++Bbackground/target/background/WEB-INF/classes/springMVC-servlet.xml,3\6\364359433f50e4f0669bb3b0b86880e3820b0b2c
++_
++/background/target/classes/springMVC-servlet.xml,2\9\296dd573975eada8f0aebb059de19d0fb18184d7
++X
++(background/src/main/webapp/css/aside.css,6\c\6cfb0232fde3790f41e5d683e79055ca6724f474
++Z
++*background/src/main/webapp/WEB-INF/web.xml,4\0\4082624eb72251cdfd67637262ecb1d0fde0fd4b
+\ No newline at end of file
+Index: background/src/main/java/com/action/MainAction.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- background/src/main/java/com/action/MainAction.java	(revision 237bfc367a17a7d31427a5231de098139c10d74b)
++++ background/src/main/java/com/action/MainAction.java	(date 1607839968951)
+@@ -2,11 +2,14 @@
+ 
+ import com.alibaba.fastjson.JSON;
+ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
++import com.baomidou.mybatisplus.extension.activerecord.Model;
+ import com.pojo.GoodsCategory;
+ import com.service.CategoryService;
+ import org.springframework.beans.factory.annotation.Autowired;
++import org.springframework.stereotype.Controller;
+ import org.springframework.stereotype.Service;
+ import org.springframework.web.bind.annotation.RequestMapping;
++import org.springframework.web.bind.annotation.RequestParam;
+ import org.springframework.web.bind.annotation.ResponseBody;
+ 
+ import javax.servlet.http.HttpServletRequest;
+@@ -20,18 +23,18 @@
+  *
+  *
+  */
+-@Service
+-@RequestMapping(value = "/main.do",produces = "application/json; charset=utf-8")
++@Controller
++@RequestMapping(value = "main")
+ public class MainAction {
+ 
+-    @Autowired
+-    private HttpServletRequest request;
+     @Autowired
+     private CategoryService categoryService;
+ 
+-    /*查询所有分类*/
++    /**
++     * 查询所有分类
++     * */
+     @ResponseBody
+-    @RequestMapping(params = "p=category")
++    @RequestMapping("category")
+     public String category(){
+         QueryWrapper<GoodsCategory> queryWrapper = new QueryWrapper<>();
+         queryWrapper.eq("category_status",1);
+@@ -39,9 +42,12 @@
+         return JSON.toJSONString(list);
+     }
+ 
+-    //根据父分类查询；
++    /**根据父分类查询；
++     *
++     * @return
++     */
+     @ResponseBody
+-    @RequestMapping(params = "p=categoryParent")
++    @RequestMapping("categoryParent")
+     public String parent(){
+         QueryWrapper<GoodsCategory> queryWrapper = new QueryWrapper<>();
+         queryWrapper.eq("category_status",1);
+@@ -49,21 +55,19 @@
+         return JSON.toJSONString(list);
+     }
+ 
+-    //修改分类信息；
++    /**
++     * 修改分类信息；
++     */
+     @ResponseBody
+-    @RequestMapping(params = "p=categoryUpdate")
+-    public String categoryUpdate(){
+-        int id = Integer.parseInt(request.getParameter("id"));
+-        String name = request.getParameter("name");
+-        int parent;
++    @RequestMapping("categoryUpdate")
++    public String categoryUpdate(@RequestParam("id") Integer id,
++                                 @RequestParam("parent") Integer parent,
++                                 @RequestParam("name") String name){
+         int level;
+-        if (request.getParameter("parent")==null
+-                ||"".equals(request.getParameter("parent").trim())
+-            ||"0".equals(request.getParameter("parent"))){
++        if (parent == null){
+             parent = 0;
+             level = 1;
+         }else {
+-            parent = Integer.parseInt(request.getParameter("parent"));
+             level = level(parent);
+         }
+         QueryWrapper<GoodsCategory> queryWrapper = new QueryWrapper<>();
+@@ -76,23 +80,20 @@
+         return n+"";
+     }
+ 
+-    //添加分类；
++    /**
++     * 添加分类
++     * */
+     @ResponseBody
+-    @RequestMapping(params = "p=categoryInsert")
+-    public String categoryInsert(){
+-        String name = request.getParameter("name");
++    @RequestMapping("categoryInsert")
++    public String categoryInsert(@RequestParam("name") String name, @RequestParam("parent") Integer parent){
+         if (name == null||"".equals(name.trim())){
+             return 3+"";
+         }
+-        int parent;
+         int level;
+-        if (request.getParameter("parent")==null
+-                ||"".equals(request.getParameter("parent").trim())
+-                ||"0".equals(request.getParameter("parent"))){
++        if (parent==null){
+             parent = 0;
+             level = 1;
+         }else {
+-            parent = Integer.parseInt(request.getParameter("parent"));
+             level = level(parent);
+         }
+         QueryWrapper<GoodsCategory> queryWrapper = new QueryWrapper<>();
+@@ -116,34 +117,54 @@
+         return n+"";
+     }
+ 
+-    //修改分类状态；
++    /**
++     * 修改分类状态
++     * */
+     @ResponseBody
+-    @RequestMapping(params = "p=categoryDelete")
+-    public String categoryDelete(){
+-        int id = Integer.parseInt(request.getParameter("id"));
+-        int n = categoryService.delete(id);
+-        return n+"";
++    @RequestMapping("/categoryDelete")
++    public String categoryDelete(@RequestParam Integer id){
++        return categoryService.delete(id)+"";
+     }
+ 
+-    //查询分类名是否存在；
++    /**
++     * 查询分类名是否存在；
++     * */
+     @ResponseBody
+-    @RequestMapping(params = "p=selectName")
+-    public String selectName(){
++    @RequestMapping("/selectName")
++    public String selectName(HttpServletRequest request){
+         String name = request.getParameter("name");
+         String id = request.getParameter("id");
+         QueryWrapper<GoodsCategory> queryWrapper = new QueryWrapper<>();
+         queryWrapper.eq("category_name",name)
+                 .eq("category_status",1);
+-        int n;
++
+         if (id!=null){
+             int cid = Integer.parseInt(id);
+             queryWrapper.ne("category_id",cid);
+         }
+-        n = categoryService.selectName(queryWrapper);
+-        return n+"";
++        return categoryService.selectName(queryWrapper)+"";
+     }
++    /**
++     * 查询第一层的分类
++     *
++     * */
++    @ResponseBody
++    @RequestMapping("/categoryLevel")
++    public String findNameLevel(@RequestParam("level") Integer level,HttpServletRequest request){
++        String parentId = request.getParameter("parent");
++        QueryWrapper<GoodsCategory> queryWrapper = new QueryWrapper<>();
++        queryWrapper.eq("category_level",level)
++                .eq("category_status",1);
++        if (parentId != null) {
++            queryWrapper.eq("parent_id",parentId);
++        }
+ 
+-    //查看分类层级；
++        List<GoodsCategory> list = categoryService.findlevel(queryWrapper);
++        return JSON.toJSONString(list);
++    }
++    /**
++     * 查看分类层级
++     * */
+     public int level(int parent){
+         QueryWrapper<GoodsCategory> queryWrapper = new QueryWrapper<>();
+         queryWrapper.eq("category_id",parent);
+@@ -151,7 +172,9 @@
+         return goodsCategory.getCategoryLevel()+1;
+     }
+ 
+-    //对于分类进行父类与子类分开；
++    /**
++     * 对于分类进行父类与子类分开；
++     * */
+     private List<GoodsCategory> categoryList(List<GoodsCategory> all){
+         List<GoodsCategory> list = new ArrayList<GoodsCategory>();
+         Map<Integer,GoodsCategory> map = new HashMap<Integer, GoodsCategory>();
+Index: background/src/main/java/com/action/SpecAction.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- background/src/main/java/com/action/SpecAction.java	(revision 237bfc367a17a7d31427a5231de098139c10d74b)
++++ background/src/main/java/com/action/SpecAction.java	(date 1607245211355)
+@@ -7,9 +7,12 @@
+ import com.pojo.SpecParam;
+ import com.service.SpecGroupService;
+ import com.service.SpecParamService;
++import org.apache.ibatis.annotations.Param;
+ import org.springframework.beans.factory.annotation.Autowired;
+ import org.springframework.stereotype.Service;
++import org.springframework.web.bind.annotation.PathVariable;
+ import org.springframework.web.bind.annotation.RequestMapping;
++import org.springframework.web.bind.annotation.RequestParam;
+ import org.springframework.web.bind.annotation.ResponseBody;
+ 
+ import javax.servlet.http.HttpServletRequest;
+@@ -19,12 +22,9 @@
+  * @author zengkan
+  */
+ @Service
+-@RequestMapping(value = "/spec.do")
++@RequestMapping("/spec")
+ public class SpecAction {
+ 
+-    @Autowired
+-    private HttpServletRequest request;
+-
+     @Autowired
+     private SpecGroupService specGroupService;
+ 
+@@ -33,21 +33,20 @@
+ 
+     //查询分类名下的所有规格组；
+     @ResponseBody
+-    @RequestMapping(params = "p=findSpec")
+-    public String findID(){
+-        int cid = Integer.parseInt(request.getParameter("cid"));
++    @RequestMapping("/findSpec")
++    public String findID(@RequestParam("cid") Integer cid){
++        System.out.println(cid);
+         QueryWrapper<SpecGroup> queryWrapper = new QueryWrapper<>();
+         queryWrapper.eq("cid",cid)
+-                .eq("status",1);
++               .eq("status",1);
+         List<SpecGroup> list = specGroupService.findCID(queryWrapper);
+         return JSON.toJSONString(list);
+     }
+ 
+     //改变规格组状态并改变子规格状态；
+     @ResponseBody
+-    @RequestMapping(params = "p=specGroupDelete")
+-    public String deleteId(){
+-        int id = Integer.parseInt(request.getParameter("id"));
++    @RequestMapping("specGroupDelete")
++    public String deleteId(@RequestParam("id") Integer id){
+         SpecGroup specGroup = specGroupService.findId(id);
+         specGroup.setStatus(0);
+         int n = specGroupService.deleteId(specGroup);
+@@ -57,11 +56,10 @@
+ 
+     //增加某个分类下的规格组；
+     @ResponseBody
+-    @RequestMapping(params = "p=addSpecGroup")
+-    public String addSpec(){
+-        String name = request.getParameter("name");
++    @RequestMapping("addSpecGroup")
++    public String addSpec(@RequestParam("name") String name, @RequestParam("cid") Integer cid){
++
+         int id = specGroupService.maxID()+1;
+-        int cid = Integer.parseInt(request.getParameter("cid"));
+         int n = 0;
+         QueryWrapper<SpecGroup> queryWrapper = new QueryWrapper<SpecGroup>();
+         queryWrapper.eq("name",name).eq("cid",cid);
+@@ -82,42 +80,34 @@
+ 
+     //修改规格组信息；
+     @ResponseBody
+-    @RequestMapping(params = "p=updateSpecGroup")
+-    public String updateSpec(){
+-        String name = request.getParameter("name");
+-        int id = Integer.parseInt(request.getParameter("id"));
++    @RequestMapping("/updateSpecGroup")
++    public String updateSpec(@RequestParam("name") String name, @RequestParam("id") Integer id){
+         SpecGroup specGroup = specGroupService.findId(id);
+         specGroup.setName(name);
+-        int n = specGroupService.updateId(specGroup);
+-        return n+"";
++        return specGroupService.updateId(specGroup)+"";
+     }
+ 
+     //查询规格组名称是否存在；
+     @ResponseBody
+-    @RequestMapping(params = "p=GroupName")
+-    public String GroupName(){
+-        String name = request.getParameter("name");
+-        String id = request.getParameter("id");
+-        int cid = Integer.parseInt(request.getParameter("cid"));
++    @RequestMapping("/GroupName")
++    public String GroupName(@RequestParam("name") String name,
++                            @RequestParam("id") Integer id,
++                            @RequestParam("cid") Integer cid){
+         QueryWrapper<SpecGroup> queryWrapper = new QueryWrapper<>();
+         queryWrapper.eq("name",name)
+                 .eq("cid",cid)
+                 .eq("status",1);
+-        int n=0;
+         if (id!=null){
+-            int gid = Integer.parseInt(id);
+-            queryWrapper.ne("id",gid);
++            queryWrapper.ne("id",id);
+         }
+-        n = specGroupService.selectName(queryWrapper);
+-        return n+"";
++        return specGroupService.selectName(queryWrapper)+"";
+     }
+ 
+     //查询分类和规格组下的规格；
+     @ResponseBody
+-    @RequestMapping(params = "p=specParam")
+-    public String findSpecParam(){
+-        int cid = Integer.parseInt(request.getParameter("cid"));
+-        int gid = Integer.parseInt(request.getParameter("gid"));
++    @RequestMapping("specParam")
++    public String findSpecParam(@RequestParam("cid") Integer cid,
++                                @RequestParam("gid") Integer gid){
+         QueryWrapper<SpecParam> queryWrapper = new QueryWrapper<>();
+         queryWrapper.eq("cid",cid)
+                 .eq("group_id",gid)
+@@ -128,12 +118,11 @@
+ 
+     //添加相应分类和规格组下的规格；
+     @ResponseBody
+-    @RequestMapping(params = "p=addSpecParam")
+-    public String insertSpecParam(){
+-        int cid = Integer.parseInt(request.getParameter("cid"));
+-        int gid = Integer.parseInt(request.getParameter("groupId"));
+-        String name = request.getParameter("name");
+-        int generic = Integer.parseInt(request.getParameter("generic"));
++    @RequestMapping("addSpecParam")
++    public String insertSpecParam(@RequestParam("cid") Integer cid,
++                                  @RequestParam("groupId") Integer gid,
++                                  @RequestParam("name") String name,
++                                  @RequestParam("generic") Integer generic){
+         QueryWrapper<SpecParam> queryWrapper = new QueryWrapper<>();
+         queryWrapper.eq("name",name)
+                 .eq("cid",cid)
+@@ -158,47 +147,42 @@
+ 
+     //修改规格信息；
+     @ResponseBody
+-    @RequestMapping(params = "p=updateSpecParam")
+-    public String updateSpecParam(){
+-        String name = request.getParameter("name");
+-        int generic = Integer.parseInt(request.getParameter("generic"));
+-        int id = Integer.parseInt(request.getParameter("id"));
++    @RequestMapping("updateSpecParam")
++    public String updateSpecParam(@RequestParam("name") String name,
++                                  @RequestParam("generic") Integer generic,
++                                  @RequestParam("id") Integer id){
+         SpecParam specParam= specParamService.findId(id);
+         specParam.setName(name);
+         specParam.setGeneric(generic);
+-        int n = specParamService.updateId(specParam);
+-        return n+"";
++        return specParamService.updateId(specParam)+"";
+     }
+ 
+     //修改规格的状态；
+     @ResponseBody
+-    @RequestMapping(params = "p=specParamDelete")
+-    public String paramDeleteId(){
+-        int id = Integer.parseInt(request.getParameter("id"));
++    @RequestMapping("specParamDelete")
++    public String paramDeleteId(@RequestParam("id") Integer id){
+         SpecParam specParam = specParamService.findId(id);
+         specParam.setStatus(0);
+-        int n = specParamService.deleteId(specParam);
+-        return n+"";
++        return specParamService.deleteId(specParam)+"";
+     }
+ 
+     //查询规格名是否存在；
+     @ResponseBody
+-    @RequestMapping(params = "p=ParamName")
+-    public String ParamName(){
+-        int gid = Integer.parseInt(request.getParameter("gid"));
+-        String name = request.getParameter("name");
+-        String id = request.getParameter("id");
+-        int cid = Integer.parseInt(request.getParameter("cid"));
++    @RequestMapping("ParamName")
++    public String ParamName(@RequestParam Integer gid,
++                            @RequestParam String name,
++                            @RequestParam Integer id,
++                            @RequestParam Integer cid){
+         QueryWrapper<SpecParam> queryWrapper = new QueryWrapper<>();
+         queryWrapper.eq("name",name)
+                 .eq("cid",cid)
+                 .eq("group_id",gid)
+                 .eq("status",1);
+-        int n=0;
++
+         if (id!=null){
+-            queryWrapper.ne("id",Integer.parseInt(id));
++            queryWrapper.ne("id",id);
+         }
+-        n = specParamService.selectName(queryWrapper);
+-        return n+"";
++
++        return specParamService.selectName(queryWrapper)+"";
+     }
+ }
+Index: background/src/main/java/com/service/CategoryService.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- background/src/main/java/com/service/CategoryService.java	(revision 237bfc367a17a7d31427a5231de098139c10d74b)
++++ background/src/main/java/com/service/CategoryService.java	(date 1607247353220)
+@@ -18,8 +18,9 @@
+     private CategoryMapper categoryMapper;
+ 
+     public List<GoodsCategory> findAll(QueryWrapper<GoodsCategory> queryWrapper){
++        System.out.println(categoryMapper.selectList(queryWrapper));
+         return categoryMapper.selectList(queryWrapper);
+-    }
++    } 
+ 
+     public GoodsCategory select(QueryWrapper queryWrapper){
+         return categoryMapper.selectOne(queryWrapper);
+@@ -53,4 +54,8 @@
+     public int updateName(String name, int parent, int level) {
+         return categoryMapper.updateName(name, parent, level);
+     }
++
++    public List<GoodsCategory> findlevel(QueryWrapper<GoodsCategory> queryWrapper) {
++        return categoryMapper.selectList(queryWrapper);
++    }
+ }
+Index: background/target/background/css/pop.css
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- background/target/background/css/pop.css	(revision 237bfc367a17a7d31427a5231de098139c10d74b)
++++ background/target/background/css/pop.css	(date 1607842194446)
+@@ -5,12 +5,11 @@
+ #pop .pop-box .pop-top,#pop-2 .pop-box .pop-top{height: 40px;background: cornflowerblue;box-shadow: 0 2px 5px 2px; }
+ #pop .pop-top .top-text,#pop-2 .pop-top .top-text{font-size: 16px;line-height: 40px;padding-left: 20px;color: #FFFFFF;}
+ #pop .pop-box .icon-guanbi,#pop-2 .pop-box .icon-guanbi{cursor: pointer;position: absolute;right: 10px;top: 10px;color: #FFFFFF;}
+-#pop .pop-box .pop-main,#pop-2 .pop-box .pop-main{margin: 10px;width: 880px;height: 580px;border: 1px solid #e5e5e5;position: absolute;top: 40px;display: table-cell;vertical-align: middle;overflow-y: auto;}
++#pop .pop-box .pop-main,#pop-2 .pop-box .pop-main{margin: 10px;width: 880px;height: 580px;border: 1px solid #e5e5e5;position: absolute;top: 40px;display: flex;flex-direction: column;vertical-align: middle;}
+ #pop .pop-main .input-box,#pop-2 .pop-main .input-box{padding: 50px;vertical-align: middle;text-align: center;font-size: 16px;}
+ #pop .input-box label,#pop-2 .input-box label{font-size: 16px;vertical-align: middle;height: 24px;}
+ #pop .input-box .form-text,#pop-2 .input-box .form-text{width: 200px;border-bottom: 1px solid silver; margin: 20px;font-size: 20px; vertical-align: middle;}
+ #pop .input-box .form-radio,#pop-2 .input-box .form-radio{font-size: 20px;vertical-align: middle;height: 24px;}
+-.input_div label{margin-right: 40px;}
+ #pop .input-box span,#pop-2 .input-box span{font-size: 12px;color: red;}
+ #pop .pop-box .pop-bottom,#pop-2 .pop-box .pop-bottom,#pop-goods .pop-box .pop-bottom{height: 60px;width:100%;position: absolute;bottom: 0;background-color: #FFFFFF;box-shadow: 0 -1px 5px;}
+ #pop .button,#pop-2 .button{height: 40px;width:100px;position:absolute;top:10px;color:#FFFFFF;border-radius: 10px;box-shadow:0 2px 3px 1px #666666;background-color: #2c3c50;cursor: pointer;transition: all .3s ease-in-out;}
+@@ -18,14 +17,47 @@
+ #pop .pop-bottom #empty-button:hover{background-color: deepskyblue;}
+ #pop .pop-bottom #submit-button,#pop-2 .pop-bottom #button-two{right: 38%;}
+ #pop .pop-bottom #submit-button:hover{background-color: deepskyblue;}
+-#pop-2 .pop-bottom .button,#pop-2 .pop-bottom .button{background-color: dodgerblue;}
+-#pop-2 .pop-bottom .button:hover,#pop-2 .pop-bottom .button:hover{background-color: deepskyblue;}
++#pop-2 .pop-bottom .button{background-color: dodgerblue;}
++#pop-2 .pop-bottom .button:hover{background-color: deepskyblue;}
+ #pop-2 .main-header{width: 100%;height: 60px;text-align: center;display: flex;justify-content: center;border-bottom: 1px solid #e5e5e5;box-shadow: 1px 0 2px}
+ #pop-2 .main-header .header-li{position: relative;display: inline-block;width: 200px;margin-left: 40px;}
+ #pop-2 .header-li .header-line{border-top: 1px solid #e5e5e5;border-bottom: 1px solid #e5e5e5;width: 116px;display: inline-block;position: absolute;top: 30px;left: 116px;}
+ #pop-2 .header-li .header-li-box{display: table-cell;width: 130px;font-size: 14px;height: 60px;vertical-align: middle;line-height: 60px;position: relative;transition: all .3s ease-in-out;color: #a2a2a4;}
+ #pop-2 .header-li .header-li-box .header-radius{position: absolute;display:inline-block;height: 22px;width: 22px;border-radius: 50%;font-size: 16px;background-color: #a2a2a4;top: 20px;color: #FFFFFF;line-height: 22px;}
+ #pop-2 .header-li .header-li-box .header-text{margin-left: 30px;}
++#pop-2 .pop-main .pop-main-content{width: 100%;overflow-y: auto;}
++/*文本输入*/
++#pop-2 .pop-main .div-text{position: relative;width: 340px;margin-left: 60px;margin-top: 20px;background-color: #FFFFFF;font-size: 14px;border-bottom: 2px solid #e5e5e5;}
++#pop-2 .pop-main .div-text:hover{border-bottom:2px solid cornflowerblue;}
++#pop-2 .pop-main .div-text.text-area{width: 680px;height: 80px;}
++#pop-2 .pop-main .div-text.text-area-2{width: 680px;height: 102px;}
++#pop-2 .pop-main .div-text .text-title{margin-left: 10px;}
++.item_tip {background-color: #fff;color: #999;font-size: 16px;left: 12px;padding: 0 3px;position: relative;top: 25px;transition: all .2s ease-in-out;width: 4%;}
++.form_input {font-size:16px;padding:9px 10px;width:278px;outline:none;}
++.Error-prompt{position: absolute;display: inline-block;font-size: 16px;text-align: center;width: 100px;right: -100px;color:red;line-height: 28px;height: 28px;}
++.item_tip_focus {font-size:16px;top:8px;}
++.item_tip_val{color: #999999;}
++.item_tip_color{color:cornflowerblue;}
++.Rich-text{margin: 20px;font-size: 20px;color: #000000;}
++/*弹窗中的下拉弹窗*/
++.div-text>.category-select{
++    position: absolute;
++    display: flex;
++    align-items: flex-start;
++    z-index: 20;
++    top: 70px;
++    left: 20px;
++    min-height: 80px;
++    overflow-y: auto;
++    background-color: #FFFFFF;
++    border: 1px solid silver;
++    box-shadow: 0 1px 3px rgba(18,18,18,.1);
++}
++.category-select>.category-select-item{
++    padding-left: 20px;
++    border: 1px solid deepskyblue;
++    overflow-y: auto;
++}
+ /*正在编辑*/
+ #pop-2 .header-li .header-li-box.editing-now{color: #000000;}
+ #pop-2 .header-li .header-li-box .header-radius.editing-now{background-color: dodgerblue;color: #FFFFFF;}
+Index: background/target/background/css/main.css
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- background/target/background/css/main.css	(revision 237bfc367a17a7d31427a5231de098139c10d74b)
++++ background/target/background/css/main.css	(date 1606307627255)
+@@ -1,4 +1,4 @@
+-*{margin: 0;padding: 0;border: 0;font: inherit;font-size: 100%;vertical-align: baseline;}
++*{margin: 0;padding: 0;border: none;font: inherit;font-size: 100%;vertical-align: baseline;}
+ body{font: 12px Consolas,"Microsoft YaHei",sans-serif;color: #666;-webkit-font-smoothing: antialiased;text-rendering: optimizeLegibility;}
+ h1,h2,h3,h4,h5,h6{font-size: 100%;font-variant: normal;}
+ a,a:hover,a:visited,a:link,a:active{background: none;text-decoration: none;}
+Index: background/target/background/index.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- background/target/background/index.html	(revision 237bfc367a17a7d31427a5231de098139c10d74b)
++++ background/target/background/index.html	(date 1606907640989)
+@@ -11,6 +11,7 @@
+     <link rel="stylesheet" type="text/css" href="css/goods.css"/>
+     <script type="text/javascript" src="jquery/jquery-3.4.1.min.js"></script>
+     <script type="text/javascript" src="jquery/jquery-ui.min.js"></script>
++	<script src="jquery/wangEditor.min.js" type="text/javascript" charset="utf-8"></script>
+ </head>
+ <body>
+ <div id="ground">
+Index: background/target/background/js/aside.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- background/target/background/js/aside.js	(revision 237bfc367a17a7d31427a5231de098139c10d74b)
++++ background/target/background/js/aside.js	(date 1607239945320)
+@@ -1,4 +1,8 @@
+ !function (e,t) {
++	$.ajaxSetup({
++		contentType:'application/json',
++		dataType : "json",
++	})
+ 	const id_one = $("#top-one");
+ 	const id_two = $("#top-two");
+ 	const parent = $(".main-content").eq(0);
+Index: background/src/main/webapp/index.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- background/src/main/webapp/index.html	(revision 237bfc367a17a7d31427a5231de098139c10d74b)
++++ background/src/main/webapp/index.html	(date 1606907640989)
+@@ -11,6 +11,7 @@
+     <link rel="stylesheet" type="text/css" href="css/goods.css"/>
+     <script type="text/javascript" src="jquery/jquery-3.4.1.min.js"></script>
+     <script type="text/javascript" src="jquery/jquery-ui.min.js"></script>
++	<script src="jquery/wangEditor.min.js" type="text/javascript" charset="utf-8"></script>
+ </head>
+ <body>
+ <div id="ground">
+Index: background/src/main/java/com/pojo/SpecParam.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- background/src/main/java/com/pojo/SpecParam.java	(revision 237bfc367a17a7d31427a5231de098139c10d74b)
++++ background/src/main/java/com/pojo/SpecParam.java	(date 1606303463178)
+@@ -15,7 +15,7 @@
+   private long id;
+   @TableField(value = "cid")
+   private long cid;
+-  @TableField(value = "groupId")
++  @TableField(value = "group_id")
+   private long groupId;
+   @TableField(value = "name")
+   private String name;
+diff --git .idea/sonarlint/issuestore/8/9/8993b1c00b4257961a72d26fda4a91c9e571858e .idea/sonarlint/issuestore/8/9/8993b1c00b4257961a72d26fda4a91c9e571858e
+index 54a6afef7fd42cfdd356f42cb43c095e85179756..5a693cf6d2ce7090869e31befeff3357345660ed
+GIT binary patch
+literal 764
+zc$~G7v1=4T6vjE!h+C$*@-a=;W-u3#JrNtNL_zLAu+q8Ncbn0jeap=3o!g3vl1i~L
+zq)90n5?iCKg@TRPC>93)1+lyM?s8|i#zq_%hMD2L@B4i(a*NR|HBe`}%ggOnGZt4b
+zV&4=93N#fys3L&j6IBY-hqNklqg60P24U5B$W1_}auEE88M*of*M!OoI1RyA^fLZ+
+zceFj)=haBwudjXmCZn5&nysW6i3=UHG{A$7RZ)3N!Pt^qfF*L7^rd6LzEc*5<Zes0
+z<B&pKqU@p@7>!FZe)D?s%hBY)*80=$G8)blTCMg<bGsp~cd*Qr9&7OCO7JCW)1Sal
+z!Hfs$6KGfIKn}FZa~PViIw?wxvQ%&iB?FJYV{z`hI4R?e`=54?&(O?VoR`Gqe~r_m
+z0#;^GKHqrz`A>@Tj6468@zJY$y9>$Y=-r1s8PVMMj)~4+#;3{3o+4{fs-&%Z?8KLO
+z<t5$;Sa`N2l@4aW1J&eGd4*EUd767$k9QW5XD|1k{E*SL#S>G(Q)ikF8=`#(I#%>J
+j&azu`tX5JLfQ?UY=p6KFPCutCLnq@GYaf3enfCn+#?2fb
+
+diff --git .idea/sonarlint/issuestore/4/1/41a5753d2ed535bb19458f2cb78da49bc2594dcd .idea/sonarlint/issuestore/4/1/41a5753d2ed535bb19458f2cb78da49bc2594dcd
+index f9e57d02ad4cd7e62dd95dd72739080eaadb0b30..da13894996be072ea5c922b675afed92b982a97d
+GIT binary patch
+literal 71
+zc%0*M72?WDEK9TsHa0ggkPuPQ4=Bnn%S=gCD9K1wC`c?y%uOvR%B)IFQ7EY_NL5J7
+ZF9OPB7AvHu=A{;8ChKYZxHWklI{+E97}fv)
+
+diff --git .idea/sonarlint/issuestore/3/8/389fd6f3e66c3fea852d095aa5cf38d83fa6c688 .idea/sonarlint/issuestore/3/8/389fd6f3e66c3fea852d095aa5cf38d83fa6c688
+index 53397ecfd52cfba7c72a611b0ff0d1271cdf02dc..547119c8fe6f9835bac2802ea7a9aab96a2c66cc
+GIT binary patch
+literal 1036
+zc$}@1O=uHA6o3g>#RV@p<v0vtQXxZ{h$JFXf1r91O{ky}%VhUuGj(@oIy0Lz-aPbR
+zkAf$`i+E5%rM*atM@t0{ih5HIg5E^v$=a%QHrtrwQbAmpf%*HsH~ZdL&7?I=oAg*E
+zpDz_s<M?tJghy>ax?x&d08#>MR%bTVj0cDXW`!wa^FV1C+L}vbQ_n*!rW@Tu4x>H~
+z9K;1k8ZBq=@e_EIWaeHkyxmjWTDbG-1F`Bo@7P!=pPIqv&On_7fM`snfi^0off`U9
+zIic{n5d?0m_n0<x4`EmGP)sogqXN>*2SqXuHh(@&6j$$cB9AlV8O0O-=rLP$s4zOx
+zv#dP%{Ai@OHvjddu}t<Y`C@7W7s}xCCd7;|2o*Sp`GQN0(l+;r;M1H;aPFwnRD;W9
+zJ54fcFK&I?j=n^3{>%Ei_ry{|*aP_DE?6#IqJ%V&*Cq9##pQL<f*Pr@z#%jUxb7y9
+zT%fvfiAqLm9vJEJ*81wNSbDd!eftx!szXu>kN-tV1+^PMSk3U&fJqsZiNrWQcHS)g
+z!A}k0llasw_-NxSQ6QThXwuMHkh7+%#1mzh2|;Ni*m$@+x34FdOzz(i<c_8e;Znb#
+zBY}b_&y}`Gxleegktxuf5lD$@ZBrQ@cU_RCkd~gU?CoKBADc^6@%b_Y<~PSwA9RB|
+zD4yWRr`nF+f&@48s6;R;Bq$X<p!Bt?G<%~Obtkh|a@kV#@IiBhn@^uFZVcr?3<^7m
+O|8D%T`2GIopz$~QUWmW|
+
+diff --git background/target/background/WEB-INF/classes/com/pojo/SpecParam.class background/target/background/WEB-INF/classes/com/pojo/SpecParam.class
+index 0e39a54da3a3521653547a2ef613d399387f92ba..cec57ec9f37c200effa7efcd8422b18fa027536f
+GIT binary patch
+literal 1790
+zc$|%sYflqF6o$`i+bu1Xa%&Yu@q*eGVF3}98Vtdxkc!5dekIfGrVi=uHhUrQN112>
+zG4X>xz#nBiXLei2cAAi;XD(;ncb;>0_wT>oe*j<$>Uqe)W)3FcDTOTx&nRqDcuwI(
+z7G7pyhk+(K4A>!qh0mcA2-|82U$lGHp5wRy4}|OZ3|1SaYa4Cu+M?rzhW)LL8Nc5P
+zeS;6r8DBW+4mx!PnN!{iEe0u*+}E$Jek-gV8DzVj8}<)SJRxVt<db%|ji$4W6Mo8#
+z9(TG%Gw_7dl>*DLJYh1>eKZUaT7M-R5$qyGrP@OEzS}`{u^}AmD74#_CvPM_*W|qx
+z_XMru&2;cppvSyK@4F|i(d=91C+=~Z>g!qo!J#vDF5^e5bmfpP(lNPDyt*Gx^0@PE
+zP*C2#v_S0ONLDppsVeL82M0=((L7xz%?HIx^T8sAnP%LKoPROTH{H-PvDZ}S)Ud8K
+zvS(mi{b><coi0U-<34#5;5ytWKprLwP^2(JVGiaCP@-8GCb8k8J!LR`QQXJ&iDd?G
+z4`0(9zRx;nWC#ojxT5hI{-=E0)aa5+iRma&#Kep$F^dU=8BNS#qNGxkFi}<|%8~-B
+z#khbe14o8qruGZiPn>9QQ^M0`0dC1C55OYa#*x7tSQ?78SbPTB_k?&+DZY#SiNw2*
+z!XKWlEuDjQaW%CE@LUE@l0#Xp_1J-CQCAt<SAwLHAj?XS2WpU15~PBf>KKq>46>{Q
+zNhd*8l^_q*An7E?25L6PfXu`okKpmhb3KF1j|9lJ5~PB44nVZ%irUIKWRf5|sHu+u
+ziQZBMHDyQiWJg{rK~~fq(UTzisChF6q!f4Li4r861bMFnSyh8%lOPS$d>8`~eT5pV
+ONsTf59@nGqapOOT#{4?~
+
+diff --git background/target/classes/com/action/SpecAction.class background/target/classes/com/action/SpecAction.class
+index 136ecf4e846287ca180914625f0f5eaec49ff12e..a02b5f09f04aa0d2b6790117c2f27007493e21ab
+GIT binary patch
+literal 6642
+zc$}?QX?RrC8Gi4~P43KiV;~T4C@3OAfQh35(GX2#sWdc%Km>}~%FWCrUYyJfGk1X0
+ztt!@CE7sb&w{@v@L$QOE*4jne+I?^BzAv_a`nP>--|yTzTXI8b;mMP8&OOU_zVH3s
+z^PV%WzVX6~0G8qJF?3^J6gT2MG2Dck4crogj(rjINquVsx5aQf?ug=C+!@1NcyA1M
+zW54v>BcJb!VGiz<*8643eKC9hA2e`(4AZbriU%TiQ0j-IcvvPr5`iW4qf&gxz=y@e
+zJ}EvT#bZ)DE@Mwf@ni(s#FLN8`lljzT6XxD6d#x36H+{4;FB>V#7IJnB*aJppOWH$
+z6pu@BuS|VLif5%bD8+LIK5d|^VM;M?r`8s7rTmax*zKfj4JY@fa-+$j_n90TH{PQm
+zzNwUTol$#>Q*?$i_R4HF=UT3l%N8}9+n+0pB#ZfilO5Snutx1Yxxy96VcW_UlRK=G
+zn=6bZt?Gj0%95Mg;}q<4kMGK$#YIPOrGA`in$L5xj@zpt+_7kj27Prd&1J3qPSzeM
+zjSky|i!6Gmp{+lcvNBt&f+OF4r|w?v(B+wG6Z$3&$sQ|JQ>^cBvgy7x8Wwi+@3eMX
+z$&8g9N%m!3d&DmEEUN1pawT9c38$R2hG_xQHJH0fc42I5!OG|Df`;?ezQa~-)Jf+`
+z$<eW4Vp7a!O2uR<SFl-R(~g2QsTL+T)-9(wJ>wKz!shK&a-B@FpFJFz(HQMmz7p}!
+zv21ysTAa`A%+*NI)64A^jPqd9iCux@*kcbThY55&FE-i5JiV}2<<et4ld&pzAssKe
+z>*=wVkfz;Mro_;rNlB*oqhVenffc80*Df?L`G0X%?WxRg$4J`F&{`jP5E3#(t4B=3
+z^dM+7Xj%UEk+{{VYm^NQhL!f6?(Ue#x1(jHo~8eC3IfJ7OGC?$Yo)FrXo@FF8x9$G
+zo}x(B`X2ZZ#7g<J<=UQ4Q<AkWe>|${0kvQM(YbuIQN)sUwp%LcRIqDU5p+b4`qYj{
+zqK@b3@W^l!r=vD8TC7FW>X7^ew=TZRjxxUgpCr?R93ulq?5tgIQZ**{9vLH&4WW5!
+zjRpQ#OJ3?V)q~JljjclLsQU79`QKtY4%8XSl?o~QLPu1vwI=ds$XpE_foHu)Nw9M+
+z<uh5kahj46iir!b(!gg-ynw?7K5OE0cu_;oF%Zba=kXHnoFY}FROIP1@dbR*#0vBn
+z_>ze)<7ES{nD`35YT|2n)x_8F4HMtQw@kbp-!{>UHyikliSOcjywt{nu&U%_(z46<
+z@dFKz`iCZdgddyui5UASUNiAC{G2K=QKC%zLbmxOer4j<()x{T_**G{hnK|G@2Pu=
+z50^P<6Mw+VV)2h+@lWF|s>GZ4v)K8I6o19*63pMk;_DL3>l)ev?_?@YEv^m2JMEO)
+z(B*}yVd?~0G)^01YRS@YuEh229$}nZa*(TC+OQSzrv-GA^+FOiLs#1CS?f8|Bae`f
+zy^A+iz+k}iiCx@5-B=rT@E-5zTNL<`n0=%d8ZC%6u9k<(hK^%;WGtHawur05WSn7Z
+z*y4+>=<X~sMeBw(3{W84oHQy~SP%qI(CLg2(JkIJ&39a1<>5u$m?;PZUYXIN&78<l
+z;q}(BPJo};5j0ioO~9-1nc3>y*lPZ&G1*t=zO>jZFl6~XyD<|DM~cpL23&MUnjdj<
+z6_BQP1VYj@YVDN-#)@<;<$5}~>9}Nb9GCnH-P>VCKp=gBU=!gMU<}sY)b^m51vAcA
+zE!Sz7*9AlM%&XT>)*c7dq@<`pr3)1_TyTt`_bGZzj7<ecklnSFTTXpcZnkFc9-hc8
+z?{@Uej;E+MhEw^wu$w<NL;RzNL&JIeYG!@D>ZM+f>pOup?-iD-_?2W$rAE`@L(ra4
+zOIG`nfmv7sQE@c^Z^4DEHLS&35mt+zVy&}2>sf@Blo37*ecK^4txvQy^V4_<dRs()
+z9#OWpE`AQNL>VUxbUqLB02hVTMzgpTumA=Yq7@yOjYT*Oi}{OkiQ0Uzw}HR8wED1)
+zPPAek-iCg<o1km!F+h78I6i|t-q>JuY$L}6fj0JRVm-w57hM9ah|Sm{0SW|LrL#!u
+z8t;ZmfOq==c8m86silk)*C!ZHs~^skUN)wBBW;H<jp0w9Q$~B+j521HangY*qBH0U
+za5m9gim6z}z?b86bkzmfT@A7u+f<MyI&m>Bp@msE1()I-lLqq634v^5bs4sMfoLPF
+zBb>2c{4OJ|Z|@Cv>3+UeG{u|RW>qrQoT#KL-c-h$7+P0zd-KDXt}sZbP-l1PPh#0&
+z%;EBrR~T_)&W&Z95;tgLZrqSL{5~~q#C)XUMj7*DKLt>`J`N#WA+!P~vg}2Slx-nJ
+zXON^F^uCLuJ;bS>=xiqYE@gU#nWzjgDlpMkGx>tzCPuiKD+Dn^Vy)u29~M_=swMOZ
+zagUpckl@*Z8x^uT_q$3_s);*ZiWK{r6{Up#-q;|=((H*N^lwfy4De^n4g({aX5ez#
+zKXa1wI4V6eL$&l+jg;G2$rShTD3|aVCX^fK6kvVyq`$L_(*jv`B3FYbnA~tGH>j~I
+zQAHzBMI)hj7UJx=3bo1Db;Xg~7oue_>bw6MYa#kzg<E=Duj5wdcv(oi0+Tc5Gt$$y
+z)<qcC755fQq{+!Dx!Vz?6EhjeT&8Lv)3O9MkJX3@d70-!HRQo+$b){!(h@3!X=klU
+zyIxJU*E7f-Np=L<zp#w?odle$0%u-$QgG_hoI~En>5z}pav!IG&YET}OazGMR6^Gw
+zXa>k<j!x#$j$H(&KvgMH*4;WFmREsT?#rjNb}1kt)EEgr%r(tQNcF0adSiv^SdnAF
+zAh;74(pPKlVpYO!Uy2^3kr*c*Y*3#HF&aTofr|_+>S_*m86ra`DJ(>By~DA%%Xku-
+zrL&AB`u48KVI*j_b44^BZI4if&WJ~8JQ<G)r9_v`j7NQiIx8Ms;<e6>N2ygy)pkUD
+zS(j1KDkD&<))52X8dBw2lJMOm;dPjg>xt71)cAckhpN(#n~1>8r0Ojs&#ffNZ5YGt
+zoN)*L?!-N~3lH;(kv#1nBwI;4(WD4h^b*lMv`(0+xjR_R-9bNh(h_2aRckN%bgp^Y
+zSFt4h@Ko$<dM6rZ)KUCtm03^ES`c~z{UTx7KY3dQr+7@IxKj^I@w)=qzn9gORcW}-
+zr+l~1W+rdB5PFGZNB2{5W=#X8O2WDVWv)$0+WmC=0ZhY#n1hGv=w5%3R?dC5f+tkH
+zTt)a33gpQsedUqP_1?xKepU6wAcrOF%eVh7Sgu|SOX~t-tmhm-z8_<X9;bXip<<fr
+z*{hT9%Hv?J@;@|*|5pb-39cbwJx~9^TEyexhI3evo@N2xJBSmWa-E{tO>Of#8#UWI
+zsDa02o_c&7Anl&PNqCm8)`Ps3p5tqd@K6hT@q&uA*Yl_v>&1%bnrcZVL#pNFPg;FG
+p<v042uhDyB9le!;_fD?h*C?do9<vcphIqoIysm2C`UV3x{0DMEJcj@P
+
+diff --git background/target/background/WEB-INF/classes/com/action/SpecAction.class background/target/background/WEB-INF/classes/com/action/SpecAction.class
+index 136ecf4e846287ca180914625f0f5eaec49ff12e..a02b5f09f04aa0d2b6790117c2f27007493e21ab
+GIT binary patch
+literal 6642
+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
+
+diff --git background/target/classes/com/action/MainAction.class background/target/classes/com/action/MainAction.class
+index 57481919f8b36f79b88b8e714a4f8c10456ae71b..cde835315800dfe9baa0634a1aadd58ceb8262f3
+GIT binary patch
+literal 6753
+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
+NUE?tE{UuDi_P_H7qF(?2
+
+diff --git background/target/background/WEB-INF/classes/com/action/MainAction.class background/target/background/WEB-INF/classes/com/action/MainAction.class
+index 57481919f8b36f79b88b8e714a4f8c10456ae71b..cde835315800dfe9baa0634a1aadd58ceb8262f3
+GIT binary patch
+literal 6753
+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
+NUE?tE{UuDi_P_H7qF(?2
+
+diff --git background/target/classes/com/service/CategoryService.class background/target/classes/com/service/CategoryService.class
+index 584c8eed7eb71990255aa5e46d6efcee742ed571..2fc1a19c81fac2c15e8db3793a96ff53acdeefcd
+GIT binary patch
+literal 3032
+zc$}qHT~`}L7=9)Rq}gns(2}-%REk;yR94$+s{t$p!PJzGriJ?LCK=M9o85G?OXb=N
+ze}l)rz(w_V^x%cZYyXoT-<e(35C|Td3ufM#dG~pr_cQ$Y_iw)gxQQJN1Gt;QB9>A(
+zix1OS#)^iIP>|BSBtDjVQ7-r8vMQG~xva}&L&F1<r1UU}M@eil^i@oc*Bp26zS(GS
+zmtmw>aq320os7jJk9mem4}9Abb-pQ@qHOU6+jczD6OP?vxLtJIn$c{y!me$*W}QEG
+z+^0sFn|9OKHY*<C7-sZ=vEX~obK&wT!S>DyTX^#f@!TYlN-R26&d^^JHedDYW$r#S
+z$r{68(W#i$rs)cK4lfhl6G7(36!9i^cSVIq%uB(UY$UgZU0tv&hP9khEt^hVR2|=_
+z@0E#Cvtjv7qvE)n7P~5xSH?4+6YUMTZn;4eCW|}fu4(w5u#BQ;dW5Y%Yf)gB>k6MC
+zd(_Rn#-XcQ-2l(3j~mX8W2`t%wRsq#{5+XVl|;=pJ>MlO-*y$BQ_QqS?o>v-O>Xgu
+zM^1N}t`0`Xgx{#riQ#dslTvr43k;cBD;~qeQ|Jhr%9lJI=}1Q+_SDU93RTrBbn2~A
+zn4}MhTtS{=f}R)&%%(r;i%iKgD^IC|!y3|pxUN!zGTiAhwq!>Of*9ak$OS33OuJ^3
+zJUI&T1;s02D}}-1@8m<nbh%BA_gH+FQ-`KxuZFT#a(uVKmxUyMzOAokBpO5R#L?6A
+zxXT@n+Q&E?13I#}ki?db$M{6YAkHQ6sgBR^c@kgf_!3{~_!@+mJvjk7-auK$G%7l(
+zn9*V2Egf7g+o&b+M2C>qxA7jO@sxqYaQ5Fotd)0ErMFy__K1C*lI-~OFcd^hIL11;
+z=uzOfS(oFu<E)PIEc=XM>3`(;lsR|q1R6A1W!ycB>TRes{ef3`InYx9mo=OGUVeEh
+zt*{I$Cm4GP=t2kDhn==W<2~rH^{`6Qfj5heFHb97`ctqeZ))rh9J^#VLy_GyEuZ5G
+z{ooJKe*x6uvTkWVPp4kmhiKPmr_!eNBApD{8SOn&zk>ZpLJXHeWuPC!wCaHZMlh;C
+z$8edn<i{Lwl7Nw)5S#iL@#zC3V)%u?qQeV%jw?t_sSXjhtb)x3pN6nfdIjSIe<d<0
+zZzf23RndBlq}OpZ<b9WJ<oA7{soog=K=MVK1H&zr`XWnxp(REwnhWvn5zDx=tnjWK
+z;7lC*ZD^Mj+IXNBq3M{!lzP_{Zj9t<TnlkO2zjPMo~hU|*ohXB=?FF*!ZN&xnGoz|
+zm@G|#9YABpu&%abOp7u`qbEf8j<gffrbHMyKstuGP}F0XAN?Mwu^-Tr*pKf=iOW*%
+zL0r=0R+b#QOpL|}b6DLfw21Wt-o|yZm8Jr_K~jvq(24hT!g`0^lVE>goJlv{#jOsx
+z%*Yz*Yj^F&f8>$|X^8iTNJ&~5g*Q5Ofd0g>NZo4TpNZfycprK7p24i*FQqxfpJ6_#
+g{EfD>9;x)eK)yp-+p9d?R^>6O87bX~x^@Bh2a6fn=l}o!
+
+diff --git background/target/background/WEB-INF/classes/com/service/CategoryService.class background/target/background/WEB-INF/classes/com/service/CategoryService.class
+index 584c8eed7eb71990255aa5e46d6efcee742ed571..2fc1a19c81fac2c15e8db3793a96ff53acdeefcd
+GIT binary patch
+literal 3032
+zc$}qHT~`}L7=9)Rq}gns(2}-%REk;yR94$+s{t$p!PJzGriJ?LCK=M9o85G?OXb=N
+ze}l)rz(w_V^x%cZYyXoT-<e(35C|Td3ufM#dG~pr_cQ$Y_iw)gxQQJN1Gt;QB9>A(
+zix1OS#)^iIP>|BSBtDjVQ7-r8vMQG~xva}&L&F1<r1UU}M@eil^i@oc*Bp26zS(GS
+zmtmw>aq320os7jJk9mem4}9Abb-pQ@qHOU6+jczD6OP?vxLtJIn$c{y!me$*W}QEG
+z+^0sFn|9OKHY*<C7-sZ=vEX~obK&wT!S>DyTX^#f@!TYlN-R26&d^^JHedDYW$r#S
+z$r{68(W#i$rs)cK4lfhl6G7(36!9i^cSVIq%uB(UY$UgZU0tv&hP9khEt^hVR2|=_
+z@0E#Cvtjv7qvE)n7P~5xSH?4+6YUMTZn;4eCW|}fu4(w5u#BQ;dW5Y%Yf)gB>k6MC
+zd(_Rn#-XcQ-2l(3j~mX8W2`t%wRsq#{5+XVl|;=pJ>MlO-*y$BQ_QqS?o>v-O>Xgu
+zM^1N}t`0`Xgx{#riQ#dslTvr43k;cBD;~qeQ|Jhr%9lJI=}1Q+_SDU93RTrBbn2~A
+zn4}MhTtS{=f}R)&%%(r;i%iKgD^IC|!y3|pxUN!zGTiAhwq!>Of*9ak$OS33OuJ^3
+zJUI&T1;s02D}}-1@8m<nbh%BA_gH+FQ-`KxuZFT#a(uVKmxUyMzOAokBpO5R#L?6A
+zxXT@n+Q&E?13I#}ki?db$M{6YAkHQ6sgBR^c@kgf_!3{~_!@+mJvjk7-auK$G%7l(
+zn9*V2Egf7g+o&b+M2C>qxA7jO@sxqYaQ5Fotd)0ErMFy__K1C*lI-~OFcd^hIL11;
+z=uzOfS(oFu<E)PIEc=XM>3`(;lsR|q1R6A1W!ycB>TRes{ef3`InYx9mo=OGUVeEh
+zt*{I$Cm4GP=t2kDhn==W<2~rH^{`6Qfj5heFHb97`ctqeZ))rh9J^#VLy_GyEuZ5G
+z{ooJKe*x6uvTkWVPp4kmhiKPmr_!eNBApD{8SOn&zk>ZpLJXHeWuPC!wCaHZMlh;C
+z$8edn<i{Lwl7Nw)5S#iL@#zC3V)%u?qQeV%jw?t_sSXjhtb)x3pN6nfdIjSIe<d<0
+zZzf23RndBlq}OpZ<b9WJ<oA7{soog=K=MVK1H&zr`XWnxp(REwnhWvn5zDx=tnjWK
+z;7lC*ZD^Mj+IXNBq3M{!lzP_{Zj9t<TnlkO2zjPMo~hU|*ohXB=?FF*!ZN&xnGoz|
+zm@G|#9YABpu&%abOp7u`qbEf8j<gffrbHMyKstuGP}F0XAN?Mwu^-Tr*pKf=iOW*%
+zL0r=0R+b#QOpL|}b6DLfw21Wt-o|yZm8Jr_K~jvq(24hT!g`0^lVE>goJlv{#jOsx
+z%*Yz*Yj^F&f8>$|X^8iTNJ&~5g*Q5Ofd0g>NZo4TpNZfycprK7p24i*FQqxfpJ6_#
+g{EfD>9;x)eK)yp-+p9d?R^>6O87bX~x^@Bh2a6fn=l}o!
+
+diff --git .idea/sonarlint/issuestore/1/a/1a81f3043d3ebc4b2d682733a4a88c27fd9430a2 .idea/sonarlint/issuestore/1/a/1a81f3043d3ebc4b2d682733a4a88c27fd9430a2
+index 833140cd55da17757289b6a5c83dd5d2154e163a..163d99dfac9eb5a8f80fa2142a286a98aa3c904a
+GIT binary patch
+literal 87
+zc%0)372?WDEK9TsHZ(M{kYH6Z4oc0<FH2P@$;d2LD9tM^PEAqB%q_?-Dp62R&d=2=
+o$j{2xbI;FDDRxdQNlni$s#Mq0IDWeG`+pE%wCH>D@%9}(0QBY~g#Z8m
+
+diff --git background/target/classes/com/pojo/SpecParam.class background/target/classes/com/pojo/SpecParam.class
+index 0e39a54da3a3521653547a2ef613d399387f92ba..cec57ec9f37c200effa7efcd8422b18fa027536f
+GIT binary patch
+literal 1790
+zc$|%sYflqF6o$`i+bu1Xa%&Yu@q*eGVF3}98Vtdxkc!5dekIfGrVi=uHhUrQN112>
+zG4X>xz#nBiXLei2cAAi;XD(;ncb;>0_wT>oe*j<$>Uqe)W)3FcDTOTx&nRqDcuwI(
+z7G7pyhk+(K4A>!qh0mcA2-|82U$lGHp5wRy4}|OZ3|1SaYa4Cu+M?rzhW)LL8Nc5P
+zeS;6r8DBW+4mx!PnN!{iEe0u*+}E$Jek-gV8DzVj8}<)SJRxVt<db%|ji$4W6Mo8#
+z9(TG%Gw_7dl>*DLJYh1>eKZUaT7M-R5$qyGrP@OEzS}`{u^}AmD74#_CvPM_*W|qx
+z_XMru&2;cppvSyK@4F|i(d=91C+=~Z>g!qo!J#vDF5^e5bmfpP(lNPDyt*Gx^0@PE
+zP*C2#v_S0ONLDppsVeL82M0=((L7xz%?HIx^T8sAnP%LKoPROTH{H-PvDZ}S)Ud8K
+zvS(mi{b><coi0U-<34#5;5ytWKprLwP^2(JVGiaCP@-8GCb8k8J!LR`QQXJ&iDd?G
+z4`0(9zRx;nWC#ojxT5hI{-=E0)aa5+iRma&#Kep$F^dU=8BNS#qNGxkFi}<|%8~-B
+z#khbe14o8qruGZiPn>9QQ^M0`0dC1C55OYa#*x7tSQ?78SbPTB_k?&+DZY#SiNw2*
+z!XKWlEuDjQaW%CE@LUE@l0#Xp_1J-CQCAt<SAwLHAj?XS2WpU15~PBf>KKq>46>{Q
+zNhd*8l^_q*An7E?25L6PfXu`okKpmhb3KF1j|9lJ5~PB44nVZ%irUIKWRf5|sHu+u
+ziQZBMHDyQiWJg{rK~~fq(UTzisChF6q!f4Li4r861bMFnSyh8%lOPS$d>8`~eT5pV
+ONsTf59@nGqapOOT#{4?~
+

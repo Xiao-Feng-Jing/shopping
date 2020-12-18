@@ -1,19 +1,19 @@
 
-v
-java:S2293@"YReplace the type specification in this constructor call with the diamond operator ("<>").(…Ò®Ô8û®•Ğİ.
-f
-java:S1192q"IDefine a constant instead of duplicating this literal "group_id" 3 times.(¥úı¯8Å¬Ğİ.
 d
 java:S1192)"GDefine a constant instead of duplicating this literal "status" 4 times.(º·åª8ÇŠîÏİ.
 U
 java:S1128"3Remove this unused import 'com.pojo.GoodsCategory'.(ÇË‰÷ÿÿÿÿÿ8ŠìñÛÜ.
-s
-java:S1128"QRemove this unused import 'org.springframework.web.bind.annotation.PathVariable'.(¹ûñÅşÿÿÿÿ8›¬ÿ’ä.
+_
+java:S1128"BRemove this unused import 'javax.servlet.http.HttpServletRequest'.(ø©¹…8›¬ÿ’ä.
 ]
 java:S1128
 "@Remove this unused import 'org.apache.ibatis.annotations.Param'.(á¬Ó²8›¬ÿ’ä.
-_
-java:S1128"BRemove this unused import 'javax.servlet.http.HttpServletRequest'.(ø©¹…8›¬ÿ’ä.
+v
+java:S2293@"YReplace the type specification in this constructor call with the diamond operator ("<>").(…Ò®Ô8û®•Ğİ.
+p	java:S100¬"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ü±ù£úÿÿÿÿ8›¬ÿ’ä.
+s
+java:S1128"QRemove this unused import 'org.springframework.web.bind.annotation.PathVariable'.(¹ûñÅşÿÿÿÿ8›¬ÿ’ä.
 U	java:S106&"9Replace this use of System.out or System.err by a logger.(¥²Äº8›¬ÿ’ä.
 o	java:S100]"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¼È±øÿÿÿÿ8›¬ÿ’ä.
-p	java:S100¬"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ü±ù£úÿÿÿÿ8›¬ÿ’ä.
+f
+java:S1192q"IDefine a constant instead of duplicating this literal "group_id" 3 times.(¥úı¯8Å¬Ğİ.
