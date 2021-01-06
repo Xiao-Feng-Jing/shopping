@@ -29,10 +29,140 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8ad35d46-ff88-41cc-ae98-31bfb679001b" name="Default Changelist" comment="更新0.5">
+      <change afterPath="$PROJECT_DIR$/background/src/main/java/com/pojo/Image.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/background/src/main/java/com/service/AddFileImage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/background/src/main/java/com/util/FileUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/background/src/main/java/com/util/FtpUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/background/src/main/java/com/vo/ResponseBean.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/background/src/main/resource/ftp.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/background/src/main/test/com/test/Test.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/background/src/main/webapp/css/wangEditor.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/background/src/main/webapp/font/demo.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/background/src/main/webapp/font/demo_index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/background/src/main/webapp/font/iconfont.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/background/src/main/webapp/font/iconfont.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/background/src/main/webapp/font/iconfont.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/background/src/main/webapp/font/iconfont.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/background/src/main/webapp/font/iconfont.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/background/src/main/webapp/font/iconfont.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/background/src/main/webapp/font/iconfont.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/background/src/main/webapp/font/iconfont.woff2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/http-client.cookies" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/httpRequests/http-client.cookies" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/http-requests-log.http" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/httpRequests/http-requests-log.http" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/3/23ce2b513fe26367108845a38f8bf95bd4f7f77b" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/a/2ae3a52d9ba6d79937aed981930c6dcef5fb14eb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/a/2ae3a52d9ba6d79937aed981930c6dcef5fb14eb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/8/389fd6f3e66c3fea852d095aa5cf38d83fa6c688" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/8/389fd6f3e66c3fea852d095aa5cf38d83fa6c688" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/8/58dd25d660ce99dac1acd0b45cb6380e340be72e" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/2/82320f032cf92ae5604545cbb559b93fc9991861" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/9/8993b1c00b4257961a72d26fda4a91c9e571858e" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/9/8993b1c00b4257961a72d26fda4a91c9e571858e" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/0/c0d87373aa8c9b105bb71eeaeed379cf3a7abe6e" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/background/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/src/main/java/com/action/MainAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/background/src/main/java/com/action/MainAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/src/main/java/com/action/SpecAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/background/src/main/java/com/action/SpecAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/src/main/java/com/mapper/SpecGroupMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/background/src/main/java/com/mapper/SpecGroupMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/src/main/java/com/mapper/SpecParamMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/background/src/main/java/com/mapper/SpecParamMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/src/main/java/com/pojo/GoodsCategory.java" beforeDir="false" afterPath="$PROJECT_DIR$/background/src/main/java/com/pojo/GoodsCategory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/src/main/java/com/pojo/SpecGroup.java" beforeDir="false" afterPath="$PROJECT_DIR$/background/src/main/java/com/pojo/SpecGroup.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/src/main/java/com/pojo/SpecParam.java" beforeDir="false" afterPath="$PROJECT_DIR$/background/src/main/java/com/pojo/SpecParam.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/src/main/java/com/service/SpecGroupService.java" beforeDir="false" afterPath="$PROJECT_DIR$/background/src/main/java/com/service/SpecGroupService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/src/main/java/com/service/SpecParamService.java" beforeDir="false" afterPath="$PROJECT_DIR$/background/src/main/java/com/service/SpecParamService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/src/main/resource/com/mapper/SpecGroupMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/background/src/main/resource/com/mapper/SpecGroupMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/src/main/resource/com/mapper/SpecParamMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/background/src/main/resource/com/mapper/SpecParamMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/src/main/resource/spring.xml" beforeDir="false" afterPath="$PROJECT_DIR$/background/src/main/resource/spring.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/src/main/resource/springMVC-servlet.xml" beforeDir="false" afterPath="$PROJECT_DIR$/background/src/main/resource/springMVC-servlet.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/src/main/test/com/test/TestCategory.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/src/main/webapp/css/__at.alicdn.com_t_font_2053327_4knfwpdusg8.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/src/main/webapp/css/goods.css" beforeDir="false" afterPath="$PROJECT_DIR$/background/src/main/webapp/css/goods.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/src/main/webapp/css/pop.css" beforeDir="false" afterPath="$PROJECT_DIR$/background/src/main/webapp/css/pop.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/src/main/webapp/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/background/src/main/webapp/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/src/main/webapp/js/category.js" beforeDir="false" afterPath="$PROJECT_DIR$/background/src/main/webapp/js/category.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/src/main/webapp/js/goods.js" beforeDir="false" afterPath="$PROJECT_DIR$/background/src/main/webapp/js/goods.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/src/main/webapp/js/spec.js" beforeDir="false" afterPath="$PROJECT_DIR$/background/src/main/webapp/js/spec.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/target/background/META-INF/MANIFEST.MF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/target/background/WEB-INF/classes/com/action/MainAction.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/target/background/WEB-INF/classes/com/action/SpecAction.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/target/background/WEB-INF/classes/com/mapper/CategoryMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/target/background/WEB-INF/classes/com/mapper/CategoryMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/target/background/WEB-INF/classes/com/mapper/SpecGroupMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/target/background/WEB-INF/classes/com/mapper/SpecGroupMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/target/background/WEB-INF/classes/com/mapper/SpecParamMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/target/background/WEB-INF/classes/com/mapper/SpecParamMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/target/background/WEB-INF/classes/com/pojo/GoodsCategory.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/target/background/WEB-INF/classes/com/pojo/SpecGroup.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/target/background/WEB-INF/classes/com/pojo/SpecParam.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/target/background/WEB-INF/classes/com/service/CategoryService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/target/background/WEB-INF/classes/com/service/SpecGroupService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/target/background/WEB-INF/classes/com/service/SpecParamService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/target/background/WEB-INF/classes/jdbc.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/target/background/WEB-INF/classes/mybatis-config.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/target/background/WEB-INF/classes/spring.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/target/background/WEB-INF/classes/springMVC-servlet.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/target/background/WEB-INF/lib/aspectjweaver-1.9.4.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/target/background/WEB-INF/lib/c3p0-0.9.5.2.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/target/background/WEB-INF/lib/fastjson-1.2.73.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/target/background/WEB-INF/lib/javax.servlet-api-4.0.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/target/background/WEB-INF/lib/jsqlparser-3.2.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/target/background/WEB-INF/lib/jstl-api-1.2.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/target/background/WEB-INF/lib/jstl-impl-1.2.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/target/background/WEB-INF/lib/log4j-api-2.6.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/target/background/WEB-INF/lib/log4j-core-2.6.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/target/background/WEB-INF/lib/mchange-commons-java-0.2.11.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/target/background/WEB-INF/lib/mybatis-3.5.5.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/target/background/WEB-INF/lib/mybatis-plus-3.4.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/target/background/WEB-INF/lib/mybatis-plus-annotation-3.4.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/target/background/WEB-INF/lib/mybatis-plus-core-3.4.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/target/background/WEB-INF/lib/mybatis-plus-extension-3.4.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/target/background/WEB-INF/lib/mybatis-spring-2.0.5.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/target/background/WEB-INF/lib/mysql-connector-java-8.0.19.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/target/background/WEB-INF/lib/protobuf-java-3.6.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/target/background/WEB-INF/lib/spring-aop-5.2.6.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/target/background/WEB-INF/lib/spring-beans-5.2.6.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/target/background/WEB-INF/lib/spring-context-5.2.6.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/target/background/WEB-INF/lib/spring-core-5.2.6.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/target/background/WEB-INF/lib/spring-expression-5.2.6.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/target/background/WEB-INF/lib/spring-jcl-5.2.6.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/target/background/WEB-INF/lib/spring-jdbc-5.2.6.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/target/background/WEB-INF/lib/spring-tx-5.2.6.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/target/background/WEB-INF/lib/spring-web-5.2.6.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/target/background/WEB-INF/lib/spring-webmvc-5.2.6.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/target/background/WEB-INF/web.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/target/background/css/__at.alicdn.com_t_font_2053327_4knfwpdusg8.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/target/background/css/aside.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/target/background/css/goods.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/target/background/css/header.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/target/background/css/main.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/target/background/css/pop.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/target/background/img/pubsec-icon-x2_788b29c.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/target/background/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/target/background/jquery/jquery-3.4.1.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/target/background/jquery/jquery-ui.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/target/background/jquery/wangEditor.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/target/background/js/aside.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/target/background/js/category.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/target/background/js/goods.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/target/background/js/spec.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/target/background/js/草稿.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/target/classes/com/action/MainAction.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/target/classes/com/action/SpecAction.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/target/classes/com/mapper/CategoryMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/target/classes/com/mapper/CategoryMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/target/classes/com/mapper/SpecGroupMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/target/classes/com/mapper/SpecGroupMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/target/classes/com/mapper/SpecParamMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/target/classes/com/mapper/SpecParamMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/target/classes/com/pojo/GoodsCategory.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/target/classes/com/pojo/SpecGroup.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/target/classes/com/pojo/SpecParam.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/target/classes/com/service/CategoryService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/target/classes/com/service/SpecGroupService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/target/classes/com/service/SpecParamService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/target/classes/jdbc.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/target/classes/mybatis-config.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/target/classes/spring.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/target/classes/springMVC-servlet.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/target/test-classes/com/test/TestCategory.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,10 +181,11 @@
         <option value="mapper.xml" />
         <option value="Interface" />
         <option value="HTML File" />
-        <option value="Class" />
         <option value="mybatis-mapper" />
         <option value="JavaScript File" />
+        <option value="FxmlFile" />
         <option value="CSS File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -100,7 +231,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.obroom.plugin.mybatislog.indexNum" value="2236" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../DesignPattern" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/background/src/main/java/com/pojo" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -108,16 +239,17 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="project.structure.last.edited" value="Global Libraries" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="spring" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="RecentsManager">
     <key name="OPEN_URL_DIALOG">
       <recent name="https://github.com/lyj8330328/leyou.git" />
     </key>
     <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.util" />
       <recent name="com.test" />
       <recent name="com.servlet" />
       <recent name="servlet" />
@@ -130,12 +262,48 @@
       <recent name="F:\shopping\src\main\webapp\WEB-INF" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="F:\shopping\background\src\main\webapp\jquery" />
+      <recent name="F:\shopping\background\src\main\webapp" />
       <recent name="F:\shopping\background\src\main\webapp\css" />
+      <recent name="F:\shopping\background\src\main\webapp\jquery" />
       <recent name="F:\shopping\background\src\main\resource" />
       <recent name="F:\shopping\background\src\main\webapp\js" />
-      <recent name="F:\shopping\background\target\background" />
     </key>
+  </component>
+  <component name="RestClientSettings">
+    <option name="REQUEST_HISTORY">
+      <list>
+        <RestClientRequest>
+          <option name="httpMethod" value="GET" />
+          <option name="urlBase" value="http://main.do" />
+          <option name="urlPath" value="" />
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="GET" />
+          <option name="urlBase" value="http://localhost/spec/findSpecCategory" />
+          <option name="urlPath" value="" />
+          <option name="parameters">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="cid" />
+                <option name="value" value="1/4" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="POST" />
+          <option name="urlBase" value="http://localhost/background/upload" />
+          <option name="urlPath" value="" />
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+      </list>
+    </option>
   </component>
   <component name="RunDashboard">
     <option name="excludedTypes">
@@ -145,45 +313,40 @@
     </option>
   </component>
   <component name="RunManager" selected="Tomcat Server.Shopping">
+    <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.test.Test" />
+      <module name="background" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="All in generated-requests" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http">
+      <method v="2" />
+    </configuration>
     <configuration name="generated-requests#1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" runType="Run single request">
       <method v="2" />
     </configuration>
-    <configuration name="TestCategory.select" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="background" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.test.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.test" />
-      <option name="MAIN_CLASS_NAME" value="com.test.TestCategory" />
-      <option name="METHOD_NAME" value="select" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TestCategory.selectID" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="background" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.test.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.test" />
-      <option name="MAIN_CLASS_NAME" value="com.test.TestCategory" />
-      <option name="METHOD_NAME" value="selectID" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="index.do" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:80/background/index.do">
+    <configuration name="generated-requests#2" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" index="2" runType="Run single request">
       <method v="2" />
     </configuration>
-    <configuration name="index.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/shopping/background/src/main/webapp/index.html" useBuiltInWebServerPort="true">
+    <configuration name="http-requests-log#8" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$PROJECT_DIR$/.idea/httpRequests/http-requests-log.http" index="8" runType="Run single request">
       <method v="2" />
     </configuration>
     <configuration name="Shopping" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 8.5.38" ALTERNATIVE_JRE_ENABLED="false">
@@ -268,20 +431,20 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="Application.Test" />
+      <item itemvalue="HTTP Request.generated-requests#2" />
       <item itemvalue="HTTP Request.generated-requests#1" />
-      <item itemvalue="JavaScript Debug.index.html" />
-      <item itemvalue="JavaScript Debug.index.do" />
-      <item itemvalue="JUnit.TestCategory.select" />
-      <item itemvalue="JUnit.TestCategory.selectID" />
+      <item itemvalue="HTTP Request.All in generated-requests" />
+      <item itemvalue="HTTP Request.http-requests-log#8" />
       <item itemvalue="Tomcat Server.Shopping" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="HTTP Request.http-requests-log#8" />
+        <item itemvalue="HTTP Request.All in generated-requests" />
         <item itemvalue="HTTP Request.generated-requests#1" />
-        <item itemvalue="JavaScript Debug.index.do" />
-        <item itemvalue="JavaScript Debug.index.html" />
-        <item itemvalue="JUnit.TestCategory.selectID" />
-        <item itemvalue="JUnit.TestCategory.select" />
+        <item itemvalue="HTTP Request.generated-requests#2" />
+        <item itemvalue="Application.Test" />
       </list>
     </recent_temporary>
   </component>
@@ -350,6 +513,17 @@
       <workItem from="1608018238583" duration="1359000" />
       <workItem from="1608115253652" duration="3987000" />
       <workItem from="1608206197626" duration="22000" />
+      <workItem from="1609654282806" duration="5641000" />
+      <workItem from="1609660797782" duration="3648000" />
+      <workItem from="1609664554156" duration="735000" />
+      <workItem from="1609665636006" duration="9241000" />
+      <workItem from="1609677388008" duration="1629000" />
+      <workItem from="1609680377875" duration="14962000" />
+      <workItem from="1609739799758" duration="5672000" />
+      <workItem from="1609761508849" duration="22856000" />
+      <workItem from="1609825480815" duration="8952000" />
+      <workItem from="1609842080109" duration="11782000" />
+      <workItem from="1609912981624" duration="21190000" />
     </task>
     <task id="LOCAL-00001" summary="更新0.1">
       <created>1603181658554</created>
@@ -461,10 +635,14 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="694" y="347" key="#Notifications/0.0.1920.1050@0.0.1920.1050" timestamp="1605254974084" />
-    <state x="440" y="99" key="#Project_Structure" timestamp="1606055940710">
+    <state x="440" y="99" key="#Project_Structure" timestamp="1609654319265">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="440" y="99" key="#Project_Structure/0.0.1920.1050@0.0.1920.1050" timestamp="1606055940710" />
+    <state x="440" y="99" key="#Project_Structure/0.0.1920.1050@0.0.1920.1050" timestamp="1609654319265" />
+    <state x="337" y="366" key="#SQL_Dialects" timestamp="1609779130284">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="337" y="366" key="#SQL_Dialects/0.0.1920.1050@0.0.1920.1050" timestamp="1609779130284" />
     <state x="748" y="310" key="#Web_Browsers" timestamp="1605702056571">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
@@ -477,10 +655,10 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="588" y="204" key="#com.intellij.ide.fileTemplates.ui.ConfigureTemplatesDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1605425893551" />
-    <state x="765" y="208" key="#com.intellij.ide.util.MemberChooser" timestamp="1605281972221">
+    <state x="765" y="208" key="#com.intellij.ide.util.MemberChooser" timestamp="1609832006381">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="765" y="208" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1050@0.0.1920.1050" timestamp="1605281972221" />
+    <state x="765" y="208" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1050@0.0.1920.1050" timestamp="1609832006381" />
     <state x="690" y="271" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1606628649246">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
@@ -497,94 +675,94 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="184" y="86" key="DiffContextDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1605255587039" />
-    <state x="740" y="279" key="FileChooserDialogImpl" timestamp="1608206218100">
+    <state x="740" y="279" key="FileChooserDialogImpl" timestamp="1609937560958">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="740" y="279" key="FileChooserDialogImpl/0.0.1920.1050@0.0.1920.1050" timestamp="1608206218100" />
+    <state x="740" y="279" key="FileChooserDialogImpl/0.0.1920.1050@0.0.1920.1050" timestamp="1609937560958" />
     <state width="254" height="198" key="GotoFile_FileTypePopup" timestamp="1605282136223">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state width="254" height="198" key="GotoFile_FileTypePopup/0.0.1920.1050@0.0.1920.1050" timestamp="1605282136223" />
-    <state width="1877" height="352" key="GridCell.Tab.0.bottom" timestamp="1607841912267">
+    <state width="1877" height="353" key="GridCell.Tab.0.bottom" timestamp="1609936336250">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="352" key="GridCell.Tab.0.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1607841912267" />
-    <state width="1877" height="352" key="GridCell.Tab.0.center" timestamp="1607841912267">
+    <state width="1877" height="353" key="GridCell.Tab.0.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1609936336250" />
+    <state width="1877" height="353" key="GridCell.Tab.0.center" timestamp="1609936336249">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="352" key="GridCell.Tab.0.center/0.0.1920.1050@0.0.1920.1050" timestamp="1607841912267" />
-    <state width="1877" height="352" key="GridCell.Tab.0.left" timestamp="1607841912267">
+    <state width="1877" height="353" key="GridCell.Tab.0.center/0.0.1920.1050@0.0.1920.1050" timestamp="1609936336249" />
+    <state width="1877" height="353" key="GridCell.Tab.0.left" timestamp="1609936336248">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="352" key="GridCell.Tab.0.left/0.0.1920.1050@0.0.1920.1050" timestamp="1607841912267" />
-    <state width="1877" height="352" key="GridCell.Tab.0.right" timestamp="1607841912267">
+    <state width="1877" height="353" key="GridCell.Tab.0.left/0.0.1920.1050@0.0.1920.1050" timestamp="1609936336248" />
+    <state width="1877" height="353" key="GridCell.Tab.0.right" timestamp="1609936336250">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="352" key="GridCell.Tab.0.right/0.0.1920.1050@0.0.1920.1050" timestamp="1607841912267" />
-    <state width="1877" height="352" key="GridCell.Tab.1.bottom" timestamp="1607841912267">
+    <state width="1877" height="353" key="GridCell.Tab.0.right/0.0.1920.1050@0.0.1920.1050" timestamp="1609936336250" />
+    <state width="1877" height="353" key="GridCell.Tab.1.bottom" timestamp="1609936335918">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="352" key="GridCell.Tab.1.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1607841912267" />
-    <state width="1877" height="352" key="GridCell.Tab.1.center" timestamp="1607841912267">
+    <state width="1877" height="353" key="GridCell.Tab.1.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1609936335918" />
+    <state width="1877" height="353" key="GridCell.Tab.1.center" timestamp="1609936335918">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="352" key="GridCell.Tab.1.center/0.0.1920.1050@0.0.1920.1050" timestamp="1607841912267" />
-    <state width="1877" height="352" key="GridCell.Tab.1.left" timestamp="1607841912267">
+    <state width="1877" height="353" key="GridCell.Tab.1.center/0.0.1920.1050@0.0.1920.1050" timestamp="1609936335918" />
+    <state width="1877" height="353" key="GridCell.Tab.1.left" timestamp="1609936335917">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="352" key="GridCell.Tab.1.left/0.0.1920.1050@0.0.1920.1050" timestamp="1607841912267" />
-    <state width="1877" height="352" key="GridCell.Tab.1.right" timestamp="1607841912267">
+    <state width="1877" height="353" key="GridCell.Tab.1.left/0.0.1920.1050@0.0.1920.1050" timestamp="1609936335917" />
+    <state width="1877" height="353" key="GridCell.Tab.1.right" timestamp="1609936335918">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="352" key="GridCell.Tab.1.right/0.0.1920.1050@0.0.1920.1050" timestamp="1607841912267" />
-    <state width="1877" height="352" key="GridCell.Tab.2.bottom" timestamp="1607841912267">
+    <state width="1877" height="353" key="GridCell.Tab.1.right/0.0.1920.1050@0.0.1920.1050" timestamp="1609936335918" />
+    <state width="1877" height="353" key="GridCell.Tab.2.bottom" timestamp="1609936335919">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="352" key="GridCell.Tab.2.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1607841912267" />
-    <state width="1877" height="352" key="GridCell.Tab.2.center" timestamp="1607841912267">
+    <state width="1877" height="353" key="GridCell.Tab.2.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1609936335919" />
+    <state width="1877" height="353" key="GridCell.Tab.2.center" timestamp="1609936335919">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="352" key="GridCell.Tab.2.center/0.0.1920.1050@0.0.1920.1050" timestamp="1607841912267" />
-    <state width="1877" height="352" key="GridCell.Tab.2.left" timestamp="1607841912267">
+    <state width="1877" height="353" key="GridCell.Tab.2.center/0.0.1920.1050@0.0.1920.1050" timestamp="1609936335919" />
+    <state width="1877" height="353" key="GridCell.Tab.2.left" timestamp="1609936335918">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="352" key="GridCell.Tab.2.left/0.0.1920.1050@0.0.1920.1050" timestamp="1607841912267" />
-    <state width="1877" height="352" key="GridCell.Tab.2.right" timestamp="1607841912267">
+    <state width="1877" height="353" key="GridCell.Tab.2.left/0.0.1920.1050@0.0.1920.1050" timestamp="1609936335918" />
+    <state width="1877" height="353" key="GridCell.Tab.2.right" timestamp="1609936335919">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="352" key="GridCell.Tab.2.right/0.0.1920.1050@0.0.1920.1050" timestamp="1607841912267" />
-    <state width="1877" height="352" key="GridCell.Tab.3.bottom" timestamp="1607841912267">
+    <state width="1877" height="353" key="GridCell.Tab.2.right/0.0.1920.1050@0.0.1920.1050" timestamp="1609936335919" />
+    <state width="1877" height="353" key="GridCell.Tab.3.bottom" timestamp="1609936335923">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="352" key="GridCell.Tab.3.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1607841912267" />
-    <state width="1877" height="352" key="GridCell.Tab.3.center" timestamp="1607841912267">
+    <state width="1877" height="353" key="GridCell.Tab.3.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1609936335923" />
+    <state width="1877" height="353" key="GridCell.Tab.3.center" timestamp="1609936335919">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="352" key="GridCell.Tab.3.center/0.0.1920.1050@0.0.1920.1050" timestamp="1607841912267" />
-    <state width="1877" height="352" key="GridCell.Tab.3.left" timestamp="1607841912267">
+    <state width="1877" height="353" key="GridCell.Tab.3.center/0.0.1920.1050@0.0.1920.1050" timestamp="1609936335919" />
+    <state width="1877" height="353" key="GridCell.Tab.3.left" timestamp="1609936335919">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="352" key="GridCell.Tab.3.left/0.0.1920.1050@0.0.1920.1050" timestamp="1607841912267" />
-    <state width="1877" height="352" key="GridCell.Tab.3.right" timestamp="1607841912267">
+    <state width="1877" height="353" key="GridCell.Tab.3.left/0.0.1920.1050@0.0.1920.1050" timestamp="1609936335919" />
+    <state width="1877" height="353" key="GridCell.Tab.3.right" timestamp="1609936335922">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="352" key="GridCell.Tab.3.right/0.0.1920.1050@0.0.1920.1050" timestamp="1607841912267" />
-    <state width="1877" height="284" key="GridCell.Tab.4.bottom" timestamp="1607235464021">
+    <state width="1877" height="353" key="GridCell.Tab.3.right/0.0.1920.1050@0.0.1920.1050" timestamp="1609936335922" />
+    <state width="1877" height="349" key="GridCell.Tab.4.bottom" timestamp="1609837194778">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="284" key="GridCell.Tab.4.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1607235464021" />
-    <state width="1877" height="284" key="GridCell.Tab.4.center" timestamp="1607235464021">
+    <state width="1877" height="349" key="GridCell.Tab.4.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1609837194778" />
+    <state width="1877" height="349" key="GridCell.Tab.4.center" timestamp="1609837194778">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="284" key="GridCell.Tab.4.center/0.0.1920.1050@0.0.1920.1050" timestamp="1607235464021" />
-    <state width="1877" height="284" key="GridCell.Tab.4.left" timestamp="1607235464021">
+    <state width="1877" height="349" key="GridCell.Tab.4.center/0.0.1920.1050@0.0.1920.1050" timestamp="1609837194778" />
+    <state width="1877" height="349" key="GridCell.Tab.4.left" timestamp="1609837194778">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="284" key="GridCell.Tab.4.left/0.0.1920.1050@0.0.1920.1050" timestamp="1607235464021" />
-    <state width="1877" height="284" key="GridCell.Tab.4.right" timestamp="1607235464021">
+    <state width="1877" height="349" key="GridCell.Tab.4.left/0.0.1920.1050@0.0.1920.1050" timestamp="1609837194778" />
+    <state width="1877" height="349" key="GridCell.Tab.4.right" timestamp="1609837194778">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="284" key="GridCell.Tab.4.right/0.0.1920.1050@0.0.1920.1050" timestamp="1607235464021" />
+    <state width="1877" height="349" key="GridCell.Tab.4.right/0.0.1920.1050@0.0.1920.1050" timestamp="1609837194778" />
     <state width="1877" height="352" key="GridCell.Tab.5.bottom" timestamp="1607233912706">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
@@ -601,22 +779,22 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state width="1877" height="352" key="GridCell.Tab.5.right/0.0.1920.1050@0.0.1920.1050" timestamp="1607233912706" />
-    <state width="232" height="477" key="HiddenNamespacesPopup" timestamp="1605256078616">
+    <state width="232" height="477" key="HiddenNamespacesPopup" timestamp="1609825499177">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="232" height="477" key="HiddenNamespacesPopup/0.0.1920.1050@0.0.1920.1050" timestamp="1605256078616" />
+    <state width="232" height="477" key="HiddenNamespacesPopup/0.0.1920.1050@0.0.1920.1050" timestamp="1609825499177" />
     <state x="540" y="259" key="IDE.errors.dialog" timestamp="1605612362593">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="540" y="259" key="IDE.errors.dialog/0.0.1920.1050@0.0.1920.1050" timestamp="1605612362593" />
-    <state x="490" y="179" key="Maven.ArtifactSearchDialog" timestamp="1605255791178">
+    <state x="490" y="179" key="Maven.ArtifactSearchDialog" timestamp="1609682296758">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="490" y="179" key="Maven.ArtifactSearchDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1605255791178" />
-    <state x="461" y="169" key="SettingsEditor" timestamp="1606116125441">
+    <state x="490" y="179" key="Maven.ArtifactSearchDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1609682296758" />
+    <state x="461" y="169" key="SettingsEditor" timestamp="1609771495072">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="461" y="169" key="SettingsEditor/0.0.1920.1050@0.0.1920.1050" timestamp="1606116125441" />
+    <state x="461" y="169" key="SettingsEditor/0.0.1920.1050@0.0.1920.1050" timestamp="1609771495072" />
     <state x="708" y="221" key="VCS.ChangeListViewerDialog" timestamp="1605256857601">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
@@ -637,10 +815,22 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="593" y="185" key="new project wizard/0.0.1920.1050@0.0.1920.1050" timestamp="1608117035126" />
+    <state x="721" y="398" width="628" height="285" key="org.intellij.images.editor.actions.BackgroundImageDialog" timestamp="1609771562122">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="721" y="398" width="628" height="285" key="org.intellij.images.editor.actions.BackgroundImageDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1609771562122" />
+    <state x="655" y="280" key="refactoring.ChangeSignatureDialog" timestamp="1609665791727">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="655" y="280" key="refactoring.ChangeSignatureDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1609665791727" />
     <state x="616" y="243" key="run.anything.popup" timestamp="1607246087586">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="616" y="243" key="run.anything.popup/0.0.1920.1050@0.0.1920.1050" timestamp="1607246087586" />
+    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup" timestamp="1609657156661">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/0.0.1920.1050@0.0.1920.1050" timestamp="1609657156661" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -6,7 +6,10 @@ import com.pojo.SpecParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * @author zengkan
@@ -33,8 +36,8 @@ public class SpecParamService {
         return specParamMapper.selectById(id);
     }
 
-    public int deleteId(SpecParam specParam) {
-        return specParamMapper.updateById(specParam);
+    public int deleteId(Integer id) {
+        return specParamMapper.deleteById(id);
     }
 
     public int updateId(SpecParam specParam) {
@@ -46,10 +49,22 @@ public class SpecParamService {
     }
 
     public void deleteGroupById(int id) {
-        specParamMapper.updateGroup(id);
+        QueryWrapper<SpecParam> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("group_id",id);
+        specParamMapper.delete(queryWrapper);
     }
 
-    public int updateName(String name, int cid, int gid) {
-        return specParamMapper.updateName(name,cid, gid);
+    public int updateName(SpecParam specParam) {
+        return specParamMapper.updateName(specParam);
     }
+
+    public Object findIdSku(String cid) {
+        String[] ids =cid.split("/");
+        Set<Object> cidSet = new HashSet<Object>();
+        cidSet.addAll(Arrays.asList(ids));
+        List<SpecParam> specParams =  specParamMapper.findIdSku(cidSet);
+        System.out.println(specParams);
+        return specParams;
+    }
+
 }

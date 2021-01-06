@@ -1,3 +1,0 @@
-#header{height: 80px;background: rgb(0,0,0);position: relative;left: 0;top: 0;right: 0;z-index: 10;}
-#header .top{vertical-align: middle;text-align: center;min-width:1200px;height: 100%;display: flex;justify-content: center;text-align: justify;align-items: center;}
-#header .top .top-div p{font-size: 24px;line-height: 25px;vertical-align: middle;text-align: center;color: #ffffff;}

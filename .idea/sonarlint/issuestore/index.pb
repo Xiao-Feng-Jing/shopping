@@ -19,8 +19,6 @@ c
 0background/src/main/java/com/pojo/SpecParam.java,d\1\d1986c843c522db353daed306834c201b66353ec
 i
 9background/src/main/java/com/service/CategoryService.java,7\8\7846cb929f494c5cbb3768d1c19fec152ec7f497
-c
-3background/src/main/test/com/test/TestCategory.java,c\0\c0d87373aa8c9b105bb71eeaeed379cf3a7abe6e
 U
 %background/src/main/webapp/index.html,2\a\2ae3a52d9ba6d79937aed981930c6dcef5fb14eb
 V
@@ -51,8 +49,6 @@ X
 (background/src/main/webapp/css/goods.css,7\5\75f482912c9dfd555850084f638e23450e30287b
 V
 &background/src/main/webapp/js/goods.js,f\3\f325186b33a595ce7006b1bcd5f64063391a58ae
-}
-Mbackground/src/main/webapp/css/__at.alicdn.com_t_font_2053327_4knfwpdusg8.css,8\2\82320f032cf92ae5604545cbb559b93fc9991861
 X
 (background/target/background/js/aside.js,7\a\7af6c2b15cb27c486273d02b89fce31f01698330
 z
@@ -73,14 +69,10 @@ o
 ,background/target/classes/mybatis-config.xml,e\6\e66e6e137ae3e905a28b9f82d996f51bad63ecd7
 X
 (background/target/background/css/pop.css,d\4\d42834dd5a00812dbfe6a1bafd1ee9aa6239223f
-k
-;background/src/main/resource/com/mapper/SpecGroupMapper.xml,5\8\58dd25d660ce99dac1acd0b45cb6380e340be72e
 {
 Kbackground/target/background/WEB-INF/classes/com/mapper/SpecGroupMapper.xml,4\4\445b9aecb551838002d276bed51108635486ee4e
 h
 8background/target/classes/com/mapper/SpecGroupMapper.xml,a\7\a7cfe8266712f4a7948933b2a6fa143f3db7edb9
-k
-;background/src/main/resource/com/mapper/SpecParamMapper.xml,2\3\23ce2b513fe26367108845a38f8bf95bd4f7f77b
 r
 Bbackground/target/background/WEB-INF/classes/springMVC-servlet.xml,3\6\364359433f50e4f0669bb3b0b86880e3820b0b2c
 _

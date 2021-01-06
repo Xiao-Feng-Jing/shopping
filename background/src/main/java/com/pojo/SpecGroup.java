@@ -1,25 +1,35 @@
 package com.pojo;
 
-
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 /**
  * @author zengkan
  */
-@TableName(value = "spec_group")
+@Repository
+@TableName(resultMap = "spec")
 public class SpecGroup {
 
-  @TableId(value = "id")
+  @TableId(value = "id", type = IdType.AUTO)
   private long id;
-  @TableField(value = "cid")
   private long cid;
-  @TableField(value = "name")
   private String name;
-  @TableField(value = "status")
   private long status;
+  @TableField(exist = false)
+  private List<SpecParam> ParamsList;
 
+  public List<SpecParam> getParamsList() {
+    return ParamsList;
+  }
+
+  public void setParamsList(List<SpecParam> paramsList) {
+    ParamsList = paramsList;
+  }
 
   public long getId() {
     return id;
@@ -56,4 +66,8 @@ public class SpecGroup {
     this.status = status;
   }
 
+  @Override
+  public String toString() {
+    return "SpecGroup(id=" + getId() +", cid=" + getCid() +", name='" + getName() + ", status=" + getStatus() +",specParams="+getParamsList()+")";
+  }
 }

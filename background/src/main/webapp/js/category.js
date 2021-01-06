@@ -29,6 +29,8 @@ function ajax_category(p) {
     $.ajax({
         url :"main/category",
         success:function(result) {
+            result = JSON.parse(result);
+            console.log(result)
             for (let i = 0; i < result.length; i++) {
                 const li_1 = creat_li();
                 li_1.addClass("one");
@@ -127,6 +129,7 @@ content.on("click",".category-delete",function (e) {
         url:"main/categoryDelete",
         data :{"id":$(this).prev().prev().prev().data("index")},
         success:function (result) {
+            result = JSON.parse(result);
             if (result === 1){
                 content.eq(0).children().eq(0).remove();
                 content.eq(0).append(ajax_category(content.eq(0)));
@@ -177,6 +180,7 @@ $("#submit-button").click(function () {
         $.ajax({url:'main/categoryInsert',
             data:{"name":categoryName.val(),"parent":categoryParent.val()},
             success:function (data) {
+                data = JSON.parse(data);
                 if (data === 1){
                    content.eq(0).children().eq(0).remove();
                     content.eq(0).append(ajax_category(content.eq(0)));
@@ -191,6 +195,7 @@ $("#submit-button").click(function () {
         $.ajax({url:'main/categoryUpdate',
             data:{"id":categoryName.data("index"),"name":categoryName.val(),"parent":$("#categoryParent").val()},
             success:function (result) {
+                result = JSON.parse(result);
                 if (Object.is(result,1)){
                     content.eq(0).children().eq(0).remove();
                     content.eq(0).append(ajax_category(content.eq(0)));
@@ -244,9 +249,10 @@ categoryName.blur(function () {
         data :{"name":$(this).val(),"id":$(this).data("index")},
         type :"post",
         success:function (result) {
-        if (result !== '0'){
-            $(this).next().children().eq(0).text("分类名已存在");
-        }
+            result = JSON.parse(result);
+            if (result !== '0'){
+                $(this).next().children().eq(0).text("分类名已存在");
+            }
     }})
 });
 //select查询父分类
@@ -257,6 +263,7 @@ categoryParent.focus(function (){
        url:'main/categoryParent',
        async:true,
        success:function (result) {
+           result = JSON.parse(result);
            categoryParent.empty();
            categoryParent.prepend("<option value='0'>请选择</option>");
            for (var i = 0; i < result.length; i++) {

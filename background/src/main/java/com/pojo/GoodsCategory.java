@@ -67,4 +67,14 @@ public class GoodsCategory {
     this.categoryLevel = categoryLevel;
   }
 
+  @Override
+  public String toString() {
+    return "GoodsCategory(" +
+            "categoryId=" + getCategoryId() +
+            ", categoryName='" + getCategoryName() +
+            ", parentId=" + getParentId() +
+            ", categoryLevel=" + getCategoryLevel() +
+            ", categorySet=" + getCategorySet() +
+            ")";
+  }
 }

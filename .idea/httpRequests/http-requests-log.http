@@ -1,4 +1,42 @@
 GET http://main.do
 
+<> 2021-01-05T011029.200.html
+
+###
+
+GET http://localhost/spec/findSpecCategory?cid=1/4
+
+###
+
+GET http://localhost/spec/findSpecCategory?cid=1/4
+
+###
+
+POST http://localhost/background/upload
+
+<> 2021-01-04T023013.500.html
+
+###
+
+GET http://localhost/background/main/category
+
+###
+
+GET http://localhost/background/upload
+
+###
+
+GET http://main.do
+
+<> 2021-01-04T021409.200.html
+
+###
+
+GET http://upload
+
+###
+
+GET http://main.do
+
 ###
 

@@ -2,12 +2,10 @@ package com.action;
 
 import com.alibaba.fastjson.JSON;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.extension.activerecord.Model;
 import com.pojo.GoodsCategory;
 import com.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -24,7 +22,7 @@ import java.util.Map;
  *
  */
 @Controller
-@RequestMapping(value = "main")
+@RequestMapping(value = "/main")
 public class MainAction {
 
     @Autowired
@@ -34,7 +32,7 @@ public class MainAction {
      * 查询所有分类
      * */
     @ResponseBody
-    @RequestMapping("category")
+    @RequestMapping("/category")
     public String category(){
         QueryWrapper<GoodsCategory> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("category_status",1);
@@ -47,7 +45,7 @@ public class MainAction {
      * @return
      */
     @ResponseBody
-    @RequestMapping("categoryParent")
+    @RequestMapping("/categoryParent")
     public String parent(){
         QueryWrapper<GoodsCategory> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("category_status",1);
@@ -59,7 +57,7 @@ public class MainAction {
      * 修改分类信息；
      */
     @ResponseBody
-    @RequestMapping("categoryUpdate")
+    @RequestMapping("/categoryUpdate")
     public String categoryUpdate(@RequestParam("id") Integer id,
                                  @RequestParam("parent") Integer parent,
                                  @RequestParam("name") String name){
@@ -84,13 +82,13 @@ public class MainAction {
      * 添加分类
      * */
     @ResponseBody
-    @RequestMapping("categoryInsert")
+    @RequestMapping("/categoryInsert")
     public String categoryInsert(@RequestParam("name") String name, @RequestParam("parent") Integer parent){
         if (name == null||"".equals(name.trim())){
             return 3+"";
         }
         int level;
-        if (parent==null){
+        if (parent==null||parent==0){
             parent = 0;
             level = 1;
         }else {
