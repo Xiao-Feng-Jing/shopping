@@ -4,14 +4,12 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 /**
  * @author zengkan
  */
-@Repository
 @TableName(resultMap = "spec")
 public class SpecGroup {
 

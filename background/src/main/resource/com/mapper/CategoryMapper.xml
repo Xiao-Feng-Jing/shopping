@@ -17,4 +17,10 @@
         update goods_category set category_status = 1 where category_name = #{name}
         and parent_id = #{parent} and category_level = #{level};
     </update>
+    <select id="queryNameById" resultType="String">
+        select category_name from goods_category where category_id in
+        <foreach collection="collection" item="asList" index="index" open="(" separator="," close=")">
+            #{asList}
+        </foreach>
+    </select>
 </mapper>

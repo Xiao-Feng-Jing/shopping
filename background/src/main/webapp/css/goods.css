@@ -1,4 +1,4 @@
-.goods-top{height: 60px;background-color: azure;position: relative;}
+.goods-top{height: 60px;position: relative;border-bottom: 1px solid silver;}
 .goods-top #add-goods{margin: 10px 0 10px 40px;height: 40px;width: 100px;outline: none;text-align: center;background-color: dodgerblue;color: #FFFFFF;border-radius: 1px;box-shadow: 1px 1px 5px #666666,-1px 1px 5px #666666;}
 .goods-top #add-goods:hover {background-color: cornflowerblue}
 .goods-top #add-goods:active{background-color: cornflowerblue;box-shadow: 0 0 #666;transform: translateY(4px);}
@@ -12,16 +12,18 @@
 .goods-top .goods-search:hover .icon-search{color: cornflowerblue;}
 .goods-search .search-input{width: 260px;height: 28px;border: none;line-height:28px \9;margin-left: 10px;}
 .goods-search .search-input:hover{border: none;}
-.goods-info{height: 400px;background-color: #3eaf7c;overflow-y: auto;}
-
 .goods-spec,.goods-sku{
     position: relative;
     display: flex;
     justify-content: center;
-    margin: 20px 30px;
+    margin: 20px 30px 0 30px;
+}
+.goods-add-group{
+    width: 80%;
 }
 .spec-div{
-    width: 80%;
+    position: relative;
+    width: 100%;
 }
 .spu-group,.sku-param-data{
     position: relative;
@@ -49,7 +51,7 @@
 }
 .spu-params,.sku-params{
     position: relative;
-    margin: 10px 40px;
+    margin: 40px;
 }
 .spu-param,.sku-param{
     position: relative;
@@ -62,11 +64,15 @@
 .spu-param .item_tip{
     left: 0;
 }
+.sku-param{
+    border-bottom: none;
+}
 .sku-input{
     font-size: 16px;
     padding: 9px 10px;
     width: 278px;
     outline: none;
+    border-bottom: 2px solid #e5e5e5;
 }
 .spu-param .form_input{
     width: 100%;
@@ -76,9 +82,9 @@
 }
 .sku-param .iconfont{
     font-size: 20px;
+    cursor:pointer;
 }
 .sku-param .iconfont:hover{
-    cursor:pointer;
     color: deepskyblue;
 }
 
@@ -88,7 +94,57 @@
     padding: 0 20px;
 }
 .sku-data-table{
+    margin: 10px 0;
     width: 100%;
+    font-size: 16px;
+    border: 1px solid silver;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+.sku-data-table tr{
+    height: 40px;
+}
+.sku-data-table td{
+    padding: 10px 0;
+    color: #000000;
+    border-top: 1px solid silver;
+}
+.sku-data-table td,.sku-data-table th{
+    line-height: 40px;
+}
+.sku-data-table input[type='text']{
+    width: 80px;
+    border-bottom: 2px solid silver;
+}
+.sku-tr-td td{
+    text-align: center;
+}
+.button-goods{
+    display: flex;
+    justify-content: flex-end;
+}
+.sku-prv-button{
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+    padding: 4px 10px;
+    font-size: 16px;
+    outline: none;
+    text-align: center;
+    background-color: dodgerblue;
+    color: #FFFFFF;
+    border-radius: 5%;
+    box-shadow: 0 1px 2px #999999;cursor: pointer;
+    transition: background-color .3s ease-in-out;
+}
+.sku-prv-button:hover{
+    background-color: deepskyblue;
+}
+.sku-prv-button:disabled{
+    background-color: gray;
+}
+.sku-prv-button .iconfont{
+    font-size: 24px;
 }
 /* 无内容的展示 */
 .notFollow{
@@ -106,6 +162,173 @@
     color: #CCCCCC;
 }
 .notFollow-text{
-    font-size: 16px;
+    font-size: 14px;
     margin: 10px 0;
+}
+
+/*商品展示*/
+.goods-info{
+    height: auto;
+    overflow-y: auto;
+    border-bottom: 1px solid silver;
+    display: flex;
+    flex-direction: column;
+}
+.goods-content{
+    height: inherit;
+    display: flex;
+    flex-direction: column;
+}
+.goods-list{
+    border: 1px solid #e5e5e5;
+    box-shadow: 1px 2px 2px #e9e9e9 ,-1px -2px 2px #e9e9e9;
+    border-radius: 5px;
+    flex: 9;
+    display: flex;
+    justify-content: center;
+}
+.table-goods-list{
+    font-size: 16px;
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+.table-goods-list input[type='checkbox']{
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
+    background-color: #fff;
+    -webkit-appearance:none;
+    border: 1px solid #c9c9c9;
+    border-radius: 2px;
+    outline: none;
+    cursor: pointer;
+}
+.table-goods-list input[type='checkbox']::before{
+    display: block;
+    content: "\n";
+    text-align: center;
+    font-size: 16px;
+    color: white;
+}
+.table-goods-list input[type=checkbox]:checked{
+    background: deepskyblue;
+}
+
+.table-goods-list input[type=checkbox]:checked::before{
+    display: block;
+    content: "\2714";
+    text-align: center;
+    font-size: 16px;
+    color: white;
+}
+.table-goods-list th,.table-goods-list td{
+    margin: 10px 0;
+    text-align: center;
+    border-bottom: 1px solid silver;
+}
+.table-goods-list th{
+    height: 40px;
+    line-height: 40px;
+    color: #000000;
+}
+.table-goods-list span{
+    height: 24px;
+    line-height: 24px;
+}
+
+/*分页*/
+.goods_pages{
+    margin: 10px 0;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex: 1;
+}
+.page-goods{
+    display: flex;
+    justify-content: space-around;
+}
+.page-goods>div{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 0 20px;
+}
+.select-page-div{
+    /*用div的样式代替select的样式*/
+    width: 60px;
+    border-radius: 5px;
+    /*盒子阴影修饰作用,自己随意*/
+    box-shadow: 0 0 5px #ccc;
+    position: relative;
+}
+.select-page-div select{
+    /*清除select的边框样式*/
+    border: none;
+    /*清除select聚焦时候的边框颜色*/
+    outline: none;
+    /*将select的宽高等于div的宽高*/
+    width: 100%;
+    height: 100%;
+    /*隐藏select的下拉图标*/
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    /*通过padding-left的值让文字居中*/
+    padding-left: 10px;
+    cursor: pointer;
+}
+.select-page-div::after{
+    content: "";
+    width: 21px;
+    height: 21px;
+    background: url("../img/arrow.jpeg") no-repeat center;
+    background-size: 21px 21px;
+    /**通过定位将图标放在合适的位置*/
+    position: absolute;
+    right: 0;
+    /*给自定义的图标实现点击下来功能*/
+    pointer-events: none;
+}
+.list-tr.goods{
+    height: 50px;
+    line-height: 50px;
+}
+.span-goods-operation{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.span-goods-operation span{
+    cursor: pointer;
+    transition: all .3s ease-in-out;
+}
+.span-goods-operation span:hover{
+    color: deepskyblue;
+}
+/*清除ie的默认选择框样式清除，隐藏下拉箭头*/
+.goods_pages select::-ms-expand { display: none; }
+.page-goods-np{
+    width: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.goods-info .iconfont{
+    cursor: pointer;
+    font-size: 24px;
+    transition: all .3s ease-in-out;
+}
+.goods-info .iconfont:hover{
+    color: deepskyblue;
+}
+.disabled{
+    color: silver;
+}
+.disabled .iconfont{
+    cursor: default;
+}
+.disabled .iconfont:hover{
+    color: silver;
 }

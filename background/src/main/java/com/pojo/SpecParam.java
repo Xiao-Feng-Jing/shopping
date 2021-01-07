@@ -3,12 +3,10 @@ package com.pojo;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import org.springframework.stereotype.Repository;
 
 /**
  * @author zengkan
  */
-@Repository
 @TableName(resultMap = "specParam")
 public class SpecParam {
 

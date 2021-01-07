@@ -4,6 +4,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.text.SimpleDateFormat;
 
 /**
  * Created with IntelliJ IDEA.
@@ -15,9 +16,11 @@ import java.io.InputStream;
 
 public class FileUtil {
 
-    public static String fileUpload(MultipartFile file,String pathSuffix) {
+    public static String fileUpload(MultipartFile file,String path) {
         long time = System.currentTimeMillis();
-        String fileName = "goods-"+time;
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+        String pathSuffix=path+sdf.format(time)+"/";
+        String fileName = time+"_goods";
         String suffix = getSuff(file.getOriginalFilename());
         String fileUrl = fileName + suffix;
         System.out.println(fileUrl);

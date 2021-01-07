@@ -58,4 +58,8 @@ public class CategoryService {
     public List<GoodsCategory> findlevel(QueryWrapper<GoodsCategory> queryWrapper) {
         return categoryMapper.selectList(queryWrapper);
     }
+
+    public List<String> queryNameById(List<? extends Number> asList) {
+        return categoryMapper.queryNameById(asList);
+    }
 }

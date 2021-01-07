@@ -27,7 +27,7 @@
 #pop-2 .header-li .header-li-box .header-text{margin-left: 30px;}
 #pop-2 .pop-main .pop-main-content{width: 100%;overflow-y: auto;height: 89%;}
 /*文本输入*/
-#pop-2 .pop-main .div-text{position: relative;width: 340px;margin-left: 60px;margin-top: 20px;background-color: #FFFFFF;font-size: 14px;border-bottom: 2px solid #e5e5e5;}
+#pop-2 .pop-main .div-text{position: relative;width: 340px;margin-left: 60px;margin-top: 16px;background-color: #FFFFFF;font-size: 14px;border-bottom: 2px solid #e5e5e5;}
 #pop-2 .pop-main .div-text:hover{border-bottom:2px solid cornflowerblue;}
 #pop-2 .pop-main .div-text.text-area{width: 680px;height: 80px;}
 #pop-2 .pop-main .div-text.text-area-2{width: 680px;height: 102px;}
@@ -51,6 +51,7 @@
     width: auto;
     display: flex;
     align-items: flex-start;
+    margin-left: 3px;
     z-index: 20;
     max-height: 100px;
     overflow-y: auto;

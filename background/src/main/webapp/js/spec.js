@@ -52,8 +52,14 @@ $.ajax_spec = function (category_id) {
                     $("p.spec-group").on("dblclick",function() {
                         const a = $(".sku-right>.main-top").eq(0);
                         if (a.children().length ===1){
-                            a.children().eq(0).replaceWith($.add_a(a.children().eq(0).text(),a.children().eq(0).data("index")));
+                            a.children().eq(0).replaceWith($.add_a(a.children().eq(0).text(),
+                                a.children().eq(0).data("index")));
+                        }else {
+                            let x = a.children().eq(a.children().length-1).children().eq(1)
+                            a.children().eq(a.children().length-1).children().eq(1).replaceWith($.add_a(x.text(),
+                                x.data("index")));
                         }
+
                         a.append($.add_inline($(this).children().eq(0).text(),$(this).children().eq(0).data("id")));
                         for (let datum of result.data) {
                             if (datum.id === $(this).children().eq(0).data("id")) {
@@ -61,7 +67,7 @@ $.ajax_spec = function (category_id) {
                                 for (let param of datum.paramsList) {
                                     ul.append($.add_spec("spec-param",param.name,param.id,param.generic,param.main));
                                 }
-                                ul.next().children().eq(0).text("新增规格").attr("id","param");
+                                ul.next().children().eq(0).text("新增规格");
                             }
                         }
                     });
@@ -72,11 +78,7 @@ $.ajax_spec = function (category_id) {
 }
 
 //打开规格的添加界面
-$(".main-content").on("click","#group",function () {
-    $("#pop-2").css("display","block");
-    $.add_input_spec("清空",$(this).text());
-});
-$(".main-content").on("click","#param",function () {
+$(".main-content").on("click",".add-item",function () {
     $("#pop-2").css("display","block");
     $.add_input_spec("清空",$(this).text());
 });
