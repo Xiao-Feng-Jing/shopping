@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.SpecGroupMapper">
+    <resultMap id="spec" type="com.pojo.SpecGroup">
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <result column="cid" property="cid" jdbcType="BIGINT"/>
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+        <result column="status" property="status" jdbcType="TINYINT"/>
+        <collection property="ParamsList" javaType="ArrayList" ofType="com.pojo.SpecParam">
+            <id column="pid" property="id" jdbcType="BIGINT"/>
+            <result column="p_cid" property="cid" jdbcType="BIGINT"/>
+            <result column="group_id" property="groupId" jdbcType="BIGINT"/>
+            <result column="p_name" property="name" jdbcType="VARCHAR"/>
+            <result column="generic" property="generic" jdbcType="TINYINT"/>
+            <result column="p_status" property="status" jdbcType="TINYINT"/>
+            <result column="main" property="main" jdbcType="TINYINT"/>
+        </collection>
+    </resultMap>
+    <select id="maxID" resultType="int">
+        select max(id) from spec_group;
+    </select>
+    <update id="updateName">
+        update spec_group set status = 1 where `name` = #{name} and cid = #{cid};
+    </update>
+    <select id="findCID" resultMap="spec">
+        select g.id,g.name,g.cid,g.status,p.id pid,p.name p_name,p.cid p_cid,p.status p_status,p.group_id,p.generic,p.main
+        from spec_group g left join spec_param p on g.id = p.group_id
+        where g.status = 1 and g.cid in
+        <foreach collection="collection" item="cidSet" index="index" open="(" separator="," close=")">
+            #{cidSet}
+        </foreach>
+    </select>
+    <select id="specCategory" resultMap="spec">
+        select g.id,g.name,g.cid,g.status,p.id pid,p.name p_name,p.cid p_cid,p.status p_status,p.group_id,p.generic,p.main
+        from spec_group g left join spec_param p on g.id = p.group_id
+        where g.status = 1 and p.status=1 and p.generic=0 and g.cid in
+        <foreach collection="collection" item="cidSet" index="index" open="(" separator="," close=")">
+            #{cidSet}
+        </foreach>
+    </select>
+</mapper>

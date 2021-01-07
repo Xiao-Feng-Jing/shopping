@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="jquery/wangEditor.min.js"></script>
+</head>
+<body>
+<div id="k"></div>
+</body>
+<script>
+    let E = window.wangEditor;
+    let editor =new E("#k");
+    editor.config.uploadImgServer = '/upload-img'
+    editor.create();
+</script>
+</html>
